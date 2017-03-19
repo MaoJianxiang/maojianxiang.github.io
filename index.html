@@ -369,7 +369,7 @@
 <p>   Property ‘name’ requires method ‘setName:’ to be defined - use @dynamic or provide a method implementation in this category。<br>   意思是在这个类中，属性name的setter的定义方法，用@dynamic 或者提供一个方法来实现。</p>
 <p>然后我们在implementation中添加 @dynamic name;这样警告消失，但是运行依然会报 unrecognized selector sent to instance xxx的错误。</p>
 <p>然后我们在 implementation 中实现它的getter和setter方法,也会直接报错 undeciarediared identifier XX</p>
-<p><img src="/2017/03/17/在Category中可以添加属性吗/mao/Desktop/MJXBoKe/source/images/1.png"></p>
+<p><img src="/2017/03/17/在Category中可以添加属性吗/1.png" alt="1"></p>
 <h3 id="结论-s"><a href="#结论-s" class="headerlink" title="结论 s"></a>结论 s</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
 <ol>
 <li>类目中可以实现setter和getter方法，但是不存在_name的成员变量。</li>
