@@ -97,14 +97,14 @@
 <meta property="og:description" content="category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。Category and Property关于property，有两个关键字@synthesize和@dynamic:
  @synthesize: 实现property所声明的方法的定义。
  property 声明方法 -&amp;">
-<meta property="og:image" content="https://maojianxiang.github.io/source/imges/1.png">
-<meta property="og:updated_time" content="2017-03-19T10:25:51.000Z">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/03/17/在Category中可以添加属性吗/mao/Desktop/MJXBoKe/source/images/1.png">
+<meta property="og:updated_time" content="2017-03-19T10:49:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Category中可以添加属性吗？">
 <meta name="twitter:description" content="category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。Category and Property关于property，有两个关键字@synthesize和@dynamic:
  @synthesize: 实现property所声明的方法的定义。
  property 声明方法 -&amp;">
-<meta name="twitter:image" content="https://maojianxiang.github.io/source/imges/1.png">
+<meta name="twitter:image" content="https://maojianxiang.github.io/2017/03/17/在Category中可以添加属性吗/mao/Desktop/MJXBoKe/source/images/1.png">
 
 
 
@@ -371,7 +371,7 @@
 <p>   Property ‘name’ requires method ‘setName:’ to be defined - use @dynamic or provide a method implementation in this category。<br>   意思是在这个类中，属性name的setter的定义方法，用@dynamic 或者提供一个方法来实现。</p>
 <p>然后我们在implementation中添加 @dynamic name;这样警告消失，但是运行依然会报 unrecognized selector sent to instance xxx的错误。</p>
 <p>然后我们在 implementation 中实现它的getter和setter方法,也会直接报错 undeciarediared identifier XX</p>
-<p><img src="/source/imges/1.png" alt=""></p>
+<p><img src="/2017/03/17/在Category中可以添加属性吗/mao/Desktop/MJXBoKe/source/images/1.png"></p>
 <h3 id="结论-s"><a href="#结论-s" class="headerlink" title="结论 s"></a>结论 s</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
 <ol>
 <li>类目中可以实现setter和getter方法，但是不存在_name的成员变量。</li>
@@ -444,15 +444,15 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/" rel="next" title="Xcode 错误- Could not launch app 解决办法">
+                <i class="fa fa-chevron-left"></i> Xcode 错误- Could not launch app 解决办法
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/" rel="prev" title="Xcode 错误- Could not launch app 解决办法">
-                Xcode 错误- Could not launch app 解决办法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
