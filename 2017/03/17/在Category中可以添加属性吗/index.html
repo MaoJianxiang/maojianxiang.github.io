@@ -98,7 +98,7 @@
  @synthesize: 实现property所声明的方法的定义。
  property 声明方法 -&amp;">
 <meta property="og:image" content="https://maojianxiang.github.io/2017/03/17/在Category中可以添加属性吗/1.png">
-<meta property="og:updated_time" content="2017-03-19T10:54:09.000Z">
+<meta property="og:updated_time" content="2017-03-19T11:06:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Category中可以添加属性吗？">
 <meta name="twitter:description" content="category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。Category and Property关于property，有两个关键字@synthesize和@dynamic:
@@ -372,7 +372,7 @@
 <p>然后我们在implementation中添加 @dynamic name;这样警告消失，但是运行依然会报 unrecognized selector sent to instance xxx的错误。</p>
 <p>然后我们在 implementation 中实现它的getter和setter方法,也会直接报错 undeciarediared identifier XX</p>
 <p><img src="/2017/03/17/在Category中可以添加属性吗/1.png" alt="1"></p>
-<h3 id="结论-s"><a href="#结论-s" class="headerlink" title="结论 s"></a>结论 s</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
 <ol>
 <li>类目中可以实现setter和getter方法，但是不存在_name的成员变量。</li>
 </ol>
@@ -407,7 +407,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
 <p>   在vievcontroller中也定义了两个属性作为试验</p>
 <p>   然后用objc_removeAssociatedObjects(self);断开关联</p>
 <p>   然后输出结果,category中关联的属性两个都输出null而本身的属性正常输出。</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>通过简单的验证我的发现<br>1、objc_removeAssociatedObjects(id object)是断开所有关联。<br>2、使用runtime给对象关联的属性跟本身的属性本质是是不一样的，可使用却是完全一样的。</p>
+<h3 id="结论-1"><a href="#结论-1" class="headerlink" title="结论"></a>结论</h3><p>通过简单的验证我的发现<br>1、objc_removeAssociatedObjects(id object)是断开所有关联。<br>2、使用runtime给对象关联的属性跟本身的属性本质是是不一样的，可使用却是完全一样的。</p>
 
       
     </div>
@@ -577,7 +577,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#category是可以添加属性，但是在它的implementation是不允许包含-synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。"><span class="nav-number">1.</span> <span class="nav-text">category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Category-and-Property"><span class="nav-number"></span> <span class="nav-text">Category and Property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论-s"><span class="nav-number"></span> <span class="nav-text">结论 s</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number"></span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加和检索关联"><span class="nav-number">1.</span> <span class="nav-text">添加和检索关联</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#policy策略"><span class="nav-number">2.</span> <span class="nav-text">policy策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#断开关联"><span class="nav-number">3.</span> <span class="nav-text">断开关联</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现代码"><span class="nav-number"></span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用运行"><span class="nav-number"></span> <span class="nav-text">使用运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number"></span> <span class="nav-text">结论</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#category是可以添加属性，但是在它的implementation是不允许包含-synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。"><span class="nav-number">1.</span> <span class="nav-text">category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Category-and-Property"><span class="nav-number"></span> <span class="nav-text">Category and Property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number"></span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number"></span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加和检索关联"><span class="nav-number">1.</span> <span class="nav-text">添加和检索关联</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#policy策略"><span class="nav-number">2.</span> <span class="nav-text">policy策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#断开关联"><span class="nav-number">3.</span> <span class="nav-text">断开关联</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现代码"><span class="nav-number"></span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用运行"><span class="nav-number"></span> <span class="nav-text">使用运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论-1"><span class="nav-number"></span> <span class="nav-text">结论</span></a></div>
             
 
           </div>

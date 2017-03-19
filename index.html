@@ -366,7 +366,6 @@
 <p>2、退出Xcode，不是关闭窗口</p>
 <p>3、删除那个/Users/XXX/Library/Developer/Xcode/DerivedData/XXX-grgrmtzqajhyqgghabyjttajwbsm文件夹</p>
 <p>4、启动XCode连接设备，现在应该OK了</p>
-<p>5、毛建祥是2B</p>
 
           
         
@@ -517,7 +516,7 @@
 <p>然后我们在implementation中添加 @dynamic name;这样警告消失，但是运行依然会报 unrecognized selector sent to instance xxx的错误。</p>
 <p>然后我们在 implementation 中实现它的getter和setter方法,也会直接报错 undeciarediared identifier XX</p>
 <p><img src="/2017/03/17/在Category中可以添加属性吗/1.png" alt="1"></p>
-<h3 id="结论-s"><a href="#结论-s" class="headerlink" title="结论 s"></a>结论 s</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
 <ol>
 <li>类目中可以实现setter和getter方法，但是不存在_name的成员变量。</li>
 </ol>
@@ -552,7 +551,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
 <p>   在vievcontroller中也定义了两个属性作为试验</p>
 <p>   然后用objc_removeAssociatedObjects(self);断开关联</p>
 <p>   然后输出结果,category中关联的属性两个都输出null而本身的属性正常输出。</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>通过简单的验证我的发现<br>1、objc_removeAssociatedObjects(id object)是断开所有关联。<br>2、使用runtime给对象关联的属性跟本身的属性本质是是不一样的，可使用却是完全一样的。</p>
+<h3 id="结论-1"><a href="#结论-1" class="headerlink" title="结论"></a>结论</h3><p>通过简单的验证我的发现<br>1、objc_removeAssociatedObjects(id object)是断开所有关联。<br>2、使用runtime给对象关联的属性跟本身的属性本质是是不一样的，可使用却是完全一样的。</p>
 
           
         
