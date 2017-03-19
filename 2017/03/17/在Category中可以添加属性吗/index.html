@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="property in categiry," />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -97,14 +97,14 @@
 <meta property="og:description" content="category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。Category and Property关于property，有两个关键字@synthesize和@dynamic:
  @synthesize: 实现property所声明的方法的定义。
  property 声明方法 -&amp;">
-<meta property="og:image" content="https://maojianxiang.com/file:///Users/sg/Desktop/4B8A34DE-84FA-48ED-AD3D-EC3FD397ABD9.png">
-<meta property="og:updated_time" content="2017-03-18T00:44:36.000Z">
+<meta property="og:image" content="https://maojianxiang.com/Picture/1.png">
+<meta property="og:updated_time" content="2017-03-19T00:48:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Category中可以添加属性吗？">
 <meta name="twitter:description" content="category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。Category and Property关于property，有两个关键字@synthesize和@dynamic:
  @synthesize: 实现property所声明的方法的定义。
  property 声明方法 -&amp;">
-<meta name="twitter:image" content="https://maojianxiang.com/file:///Users/sg/Desktop/4B8A34DE-84FA-48ED-AD3D-EC3FD397ABD9.png">
+<meta name="twitter:image" content="https://maojianxiang.com/Picture/1.png">
 
 
 
@@ -118,7 +118,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -141,7 +141,7 @@
   <title> 在Category中可以添加属性吗？ | 毛建祥的博客 </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
           </a>
         </li>
       
@@ -214,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -224,7 +224,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -291,9 +291,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00-07:00">
                 2017-03-17
               </time>
             
@@ -312,7 +312,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -361,8 +361,8 @@
 <p>   Property ‘name’ requires method ‘setName:’ to be defined - use @dynamic or provide a method implementation in this category。<br>   意思是在这个类中，属性name的setter的定义方法，用@dynamic 或者提供一个方法来实现。</p>
 <p>然后我们在implementation中添加 @dynamic name;这样警告消失，但是运行依然会报 unrecognized selector sent to instance xxx的错误。</p>
 <p>然后我们在 implementation 中实现它的getter和setter方法,也会直接报错 undeciarediared identifier XX</p>
-<p><img src="file:///Users/sg/Desktop/4B8A34DE-84FA-48ED-AD3D-EC3FD397ABD9.png" alt="4B8A34DE-84FA-48ED-AD3D-EC3FD397ABD9.png"></p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
+<p><img src="Picture/1.png" alt=""></p>
+<h3 id="结论-s"><a href="#结论-s" class="headerlink" title="结论 s"></a>结论 s</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
 <ol>
 <li>类目中可以实现setter和getter方法，但是不存在_name的成员变量。</li>
 </ol>
@@ -397,7 +397,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
 <p>   在vievcontroller中也定义了两个属性作为试验</p>
 <p>   然后用objc_removeAssociatedObjects(self);断开关联</p>
 <p>   然后输出结果,category中关联的属性两个都输出null而本身的属性正常输出。</p>
-<h3 id="结论-1"><a href="#结论-1" class="headerlink" title="结论"></a>结论</h3><p>通过简单的验证我的发现<br>1、objc_removeAssociatedObjects(id object)是断开所有关联。<br>2、使用runtime给对象关联的属性跟本身的属性本质是是不一样的，可使用却是完全一样的。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>通过简单的验证我的发现<br>1、objc_removeAssociatedObjects(id object)是断开所有关联。<br>2、使用runtime给对象关联的属性跟本身的属性本质是是不一样的，可使用却是完全一样的。</p>
 
       
     </div>
@@ -427,7 +427,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
       
         <div class="post-tags">
           
-            <a href="/tags/property-in-categiry/" rel="tag"># property in categiry</a>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
         </div>
       
@@ -440,15 +440,15 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/" rel="next" title="Xcode 错误- Could not launch app 解决办法">
+                <i class="fa fa-chevron-left"></i> Xcode 错误- Could not launch app 解决办法
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/" rel="prev" title="Xcode 错误- Could not launch app 解决办法">
-                Xcode 错误- Could not launch app 解决办法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -497,10 +497,10 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            站点概览
           </li>
         </ul>
       
@@ -521,7 +521,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -532,7 +532,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">分类</span>
               
             </div>
           
@@ -543,7 +543,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">标签</span>
               
             </div>
           
@@ -577,7 +577,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#category是可以添加属性，但是在它的implementation是不允许包含-synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。"><span class="nav-number">1.</span> <span class="nav-text">category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Category-and-Property"><span class="nav-number"></span> <span class="nav-text">Category and Property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number"></span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number"></span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加和检索关联"><span class="nav-number">1.</span> <span class="nav-text">添加和检索关联</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#policy策略"><span class="nav-number">2.</span> <span class="nav-text">policy策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#断开关联"><span class="nav-number">3.</span> <span class="nav-text">断开关联</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现代码"><span class="nav-number"></span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用运行"><span class="nav-number"></span> <span class="nav-text">使用运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论-1"><span class="nav-number"></span> <span class="nav-text">结论</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#category是可以添加属性，但是在它的implementation是不允许包含-synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。"><span class="nav-number">1.</span> <span class="nav-text">category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Category-and-Property"><span class="nav-number"></span> <span class="nav-text">Category and Property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论-s"><span class="nav-number"></span> <span class="nav-text">结论 s</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number"></span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加和检索关联"><span class="nav-number">1.</span> <span class="nav-text">添加和检索关联</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#policy策略"><span class="nav-number">2.</span> <span class="nav-text">policy策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#断开关联"><span class="nav-number">3.</span> <span class="nav-text">断开关联</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现代码"><span class="nav-number"></span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用运行"><span class="nav-number"></span> <span class="nav-text">使用运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number"></span> <span class="nav-text">结论</span></a></div>
             
 
           </div>
@@ -609,11 +609,11 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>

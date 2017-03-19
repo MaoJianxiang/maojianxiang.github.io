@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -109,7 +109,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -132,7 +132,7 @@
   <title> 毛建祥的博客 </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -197,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
           </a>
         </li>
       
@@ -207,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -217,7 +217,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -240,6 +240,195 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.com/2017/03/17/在Category中可以添加属性吗/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="毛建祥">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="毛建祥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/17/在Category中可以添加属性吗/" itemprop="url">
+                  在Category中可以添加属性吗？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00-07:00">
+                2017-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="category是可以添加属性，但是在它的implementation是不允许包含-synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。"><a href="#category是可以添加属性，但是在它的implementation是不允许包含-synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。" class="headerlink" title="category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。"></a>category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。</h4><h3 id="Category-and-Property"><a href="#Category-and-Property" class="headerlink" title="Category and Property"></a>Category and Property</h3><p>关于property，有两个关键字@synthesize和@dynamic:</p>
+<p> @synthesize: 实现property所声明的方法的定义。</p>
+<p> property 声明方法 -&gt;头文件中申明getter和setter方法 synthesize定义方法 -&gt; m文件中实现getter和setter方法。  如果我们没有手动的实现property的setter和getter方法，编译器会自动的添加上这两个方法。</p>
+<p>@dynamic:<br>     告诉编译器,属性的setter与getter方法由用户自己实现，不自动生成。</p>
+<p>在平常我们都习惯了不写这两个关键词，这个时候其实默认是 @synthesize var = _var</p>
+<p>我直接在ViewController (extension)中定义一个name属性。不使用它的时候运行完好。一使用它的时运行就会报错：</p>
+<p>  [ViewController setName:]: unrecognized selector sent to instance 0x7f9473705540。<br>   而且编译器直接就提供警告：</p>
+<p>   Property ‘name’ requires method ‘setName:’ to be defined - use @dynamic or provide a method implementation in this category。<br>   意思是在这个类中，属性name的setter的定义方法，用@dynamic 或者提供一个方法来实现。</p>
+<p>然后我们在implementation中添加 @dynamic name;这样警告消失，但是运行依然会报 unrecognized selector sent to instance xxx的错误。</p>
+<p>然后我们在 implementation 中实现它的getter和setter方法,也会直接报错 undeciarediared identifier XX</p>
+<p><img src="Picture/1.png" alt=""></p>
+<h3 id="结论-s"><a href="#结论-s" class="headerlink" title="结论 s"></a>结论 s</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
+<ol>
+<li>类目中可以实现setter和getter方法，但是不存在_name的成员变量。</li>
+</ol>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>这个时候应该怎么办呢？我们知道Obj-c是一门动态语言，强大的运行时(Runtime)机制能够为类关联引用，然后通过这种方法来实现给类别添加属性。其实就是动态绑定。</p>
+<h4 id="添加和检索关联"><a href="#添加和检索关联" class="headerlink" title="添加和检索关联"></a>添加和检索关联</h4><p>首先需要导入Runtime相关的头文件<br><code>#import &lt;objc/runtime.h&gt;</code></p>
+<p><code>//这个方法时为对象object添加key指定的地址作为关键字，以value为值关联引用，第四个参数pilicy指的是关联引用的存储策略。
+//通过将value设置为nil 可以删除key的关联
+OBJC_EXPORT void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
+    __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</code></p>
+<p><code>//返回object以key为关键字关联的对象，如果没有，则反火nil
+OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
+    __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</code></p>
+<p>如果我们需要为一个类别的多个属性关联引用，所以我们需要用不同的key值来区别。<br>而且键值必须要使用一个确定且不可变的地址。所以选择定义在实现文件的static静态局部变量的地址。<br>policy策略就跟定义property的时候才用的存储关键字相似了。</p>
+<h4 id="policy策略"><a href="#policy策略" class="headerlink" title="policy策略"></a>policy策略</h4><p>objc_AssociationPolicy policy：enum {</p>
+<p>   //五种类型<br>  OBJC_ASSOCIATION_ASSIGN = 0, //关联对象的属性是弱引用   weak</p>
+<p>  OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, //关联对象的属性是强引用并且关联对象不使用原子性 strong</p>
+<p>  OBJC_ASSOCIATION_COPY_NONATOMIC = 3, //关联对象的属性是copy并且关联对象不使用原子性 copy</p>
+<p>  OBJC_ASSOCIATION_RETAIN = 01401, //关联对象的属性是retain并且关联对象使用原子性  strong copy</p>
+<p>  OBJC_ASSOCIATION_COPY = 01403 //关联对象的属性是copy并且关联对象使用原子性 copy atomic<br>  };</p>
+<h4 id="断开关联"><a href="#断开关联" class="headerlink" title="断开关联"></a>断开关联</h4><p>  runtime 提供了断开关联的函数。但是更喜欢使用传入nil来断开关联，会更佳安全，毕竟，我不敢保证是不是有其他地方会使用到已经关联的对象。而且当category中添加多个属性的时候可以单个断开关联。</p>
+<p><code>OBJC_EXPORT void objc_removeAssociatedObjects(id object)
+       __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</code></p>
+<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><p>1、  导入头文件</p>
+<p><code>#import &lt;objc/runtime.h&gt;</code></p>
+<p>2、 定义用作键值的静态变量</p>
+<p>//static  char *nameKey = “nameKey”;也行</p>
+<p>static const char *nameKey = “nameKey”;</p>
+<p>3、定义存取方法</p>
+<p>-(NSString *)name{<br>  return  objc_getAssociatedObject(self, nameKey);<br>}</p>
+<p>-(void)setName:(NSString *)name{<br> objc_setAssociatedObject(self, nameKey, name, OBJC_ASSOCIATION_RETAIN_NONATOMIC);<br>}</p>
+<h3 id="使用运行"><a href="#使用运行" class="headerlink" title="使用运行"></a>使用运行</h3><p>   首先在category中定义两个关联属性</p>
+<p>   在vievcontroller中也定义了两个属性作为试验</p>
+<p>   然后用objc_removeAssociatedObjects(self);断开关联</p>
+<p>   然后输出结果,category中关联的属性两个都输出null而本身的属性正常输出。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>通过简单的验证我的发现<br>1、objc_removeAssociatedObjects(id object)是断开所有关联。<br>2、使用runtime给对象关联的属性跟本身的属性本质是是不一样的，可使用却是完全一样的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -287,9 +476,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00-07:00">
                 2017-03-17
               </time>
             
@@ -308,7 +497,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -391,195 +580,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.com/2017/03/17/在Category中可以添加属性吗/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="毛建祥">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="毛建祥的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/17/在Category中可以添加属性吗/" itemprop="url">
-                  在Category中可以添加属性吗？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00-07:00">
-                2017-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="category是可以添加属性，但是在它的implementation是不允许包含-synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。"><a href="#category是可以添加属性，但是在它的implementation是不允许包含-synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。" class="headerlink" title="category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。"></a>category是可以添加属性，但是在它的implementation是不允许包含@synthesize的。所以必须采用Runtime动态绑定的方法实现category的属性。</h4><h3 id="Category-and-Property"><a href="#Category-and-Property" class="headerlink" title="Category and Property"></a>Category and Property</h3><p>关于property，有两个关键字@synthesize和@dynamic:</p>
-<p> @synthesize: 实现property所声明的方法的定义。</p>
-<p> property 声明方法 -&gt;头文件中申明getter和setter方法 synthesize定义方法 -&gt; m文件中实现getter和setter方法。  如果我们没有手动的实现property的setter和getter方法，编译器会自动的添加上这两个方法。</p>
-<p>@dynamic:<br>     告诉编译器,属性的setter与getter方法由用户自己实现，不自动生成。</p>
-<p>在平常我们都习惯了不写这两个关键词，这个时候其实默认是 @synthesize var = _var</p>
-<p>我直接在ViewController (extension)中定义一个name属性。不使用它的时候运行完好。一使用它的时运行就会报错：</p>
-<p>  [ViewController setName:]: unrecognized selector sent to instance 0x7f9473705540。<br>   而且编译器直接就提供警告：</p>
-<p>   Property ‘name’ requires method ‘setName:’ to be defined - use @dynamic or provide a method implementation in this category。<br>   意思是在这个类中，属性name的setter的定义方法，用@dynamic 或者提供一个方法来实现。</p>
-<p>然后我们在implementation中添加 @dynamic name;这样警告消失，但是运行依然会报 unrecognized selector sent to instance xxx的错误。</p>
-<p>然后我们在 implementation 中实现它的getter和setter方法,也会直接报错 undeciarediared identifier XX</p>
-<p><img src="file:///Users/sg/Desktop/4B8A34DE-84FA-48ED-AD3D-EC3FD397ABD9.png" alt="4B8A34DE-84FA-48ED-AD3D-EC3FD397ABD9.png"></p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
-<ol>
-<li>类目中可以实现setter和getter方法，但是不存在_name的成员变量。</li>
-</ol>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>这个时候应该怎么办呢？我们知道Obj-c是一门动态语言，强大的运行时(Runtime)机制能够为类关联引用，然后通过这种方法来实现给类别添加属性。其实就是动态绑定。</p>
-<h4 id="添加和检索关联"><a href="#添加和检索关联" class="headerlink" title="添加和检索关联"></a>添加和检索关联</h4><p>首先需要导入Runtime相关的头文件<br><code>#import &lt;objc/runtime.h&gt;</code></p>
-<p><code>//这个方法时为对象object添加key指定的地址作为关键字，以value为值关联引用，第四个参数pilicy指的是关联引用的存储策略。
-//通过将value设置为nil 可以删除key的关联
-OBJC_EXPORT void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
-    __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</code></p>
-<p><code>//返回object以key为关键字关联的对象，如果没有，则反火nil
-OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
-    __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</code></p>
-<p>如果我们需要为一个类别的多个属性关联引用，所以我们需要用不同的key值来区别。<br>而且键值必须要使用一个确定且不可变的地址。所以选择定义在实现文件的static静态局部变量的地址。<br>policy策略就跟定义property的时候才用的存储关键字相似了。</p>
-<h4 id="policy策略"><a href="#policy策略" class="headerlink" title="policy策略"></a>policy策略</h4><p>objc_AssociationPolicy policy：enum {</p>
-<p>   //五种类型<br>  OBJC_ASSOCIATION_ASSIGN = 0, //关联对象的属性是弱引用   weak</p>
-<p>  OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, //关联对象的属性是强引用并且关联对象不使用原子性 strong</p>
-<p>  OBJC_ASSOCIATION_COPY_NONATOMIC = 3, //关联对象的属性是copy并且关联对象不使用原子性 copy</p>
-<p>  OBJC_ASSOCIATION_RETAIN = 01401, //关联对象的属性是retain并且关联对象使用原子性  strong copy</p>
-<p>  OBJC_ASSOCIATION_COPY = 01403 //关联对象的属性是copy并且关联对象使用原子性 copy atomic<br>  };</p>
-<h4 id="断开关联"><a href="#断开关联" class="headerlink" title="断开关联"></a>断开关联</h4><p>  runtime 提供了断开关联的函数。但是更喜欢使用传入nil来断开关联，会更佳安全，毕竟，我不敢保证是不是有其他地方会使用到已经关联的对象。而且当category中添加多个属性的时候可以单个断开关联。</p>
-<p><code>OBJC_EXPORT void objc_removeAssociatedObjects(id object)
-       __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</code></p>
-<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><p>1、  导入头文件</p>
-<p><code>#import &lt;objc/runtime.h&gt;</code></p>
-<p>2、 定义用作键值的静态变量</p>
-<p>//static  char *nameKey = “nameKey”;也行</p>
-<p>static const char *nameKey = “nameKey”;</p>
-<p>3、定义存取方法</p>
-<p>-(NSString *)name{<br>  return  objc_getAssociatedObject(self, nameKey);<br>}</p>
-<p>-(void)setName:(NSString *)name{<br> objc_setAssociatedObject(self, nameKey, name, OBJC_ASSOCIATION_RETAIN_NONATOMIC);<br>}</p>
-<h3 id="使用运行"><a href="#使用运行" class="headerlink" title="使用运行"></a>使用运行</h3><p>   首先在category中定义两个关联属性</p>
-<p>   在vievcontroller中也定义了两个属性作为试验</p>
-<p>   然后用objc_removeAssociatedObjects(self);断开关联</p>
-<p>   然后输出结果,category中关联的属性两个都输出null而本身的属性正常输出。</p>
-<h3 id="结论-1"><a href="#结论-1" class="headerlink" title="结论"></a>结论</h3><p>通过简单的验证我的发现<br>1、objc_removeAssociatedObjects(id object)是断开所有关联。<br>2、使用runtime给对象关联的属性跟本身的属性本质是是不一样的，可使用却是完全一样的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -626,7 +626,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -637,7 +637,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">分类</span>
               
             </div>
           
@@ -648,7 +648,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">标签</span>
               
             </div>
           
@@ -698,11 +698,11 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
