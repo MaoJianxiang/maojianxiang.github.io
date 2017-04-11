@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS," />
+  <meta name="keywords" content="Xcode," />
 
 
 
@@ -105,37 +105,31 @@
 
 
 
-<meta name="description" content="小数的绝对值处理int类型的取绝对值int abs(int i);  
-处理double类型(或者float)的取绝对值double fabs(double i);
+<meta name="description" content="记得以前刚开始用Xcode进行iOS开发的时候,一看到Toolbar不显示，就立马有点呆了，特别是显示不全的话。这里我做一个简单的总结: 1.Xcode本身就可以控制Toolbar是否显示的。2.可能就出现Toolbar显示不全，就是没有显示工程以及选择运行设备(选择模拟器)的选项。
 
-小数的四舍五入简要介绍round：参数是小数，则求本身的四舍五入。
-ceil：参数是小数，则求最小的整数但不小于本身.
-floor：如果参数是小数，则求最大的整数但不大于本身. 
-例如如果值是 10.4的话，则结果
--- round">
+Toolrbar的显示和隐藏在菜单栏中 点击”View“ 出现下拉菜单 ，可以选择 “Hide Toolbar“">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数值的一些常用处理方式">
-<meta property="og:url" content="https://maojianxiang.github.io/2017/04/09/数值的一些常用处理方式/index.html">
+<meta property="og:title" content="Xcode的Toolbar显示控制">
+<meta property="og:url" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/index.html">
 <meta property="og:site_name" content="小毛的博客">
-<meta property="og:description" content="小数的绝对值处理int类型的取绝对值int abs(int i);  
-处理double类型(或者float)的取绝对值double fabs(double i);
+<meta property="og:description" content="记得以前刚开始用Xcode进行iOS开发的时候,一看到Toolbar不显示，就立马有点呆了，特别是显示不全的话。这里我做一个简单的总结: 1.Xcode本身就可以控制Toolbar是否显示的。2.可能就出现Toolbar显示不全，就是没有显示工程以及选择运行设备(选择模拟器)的选项。
 
-小数的四舍五入简要介绍round：参数是小数，则求本身的四舍五入。
-ceil：参数是小数，则求最小的整数但不小于本身.
-floor：如果参数是小数，则求最大的整数但不大于本身. 
-例如如果值是 10.4的话，则结果
--- round">
-<meta property="og:updated_time" content="2017-04-09T15:44:26.000Z">
+Toolrbar的显示和隐藏在菜单栏中 点击”View“ 出现下拉菜单 ，可以选择 “Hide Toolbar“">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/tb1.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/tb2.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/tb3.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/tb4.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/tb5.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/tb6.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/tb7.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/tb8.png">
+<meta property="og:updated_time" content="2017-04-11T02:29:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数值的一些常用处理方式">
-<meta name="twitter:description" content="小数的绝对值处理int类型的取绝对值int abs(int i);  
-处理double类型(或者float)的取绝对值double fabs(double i);
+<meta name="twitter:title" content="Xcode的Toolbar显示控制">
+<meta name="twitter:description" content="记得以前刚开始用Xcode进行iOS开发的时候,一看到Toolbar不显示，就立马有点呆了，特别是显示不全的话。这里我做一个简单的总结: 1.Xcode本身就可以控制Toolbar是否显示的。2.可能就出现Toolbar显示不全，就是没有显示工程以及选择运行设备(选择模拟器)的选项。
 
-小数的四舍五入简要介绍round：参数是小数，则求本身的四舍五入。
-ceil：参数是小数，则求最小的整数但不小于本身.
-floor：如果参数是小数，则求最大的整数但不大于本身. 
-例如如果值是 10.4的话，则结果
--- round">
+Toolrbar的显示和隐藏在菜单栏中 点击”View“ 出现下拉菜单 ，可以选择 “Hide Toolbar“">
+<meta name="twitter:image" content="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/tb1.png">
 
 
 
@@ -163,13 +157,13 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
 
 
 
-  <link rel="canonical" href="https://maojianxiang.github.io/2017/04/09/数值的一些常用处理方式/"/>
+  <link rel="canonical" href="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/"/>
 
 
 
 
 
-  <title> 数值的一些常用处理方式 | 小毛的博客 </title>
+  <title> Xcode的Toolbar显示控制 | 小毛的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -298,7 +292,7 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/09/数值的一些常用处理方式/">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小毛,纯一狼">
@@ -319,7 +313,7 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
             
             
               
-                数值的一些常用处理方式
+                Xcode的Toolbar显示控制
               
             
           </h1>
@@ -334,8 +328,8 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T08:10:26+08:00">
-                2017-04-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T09:34:33+08:00">
+                2017-04-11
               </time>
             
 
@@ -357,8 +351,8 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index">
-                    <span itemprop="name">Math</span>
+                  <a href="/categories/Debug/" itemprop="url" rel="index">
+                    <span itemprop="name">Debug</span>
                   </a>
                 </span>
 
@@ -397,21 +391,55 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
       
 
       
-        <h3 id="小数的绝对值"><a href="#小数的绝对值" class="headerlink" title="小数的绝对值"></a>小数的绝对值</h3><h4 id="处理int类型的取绝对值"><a href="#处理int类型的取绝对值" class="headerlink" title="处理int类型的取绝对值"></a>处理int类型的取绝对值</h4><pre><code>int abs(int i);  
-</code></pre><h4 id="处理double类型-或者float-的取绝对值"><a href="#处理double类型-或者float-的取绝对值" class="headerlink" title="处理double类型(或者float)的取绝对值"></a>处理double类型(或者float)的取绝对值</h4><pre><code>double fabs(double i);
-</code></pre><hr>
-<h3 id="小数的四舍五入"><a href="#小数的四舍五入" class="headerlink" title="小数的四舍五入"></a>小数的四舍五入</h3><h4 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h4><pre><code>round：参数是小数，则求本身的四舍五入。
-ceil：参数是小数，则求最小的整数但不小于本身.
-floor：如果参数是小数，则求最大的整数但不大于本身. 
-</code></pre><h4 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h4><p>如果值是 10.4的话，则结果</p>
-<pre><code>-- round  --&gt; 10
--- ceil   --&gt; 11
--- floor  --&gt; 10
-</code></pre><p>如果值是 10.5的话，则结果</p>
-<pre><code>-- round  --&gt; 11
--- ceil   --&gt; 11
--- floor  --&gt; 10
-</code></pre><hr>
+        <p>记得以前刚开始用Xcode进行iOS开发的时候,一看到Toolbar不显示，就立马有点呆了，特别是显示不全的话。这里我做一个简单的总结: 1.Xcode本身就可以控制Toolbar是否显示的。2.可能就出现Toolbar显示不全，就是没有显示工程以及选择运行设备(选择模拟器)的选项。</p>
+<hr>
+<h3 id="Toolrbar的显示和隐藏"><a href="#Toolrbar的显示和隐藏" class="headerlink" title="Toolrbar的显示和隐藏"></a>Toolrbar的显示和隐藏</h3><p>在<strong>菜单栏</strong>中 点击”<strong>View</strong>“ 出现下拉菜单 ，可以选择 “<strong>Hide Toolbar</strong>“和”<strong>Show Toolbar</strong>“两种状态,对Toolbar进行控制。</p>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb1.png" alt="Toolbar的控制"></p>
+<hr>
+<h3 id="Toolbar的显示不全"><a href="#Toolbar的显示不全" class="headerlink" title="Toolbar的显示不全"></a>Toolbar的显示不全</h3><p>就是在Toolbar中没有显示工程，以及选择模拟器的选项。</p>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb2.png" alt="Toolbar的显示不全"></p>
+<p><del>我是这样出现这个问题的。我从SVN下把工程下载下来。工程是用一个workspace管理四个工程，而且就出现了没有选择工程的的那个选择框和后观的选择模拟器的选择框。</del></p>
+<p><del>我试着重新打开Xcode,重新开机，都不行。当我选择其他工程的时候却是一切正常。</del></p>
+<p><del>结论:<strong>这个是工程的问题</strong>。</del></p>
+<h4 id="管理Scheme的方法"><a href="#管理Scheme的方法" class="headerlink" title="管理Scheme的方法"></a>管理Scheme的方法</h4><ol>
+<li>点开No Scheme,会有三个选项，当有工程的时候，第一项我们再熟悉不过了，就是工程打包，制作静态库文件啊等要用的。现在没工程，点击无效果。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb3.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li>我们点击第二项进来就可以选择工程了。我这里有四个工程，其中BaseLibs是公共基础工程。这五个工程都可以加入。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb4.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li>选择时，选择带工程文件的图片，其他的库文件啊，三方文件啊，我们没有必要导进来。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb5.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li><p>加入之后，你就可以选择相应的工程，选择模拟器，进行调试和开发了。</p>
+</li>
+<li><p>如果你把多余的三方的文件导进来，也没关系，不影响你的开发。不过如果你有强迫症，觉得多余的不好，那你就可以进入第三项管理 Manage Schemes…进入</p>
+</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb6.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li>选中多加入的三方文件，点减号就可以删除了。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb7.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li>在添加工程的时候，我们也可以直接进入Manage Schemes…，再点击添加按钮，跟第New Scheme是一样的用法。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb8.png" alt="Toolbar的解决办法一"></p>
+<p>只要你对 <strong>New Scheme</strong> 和 <strong>Manage Schemes…</strong> 进行操作一次，你就立马会清楚明白了。</p>
+<hr>
+<h4 id="删除xcuserdata文件的方法"><a href="#删除xcuserdata文件的方法" class="headerlink" title="删除xcuserdata文件的方法"></a>删除xcuserdata文件的方法</h4><p>造成这种情况的原因:用户信息文件引起的Xcode不能默认识别工程。</p>
+<ol>
+<li><p>先关闭Xcode，打开工程目录,在目录下找到<strong><code>*.xcodeproj</code></strong>文件，右键选择 “<strong>显示包内容</strong>“。</p>
+</li>
+<li><p>找到xcuserdata，xcshareddata的文件都删除了。</p>
+</li>
+</ol>
+<p><strong><em>注意:</em></strong>  xcworkspace，和pods里面都有data文件，我试的时候是直接把这里面的都删了。打开工程后，你就发现可以选择Scheme了，不过，这样一来，Scheme里面的选择项就把这个文件中所有的工程和三方，库文件都成列表显示在这里以供选择了。所以了，还是第一种方式最好，而且简单方便，易懂。</p>
+<p><strong><em>情景扩展:</em></strong> 既然是xcuserdata文件的原因，而我又是从SVN上拷贝下，那应该是项目经理以新建工程是，把工程中不需要上传的xcuserdata和xchareddata文件都上传到了SVN服务器上。导致了开发人员下载到本地用Xcode打开时无法默认工程。这也说明此项目经理对iOS苹果开发的不太深入造成的。</p>
+<hr>
 
       
     </div>
@@ -435,7 +463,7 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
+            <a href="/tags/Xcode/" rel="tag"># Xcode</a>
           
         </div>
       
@@ -448,8 +476,8 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/01/如何优雅地解决UIScrollView使用中的bug/" rel="next" title="如何优雅地解决UIScrollView使用中的bug">
-                <i class="fa fa-chevron-left"></i> 如何优雅地解决UIScrollView使用中的bug
+              <a href="/2017/04/10/Markdown语法的简单说明/" rel="next" title="Markdown语法的简单说明">
+                <i class="fa fa-chevron-left"></i> Markdown语法的简单说明
               </a>
             
           </div>
@@ -457,10 +485,6 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/09/OC代码转化成C代码/" rel="prev" title="OC代码转化成C代码">
-                OC代码转化成C代码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +638,7 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#小数的绝对值"><span class="nav-number">1.</span> <span class="nav-text">小数的绝对值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理int类型的取绝对值"><span class="nav-number">1.1.</span> <span class="nav-text">处理int类型的取绝对值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理double类型-或者float-的取绝对值"><span class="nav-number">1.2.</span> <span class="nav-text">处理double类型(或者float)的取绝对值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小数的四舍五入"><span class="nav-number">2.</span> <span class="nav-text">小数的四舍五入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简要介绍"><span class="nav-number">2.1.</span> <span class="nav-text">简要介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例如"><span class="nav-number">2.2.</span> <span class="nav-text">例如</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Toolrbar的显示和隐藏"><span class="nav-number">1.</span> <span class="nav-text">Toolrbar的显示和隐藏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Toolbar的显示不全"><span class="nav-number">2.</span> <span class="nav-text">Toolbar的显示不全</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#管理Scheme的方法"><span class="nav-number">2.1.</span> <span class="nav-text">管理Scheme的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除xcuserdata文件的方法"><span class="nav-number">2.2.</span> <span class="nav-text">删除xcuserdata文件的方法</span></a></li></ol></li></ol></div>
             
 
           </div>

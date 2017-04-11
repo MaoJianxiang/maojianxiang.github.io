@@ -278,6 +278,194 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/11/Xcode的Toolbar显示控制/" itemprop="url">
+                  Xcode的Toolbar显示控制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T09:34:33+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Debug/" itemprop="url" rel="index">
+                    <span itemprop="name">Debug</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>记得以前刚开始用Xcode进行iOS开发的时候,一看到Toolbar不显示，就立马有点呆了，特别是显示不全的话。这里我做一个简单的总结: 1.Xcode本身就可以控制Toolbar是否显示的。2.可能就出现Toolbar显示不全，就是没有显示工程以及选择运行设备(选择模拟器)的选项。</p>
+<hr>
+<h3 id="Toolrbar的显示和隐藏"><a href="#Toolrbar的显示和隐藏" class="headerlink" title="Toolrbar的显示和隐藏"></a>Toolrbar的显示和隐藏</h3><p>在<strong>菜单栏</strong>中 点击”<strong>View</strong>“ 出现下拉菜单 ，可以选择 “<strong>Hide Toolbar</strong>“和”<strong>Show Toolbar</strong>“两种状态,对Toolbar进行控制。</p>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb1.png" alt="Toolbar的控制"></p>
+<hr>
+<h3 id="Toolbar的显示不全"><a href="#Toolbar的显示不全" class="headerlink" title="Toolbar的显示不全"></a>Toolbar的显示不全</h3><p>就是在Toolbar中没有显示工程，以及选择模拟器的选项。</p>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb2.png" alt="Toolbar的显示不全"></p>
+<p><del>我是这样出现这个问题的。我从SVN下把工程下载下来。工程是用一个workspace管理四个工程，而且就出现了没有选择工程的的那个选择框和后观的选择模拟器的选择框。</del></p>
+<p><del>我试着重新打开Xcode,重新开机，都不行。当我选择其他工程的时候却是一切正常。</del></p>
+<p><del>结论:<strong>这个是工程的问题</strong>。</del></p>
+<h4 id="管理Scheme的方法"><a href="#管理Scheme的方法" class="headerlink" title="管理Scheme的方法"></a>管理Scheme的方法</h4><ol>
+<li>点开No Scheme,会有三个选项，当有工程的时候，第一项我们再熟悉不过了，就是工程打包，制作静态库文件啊等要用的。现在没工程，点击无效果。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb3.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li>我们点击第二项进来就可以选择工程了。我这里有四个工程，其中BaseLibs是公共基础工程。这五个工程都可以加入。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb4.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li>选择时，选择带工程文件的图片，其他的库文件啊，三方文件啊，我们没有必要导进来。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb5.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li><p>加入之后，你就可以选择相应的工程，选择模拟器，进行调试和开发了。</p>
+</li>
+<li><p>如果你把多余的三方的文件导进来，也没关系，不影响你的开发。不过如果你有强迫症，觉得多余的不好，那你就可以进入第三项管理 Manage Schemes…进入</p>
+</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb6.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li>选中多加入的三方文件，点减号就可以删除了。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb7.png" alt="Toolbar的解决办法一"></p>
+<ol>
+<li>在添加工程的时候，我们也可以直接进入Manage Schemes…，再点击添加按钮，跟第New Scheme是一样的用法。</li>
+</ol>
+<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb8.png" alt="Toolbar的解决办法一"></p>
+<p>只要你对 <strong>New Scheme</strong> 和 <strong>Manage Schemes…</strong> 进行操作一次，你就立马会清楚明白了。</p>
+<hr>
+<h4 id="删除xcuserdata文件的方法"><a href="#删除xcuserdata文件的方法" class="headerlink" title="删除xcuserdata文件的方法"></a>删除xcuserdata文件的方法</h4><p>造成这种情况的原因:用户信息文件引起的Xcode不能默认识别工程。</p>
+<ol>
+<li><p>先关闭Xcode，打开工程目录,在目录下找到<strong><code>*.xcodeproj</code></strong>文件，右键选择 “<strong>显示包内容</strong>“。</p>
+</li>
+<li><p>找到xcuserdata，xcshareddata的文件都删除了。</p>
+</li>
+</ol>
+<p><strong><em>注意:</em></strong>  xcworkspace，和pods里面都有data文件，我试的时候是直接把这里面的都删了。打开工程后，你就发现可以选择Scheme了，不过，这样一来，Scheme里面的选择项就把这个文件中所有的工程和三方，库文件都成列表显示在这里以供选择了。所以了，还是第一种方式最好，而且简单方便，易懂。</p>
+<p><strong><em>情景扩展:</em></strong> 既然是xcuserdata文件的原因，而我又是从SVN上拷贝下，那应该是项目经理以新建工程是，把工程中不需要上传的xcuserdata和xchareddata文件都上传到了SVN服务器上。导致了开发人员下载到本地用Xcode打开时无法默认工程。这也说明此项目经理对iOS苹果开发的不太深入造成的。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/10/Markdown语法的简单说明/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -412,7 +600,7 @@
 </code></pre><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>用三个*或者\—号，可以作一条分割线</p>
 <hr>
 <hr>
-<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x31;&#53;&#x32;&#48;&#x38;&#49;&#x30;&#x35;&#52;&#52;&#48;&#x40;&#x31;&#54;&#51;&#x2e;&#x63;&#x6f;&#x6d;">&#x31;&#53;&#x32;&#48;&#x38;&#49;&#x30;&#x35;&#52;&#52;&#48;&#x40;&#x31;&#54;&#51;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x31;&#53;&#50;&#48;&#x38;&#x31;&#48;&#x35;&#52;&#52;&#x30;&#x40;&#x31;&#x36;&#x33;&#x2e;&#99;&#x6f;&#x6d;">&#x31;&#53;&#50;&#48;&#x38;&#x31;&#48;&#x35;&#52;&#52;&#x30;&#x40;&#x31;&#x36;&#x33;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 <h4 id="网址连接"><a href="#网址连接" class="headerlink" title="网址连接"></a>网址连接</h4><p>用<code>&lt;网址&gt;</code>有效连接: <a href="https://maojianxiang.github.io">https://maojianxiang.github.io</a></p>
 <hr>
 <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><h4 id="图片跟网址连接相似，多了一个"><a href="#图片跟网址连接相似，多了一个" class="headerlink" title="图片跟网址连接相似，多了一个!"></a>图片跟网址连接相似，多了一个!</h4><p><code>!+[]+(图片的地址,相对路径也行)</code></p>
@@ -1000,152 +1188,6 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/" itemprop="url">
-                  Xcode 错误- Could not launch app 解决办法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00+08:00">
-                2017-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Debug/" itemprop="url" rel="index">
-                    <span itemprop="name">Debug</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Xcode 错误- Could not launch app - No such file or directory Error.</p>
-<p>蛋疼的一个XCode bug，基本上应该不是工程本身问题。</p>
-<p>解决方法：</p>
-<p>1、拔掉设备，删除之前Build的内容</p>
-<p>2、退出Xcode，不是关闭窗口</p>
-<p>3、删除那个/Users/XXX/Library/Developer/Xcode/DerivedData/XXX-grgrmtzqajhyqgghabyjttajwbsm文件夹</p>
-<p>4、启动XCode连接设备，现在应该OK了</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/03/17/在Category中可以添加属性吗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1323,6 +1365,152 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/" itemprop="url">
+                  Xcode 错误- Could not launch app 解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00+08:00">
+                2017-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Debug/" itemprop="url" rel="index">
+                    <span itemprop="name">Debug</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Xcode 错误- Could not launch app - No such file or directory Error.</p>
+<p>蛋疼的一个XCode bug，基本上应该不是工程本身问题。</p>
+<p>解决方法：</p>
+<p>1、拔掉设备，删除之前Build的内容</p>
+<p>2、退出Xcode，不是关闭窗口</p>
+<p>3、删除那个/Users/XXX/Library/Developer/Xcode/DerivedData/XXX-grgrmtzqajhyqgghabyjttajwbsm文件夹</p>
+<p>4、启动XCode连接设备，现在应该OK了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1368,7 +1556,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1386,7 +1574,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
