@@ -105,26 +105,26 @@
 
 
 
-<meta name="description" content="iOS8之后，UITableView新增加了estimatedRowHeight属性，这样，我们可以用它来实现UITableViewCell高度的自动布局。这样就不用去计算每个cell上Label的高度再去约定cell的高度，甚至可以不用去实现heightForRowAtIndexPath。
+<meta name="description" content="iOS8之后，UITableView新增加了estimatedRowHeight属性，这样，我们可以用它来实现UITableViewCell的自动布局。就不用去计算每个cell上Label的高度再去约定cell的高度，甚至可以不用去实现heightForRowAtIndexPath的代理方法。
 
-简单使用先新建UITableViewCell然后我们先添加上约束。这里我直接在storyboard上拉">
+简单使用先新建UITableViewCell然后我们先添加上约束。这里我直接在storyboard上">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Auto sizing cell-(estimatedRowHeight属性)">
 <meta property="og:url" content="https://maojianxiang.github.io/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/index.html">
 <meta property="og:site_name" content="小毛的博客">
-<meta property="og:description" content="iOS8之后，UITableView新增加了estimatedRowHeight属性，这样，我们可以用它来实现UITableViewCell高度的自动布局。这样就不用去计算每个cell上Label的高度再去约定cell的高度，甚至可以不用去实现heightForRowAtIndexPath。
+<meta property="og:description" content="iOS8之后，UITableView新增加了estimatedRowHeight属性，这样，我们可以用它来实现UITableViewCell的自动布局。就不用去计算每个cell上Label的高度再去约定cell的高度，甚至可以不用去实现heightForRowAtIndexPath的代理方法。
 
-简单使用先新建UITableViewCell然后我们先添加上约束。这里我直接在storyboard上拉">
+简单使用先新建UITableViewCell然后我们先添加上约束。这里我直接在storyboard上">
 <meta property="og:image" content="https://maojianxiang.github.io/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/200.png">
 <meta property="og:image" content="https://maojianxiang.github.io/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/201.png">
 <meta property="og:image" content="https://maojianxiang.github.io/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/202.png">
 <meta property="og:image" content="https://maojianxiang.github.io/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/203.png">
-<meta property="og:updated_time" content="2017-04-25T09:51:28.000Z">
+<meta property="og:updated_time" content="2017-04-27T10:35:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Auto sizing cell-(estimatedRowHeight属性)">
-<meta name="twitter:description" content="iOS8之后，UITableView新增加了estimatedRowHeight属性，这样，我们可以用它来实现UITableViewCell高度的自动布局。这样就不用去计算每个cell上Label的高度再去约定cell的高度，甚至可以不用去实现heightForRowAtIndexPath。
+<meta name="twitter:description" content="iOS8之后，UITableView新增加了estimatedRowHeight属性，这样，我们可以用它来实现UITableViewCell的自动布局。就不用去计算每个cell上Label的高度再去约定cell的高度，甚至可以不用去实现heightForRowAtIndexPath的代理方法。
 
-简单使用先新建UITableViewCell然后我们先添加上约束。这里我直接在storyboard上拉">
+简单使用先新建UITableViewCell然后我们先添加上约束。这里我直接在storyboard上">
 <meta name="twitter:image" content="https://maojianxiang.github.io/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/200.png">
 
 
@@ -388,11 +388,11 @@
 
       
         <hr>
-<p>iOS8之后，UITableView新增加了estimatedRowHeight属性，这样，我们可以用它来实现UITableViewCell高度的自动布局。这样就不用去计算每个cell上Label的高度再去约定cell的高度，甚至可以不用去实现heightForRowAtIndexPath。</p>
+<p>iOS8之后，UITableView新增加了estimatedRowHeight属性，这样，我们可以用它来实现UITableViewCell的自动布局。就不用去计算每个cell上Label的高度再去约定cell的高度，甚至可以不用去实现heightForRowAtIndexPath的代理方法。</p>
 <hr>
 <h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="先新建UITableViewCell"><a href="#先新建UITableViewCell" class="headerlink" title="先新建UITableViewCell"></a>先新建UITableViewCell</h4><p>然后我们先添加上约束。这里我直接在storyboard上拉的，并关联Cell以便以自定的属性赋值。</p>
 <p><strong>需要注意的是：</strong></p>
-<p>1.label的高度不要定死，但是它离上下左右的距离要定好，label下面可以还有上些其他的控件要加在上面。<br><img src="/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/200.png" alt=""></p>
+<p>1.label的高度不要约束定死，但是它离上下左右的距离要定好，label下面可以还有上些其他的控件要加在上面。<br><img src="/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/200.png" alt=""></p>
 <p>2.UITableViewCell的size inspector里面 Row Height 是Default而不是custom的数值。<br><img src="/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/201.png" alt=""></p>
 <p>3.label的的行数一定要设置为0，不然没有换行，系统不知道怎么去自动计算label的高度来进行调整。<br><img src="/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/202.png" alt=""></p>
 <h4 id="设置estimatedRowHeight值"><a href="#设置estimatedRowHeight值" class="headerlink" title="设置estimatedRowHeight值"></a>设置estimatedRowHeight值</h4><p> 1.直接设值 </p>
@@ -403,13 +403,13 @@
 <h4 id="完成后就可以看到效果了。"><a href="#完成后就可以看到效果了。" class="headerlink" title="完成后就可以看到效果了。"></a>完成后就可以看到效果了。</h4><p><img src="/2017/04/25/Auto-sizing-cell-estimatedRowHeight属性/203.png" alt=""></p>
 <p><a href="https://pan.baidu.com/s/1qYCZrg4" target="_blank" rel="external">示例代码</a></p>
 <hr>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><h4 id="estimatedRowHeight是否可以随便设值？"><a href="#estimatedRowHeight是否可以随便设值？" class="headerlink" title="estimatedRowHeight是否可以随便设值？"></a>estimatedRowHeight是否可以随便设值？</h4><p>虽然系统会自动帮我们调整cell的高度，而estimatedRowHeight的初始默认高度似乎没用，其实不然，estimatedRowHeight越接近cell的最终高度越好，因为cell的调整高度重绘cell会浪费程序的运行,就会相稍微耗时。</p>
-<p>因此可能会产生一些坑，比如设置差距较大时，在调用scrollToRowAtIndexPath:滚动到最底部的方法时。此方法运行完了，cell才调整完，导致滚动的不是最底部的小BUG.</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><h4 id="estimatedRowHeight是否可以随便设值？"><a href="#estimatedRowHeight是否可以随便设值？" class="headerlink" title="estimatedRowHeight是否可以随便设值？"></a>estimatedRowHeight是否可以随便设值？</h4><p>虽然系统会自动帮我们调整cell的高度，而estimatedRowHeight的初始默认高度似乎没用，其实不然，estimatedRowHeight越接近cell的最终高度越好，因为cell的调整高度重绘cell会浪费程序的运行,就会相应的耗费资源。</p>
+<p>因此可能会产生一些坑，比如设置初始值差距较大时，在调用scrollToRowAtIndexPath:滚动到最底部的方法时。就有可能出现此方法运行完了，cell的高度还没有调整完，导致视图显示不是最底部的小BUG.</p>
 <p><a href="http://blog.csdn.net/zhaochen_009/article/details/53395598" target="_blank" rel="external">参考</a></p>
 <h4 id="避免的方法"><a href="#避免的方法" class="headerlink" title="避免的方法"></a>避免的方法</h4><p>1.用dispatch_after一个很短的时间再去scrollToRowAtIndexPath。</p>
 <p>2.设定estimatedRowHeight尽量接近最终的高度。<br>可以在</p>
 <pre><code> - (CGFloat)tableView:(UITableView *)tableView   estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-return 高度;相对的计算一下高度。
+return 60;//相对的计算一下高度。
 </code></pre><p>  }</p>
 
       
