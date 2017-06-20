@@ -107,33 +107,37 @@
 
 <meta name="description" content="制作证书时报错   如图   
    这个原因是在使用钥匙串时， 证书助理 -&amp;gt; 颁发机构申请   -&amp;gt; 证书填写信息的时候少写了”常用名“导致的，把常用名称加上就可以了。
-![](遇到的问题-1/200.png)
 
-真机运行时报错如图 
-  Xcode will continue when “iPhone名称” is finished.    解决方法：重新拔一下真机，再重启一下Xc">
+
+真机运行时报错  Xcode will continue when “iPhone名称” is finished.    解决方法：重新拔一下真机，再重启一下Xcode,读取完就好了。
+
+使用相机时报错 con">
 <meta property="og:type" content="article">
 <meta property="og:title" content="遇到的问题集 1">
 <meta property="og:url" content="https://maojianxiang.github.io/2017/06/20/遇到的问题-1/index.html">
 <meta property="og:site_name" content="小毛的博客">
 <meta property="og:description" content="制作证书时报错   如图   
    这个原因是在使用钥匙串时， 证书助理 -&amp;gt; 颁发机构申请   -&amp;gt; 证书填写信息的时候少写了”常用名“导致的，把常用名称加上就可以了。
-![](遇到的问题-1/200.png)
 
-真机运行时报错如图 
-  Xcode will continue when “iPhone名称” is finished.    解决方法：重新拔一下真机，再重启一下Xc">
+
+真机运行时报错  Xcode will continue when “iPhone名称” is finished.    解决方法：重新拔一下真机，再重启一下Xcode,读取完就好了。
+
+使用相机时报错 con">
 <meta property="og:image" content="https://maojianxiang.github.io/2017/06/20/遇到的问题-1/100.png">
 <meta property="og:image" content="https://maojianxiang.github.io/2017/06/20/遇到的问题-1/200.png">
 <meta property="og:image" content="https://maojianxiang.github.io/2017/06/20/遇到的问题-1/300.png">
 <meta property="og:image" content="https://maojianxiang.github.io/2017/06/20/遇到的问题-1/400.png">
-<meta property="og:updated_time" content="2017-06-20T09:46:43.000Z">
+<meta property="og:image" content="https://maojianxiang.github.io/2017/06/20/遇到的问题-1/500.png">
+<meta property="og:updated_time" content="2017-06-20T10:06:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="遇到的问题集 1">
 <meta name="twitter:description" content="制作证书时报错   如图   
    这个原因是在使用钥匙串时， 证书助理 -&amp;gt; 颁发机构申请   -&amp;gt; 证书填写信息的时候少写了”常用名“导致的，把常用名称加上就可以了。
-![](遇到的问题-1/200.png)
 
-真机运行时报错如图 
-  Xcode will continue when “iPhone名称” is finished.    解决方法：重新拔一下真机，再重启一下Xc">
+
+真机运行时报错  Xcode will continue when “iPhone名称” is finished.    解决方法：重新拔一下真机，再重启一下Xcode,读取完就好了。
+
+使用相机时报错 con">
 <meta name="twitter:image" content="https://maojianxiang.github.io/2017/06/20/遇到的问题-1/100.png">
 
 
@@ -398,10 +402,9 @@
       
         <h3 id="制作证书时报错"><a href="#制作证书时报错" class="headerlink" title="制作证书时报错"></a>制作证书时报错</h3><p>   如图<br>   <img src="/2017/06/20/遇到的问题-1/100.png" alt=""></p>
 <p>   这个原因是在使用钥匙串时， <strong>证书助理</strong> -&gt; <strong>颁发机构申请</strong>   -&gt; 证书填写信息的时候少写了”<strong>常用名</strong>“导致的，把常用名称加上就可以了。</p>
-<pre><code>![](遇到的问题-1/200.png)
-</code></pre><hr>
-<h3 id="真机运行时报错"><a href="#真机运行时报错" class="headerlink" title="真机运行时报错"></a>真机运行时报错</h3><p>如图<br> <img src="/2017/06/20/遇到的问题-1/200.png" alt=""></p>
-<p>  Xcode will continue when “iPhone名称” is finished.<br>    解决方法：重新拔一下真机，再重启一下Xcode,读取完就好了。</p>
+<p><img src="/2017/06/20/遇到的问题-1/200.png" alt=""></p>
+<hr>
+<h3 id="真机运行时报错"><a href="#真机运行时报错" class="headerlink" title="真机运行时报错"></a>真机运行时报错</h3><p>  Xcode will continue when “iPhone名称” is finished.<br>    解决方法：重新拔一下真机，再重启一下Xcode,读取完就好了。</p>
 <hr>
 <h3 id="使用相机时报错"><a href="#使用相机时报错" class="headerlink" title="使用相机时报错"></a>使用相机时报错</h3><p> contain an NSCameraUsageDescription key with a string value explaining to the user how the app uses this data.</p>
 <p> 在info.plist文件中给 NSCameraUsageDescription(Privacy - Camera Usage Description） 添加key,即提示用户应用将使用您的相机。如图：</p>
@@ -429,9 +432,8 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
 <p>但是在信息中，你会发现提示为三方名称，看报错详情可以查出来。这时三方库，可以是缺少依赖的库，也可能是三言库不支持当前的框架，模拟器的i386(32位),X86_64(64位),真机：armv7，armv7s （32位） ，arm64(64位)。</p>
 </li>
 <li><p>工程文件中，有名字为相同的。</p>
-<p>这个情况一定要注意。因为报错都不知道报的是什么。</p>
-<pre><code>例：    
-</code></pre></li>
+<p>这个情况一定要注意。因为报错都不知道报的是什么。<br>例：<br> <img src="/2017/06/20/遇到的问题-1/500.png" alt="">   </p>
+</li>
 </ol>
 <hr>
 <h3 id="Xcode-错误-Could-not-launch-app-No-such-file-or-directory-Error"><a href="#Xcode-错误-Could-not-launch-app-No-such-file-or-directory-Error" class="headerlink" title="Xcode 错误- Could not launch app - No such file or directory Error."></a>Xcode 错误- Could not launch app - No such file or directory Error.</h3><p>蛋疼的一个XCode bug，基本上应该不是工程本身问题。</p>

@@ -379,10 +379,9 @@
           
             <h3 id="制作证书时报错"><a href="#制作证书时报错" class="headerlink" title="制作证书时报错"></a>制作证书时报错</h3><p>   如图<br>   <img src="/2017/06/20/遇到的问题-1/100.png" alt=""></p>
 <p>   这个原因是在使用钥匙串时， <strong>证书助理</strong> -&gt; <strong>颁发机构申请</strong>   -&gt; 证书填写信息的时候少写了”<strong>常用名</strong>“导致的，把常用名称加上就可以了。</p>
-<pre><code>![](遇到的问题-1/200.png)
-</code></pre><hr>
-<h3 id="真机运行时报错"><a href="#真机运行时报错" class="headerlink" title="真机运行时报错"></a>真机运行时报错</h3><p>如图<br> <img src="/2017/06/20/遇到的问题-1/200.png" alt=""></p>
-<p>  Xcode will continue when “iPhone名称” is finished.<br>    解决方法：重新拔一下真机，再重启一下Xcode,读取完就好了。</p>
+<p><img src="/2017/06/20/遇到的问题-1/200.png" alt=""></p>
+<hr>
+<h3 id="真机运行时报错"><a href="#真机运行时报错" class="headerlink" title="真机运行时报错"></a>真机运行时报错</h3><p>  Xcode will continue when “iPhone名称” is finished.<br>    解决方法：重新拔一下真机，再重启一下Xcode,读取完就好了。</p>
 <hr>
 <h3 id="使用相机时报错"><a href="#使用相机时报错" class="headerlink" title="使用相机时报错"></a>使用相机时报错</h3><p> contain an NSCameraUsageDescription key with a string value explaining to the user how the app uses this data.</p>
 <p> 在info.plist文件中给 NSCameraUsageDescription(Privacy - Camera Usage Description） 添加key,即提示用户应用将使用您的相机。如图：</p>
@@ -410,9 +409,8 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
 <p>但是在信息中，你会发现提示为三方名称，看报错详情可以查出来。这时三方库，可以是缺少依赖的库，也可能是三言库不支持当前的框架，模拟器的i386(32位),X86_64(64位),真机：armv7，armv7s （32位） ，arm64(64位)。</p>
 </li>
 <li><p>工程文件中，有名字为相同的。</p>
-<p>这个情况一定要注意。因为报错都不知道报的是什么。</p>
-<pre><code>例：    
-</code></pre></li>
+<p>这个情况一定要注意。因为报错都不知道报的是什么。<br>例：<br> <img src="/2017/06/20/遇到的问题-1/500.png" alt="">   </p>
+</li>
 </ol>
 <hr>
 <h3 id="Xcode-错误-Could-not-launch-app-No-such-file-or-directory-Error"><a href="#Xcode-错误-Could-not-launch-app-No-such-file-or-directory-Error" class="headerlink" title="Xcode 错误- Could not launch app - No such file or directory Error."></a>Xcode 错误- Could not launch app - No such file or directory Error.</h3><p>蛋疼的一个XCode bug，基本上应该不是工程本身问题。</p>
@@ -1884,7 +1882,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 </code></pre><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>用三个*或者\—号，可以作一条分割线</p>
 <hr>
 <hr>
-<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#49;&#x35;&#50;&#x30;&#x38;&#49;&#48;&#53;&#52;&#x34;&#x30;&#64;&#49;&#54;&#x33;&#46;&#x63;&#x6f;&#109;">&#49;&#x35;&#50;&#x30;&#x38;&#49;&#48;&#53;&#52;&#x34;&#x30;&#64;&#49;&#54;&#x33;&#46;&#x63;&#x6f;&#109;</a></p>
+<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x31;&#53;&#50;&#48;&#x38;&#x31;&#x30;&#53;&#x34;&#52;&#48;&#64;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;">&#x31;&#53;&#50;&#48;&#x38;&#x31;&#x30;&#53;&#x34;&#52;&#48;&#64;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;</a></p>
 <h4 id="网址连接"><a href="#网址连接" class="headerlink" title="网址连接"></a>网址连接</h4><p>用<code>&lt;网址&gt;</code>有效连接: <a href="https://maojianxiang.github.io">https://maojianxiang.github.io</a></p>
 <hr>
 <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><h4 id="图片跟网址连接相似，多了一个"><a href="#图片跟网址连接相似，多了一个" class="headerlink" title="图片跟网址连接相似，多了一个!"></a>图片跟网址连接相似，多了一个!</h4><p><code>!+[]+(图片的地址,相对路径也行)</code></p>
