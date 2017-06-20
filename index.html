@@ -278,6 +278,741 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/20/遇到的问题-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/20/遇到的问题-1/" itemprop="url">
+                  遇到的问题集 1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T17:11:26+08:00">
+                2017-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Debug/" itemprop="url" rel="index">
+                    <span itemprop="name">Debug</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="制作证书时报错"><a href="#制作证书时报错" class="headerlink" title="制作证书时报错"></a>制作证书时报错</h3><p>   如图<br>   <img src="/2017/06/20/遇到的问题-1/100.png" alt=""></p>
+<p>   这个原因是在使用钥匙串时， <strong>证书助理</strong> -&gt; <strong>颁发机构申请</strong>   -&gt; 证书填写信息的时候少写了”<strong>常用名</strong>“导致的，把常用名称加上就可以了。</p>
+<pre><code>![](遇到的问题-1/200.png)
+</code></pre><hr>
+<h3 id="真机运行时报错"><a href="#真机运行时报错" class="headerlink" title="真机运行时报错"></a>真机运行时报错</h3><p>如图<br> <img src="/2017/06/20/遇到的问题-1/200.png" alt=""></p>
+<p>  Xcode will continue when “iPhone名称” is finished.<br>    解决方法：重新拔一下真机，再重启一下Xcode,读取完就好了。</p>
+<hr>
+<h3 id="使用相机时报错"><a href="#使用相机时报错" class="headerlink" title="使用相机时报错"></a>使用相机时报错</h3><p> contain an NSCameraUsageDescription key with a string value explaining to the user how the app uses this data.</p>
+<p> 在info.plist文件中给 NSCameraUsageDescription(Privacy - Camera Usage Description） 添加key,即提示用户应用将使用您的相机。如图：</p>
+<p>  <img src="/2017/06/20/遇到的问题-1/300.png" alt=""></p>
+<hr>
+<h3 id="UIScrollView上加子视图的坑"><a href="#UIScrollView上加子视图的坑" class="headerlink" title="UIScrollView上加子视图的坑"></a>UIScrollView上加子视图的坑</h3><p>  注意: 在控制器里要设置self.automaticallyAdjustsScrollViewInsets=NO;<br>   不然添加的子视图位置会变。</p>
+<hr>
+<h3 id="我们在开发中经常还是要好好看看打印台信息"><a href="#我们在开发中经常还是要好好看看打印台信息" class="headerlink" title="我们在开发中经常还是要好好看看打印台信息"></a>我们在开发中经常还是要好好看看打印台信息</h3><pre><code>在网络请求无反应，没有注意打印台的同志，可能还到处打断点调试。
+
+App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app&apos;s Info.plist file.
+</code></pre><p>  不必详说，这个是从Xcode 7开始开发对网络请求的限制。需要配置一下：</p>
+<p> <img src="/2017/06/20/遇到的问题-1/400.png" alt=""></p>
+<hr>
+<h3 id="控制台打印报错"><a href="#控制台打印报错" class="headerlink" title="控制台打印报错"></a>控制台打印报错</h3><p>程序崩溃并在打印台显示信息：[aqme] 255: AQDefaultDevice (173): skipping input stream 0 0 0x0</p>
+<p><strong>解决方法:</strong></p>
+<ol>
+<li>选择 Product –&gt;Scheme–&gt;Edit Scheme</li>
+<li>选择 Arguments</li>
+<li>在Environment Variables添加一个环境变量<br>OS_ACTIVITY_MODE 设置值为”disable”</li>
+</ol>
+<p><strong>设置值为”disable”</strong></p>
+<hr>
+<h3 id="linker-command-failed-with-exit-code-1-use-v-to-see-invocation-报错"><a href="#linker-command-failed-with-exit-code-1-use-v-to-see-invocation-报错" class="headerlink" title="linker command failed with exit code 1 (use -v to see invocation)报错"></a>linker command failed with exit code 1 (use -v to see invocation)报错</h3><ol>
+<li><p>第一是三方库文件不支持，</p>
+<p>但是在信息中，你会发现提示为三方名称，看报错详情可以查出来。这时三方库，可以是缺少依赖的库，也可能是三言库不支持当前的框架，模拟器的i386(32位),X86_64(64位),真机：armv7，armv7s （32位） ，arm64(64位)。</p>
+</li>
+<li><p>工程文件中，有名字为相同的。</p>
+<p>这个情况一定要注意。因为报错都不知道报的是什么。</p>
+<pre><code>例：    
+</code></pre></li>
+</ol>
+<hr>
+<h3 id="Xcode-错误-Could-not-launch-app-No-such-file-or-directory-Error"><a href="#Xcode-错误-Could-not-launch-app-No-such-file-or-directory-Error" class="headerlink" title="Xcode 错误- Could not launch app - No such file or directory Error."></a>Xcode 错误- Could not launch app - No such file or directory Error.</h3><p>蛋疼的一个XCode bug，基本上应该不是工程本身问题。</p>
+<p><strong>解决方法:</strong></p>
+<ol>
+<li>拔掉设备，删除之前Build的内容</li>
+<li>退出Xcode，不是关闭窗口</li>
+<li><p>删除那个/Users/XXX/Library/Developer/Xcode/DerivedData/XXX-grgrmtzqajhyqgghabyjttajwbsm文件夹</p>
+</li>
+<li><p>启动XCode连接设备，现在应该OK了</p>
+</li>
+</ol>
+<hr>
+<h3 id="Cannot-assign-to-‘self’-outside-of-a-method-in-the-init-family"><a href="#Cannot-assign-to-‘self’-outside-of-a-method-in-the-init-family" class="headerlink" title="Cannot assign to ‘self’ outside of a method in the init family"></a>Cannot assign to ‘self’ outside of a method in the init family</h3><p>当使用xib的时候，想自定义一个方来初始化对象View.初始化的名字的方法：以init +大写字母开头+其他。不然就会把这个错。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/20/系统自带的按钮风格/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/20/系统自带的按钮风格/" itemprop="url">
+                  系统自带的按钮风格
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T16:27:34+08:00">
+                2017-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="UIButton的风格"><a href="#UIButton的风格" class="headerlink" title="UIButton的风格"></a>UIButton的风格</h3><p> UIButton的风格不多，只有几种样式 </p>
+<ol>
+<li>UIButtonTypeCustom = 0,  //自定义风格</li>
+<li>UIButtonTypeRoundedRect, //圆角矩形 </li>
+<li>UIButtonTypeDetailDisclosure, //蓝色小箭头按钮，主要做详细说明用</li>
+<li>UIButtonTypeInfoLight, //亮色感叹号</li>
+<li>UIButtonTypeInfoDark, //暗色感叹号</li>
+<li>UIButtonTypeContactAdd, //十字加号按钮</li>
+</ol>
+<h3 id="UIBarButtonItem风格就比较多"><a href="#UIBarButtonItem风格就比较多" class="headerlink" title="UIBarButtonItem风格就比较多"></a>UIBarButtonItem风格就比较多</h3><p> UIBarButtonSystemItem：</p>
+<ul>
+<li><p>UIBarButtonSystemItemDone<br><img src="/2017/06/20/系统自带的按钮风格/100.jpg" alt=""></p>
+</li>
+<li><p>UIBarButtonSystemItemCancel<br><img src="/2017/06/20/系统自带的按钮风格/101.jpg" alt=""></p>
+</li>
+<li><p>UIBarButtonSystemItemEdit<br><img src="/2017/06/20/系统自带的按钮风格/102.jpg" alt=""></p>
+</li>
+<li><p>UIBarButtonSystemItemSave<br><img src="/2017/06/20/系统自带的按钮风格/103.jpg" alt=""></p>
+</li>
+<li><p>UIBarButtonSystemItemAdd<br><img src="/2017/06/20/系统自带的按钮风格/104.jpg" alt=""></p>
+</li>
+<li><p>UIBarButtonSystemItemFlexibleSpace</p>
+<p>无样式</p>
+</li>
+</ul>
+<ul>
+<li><p>UIBarButtonSystemItemFixedSpace</p>
+<p> 无样式</p>
+</li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemCompose<br><img src="/2017/06/20/系统自带的按钮风格/105.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemReply<br><img src="/2017/06/20/系统自带的按钮风格/106.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemAction<br><img src="/2017/06/20/系统自带的按钮风格/107.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemOrganize<br><img src="/2017/06/20/系统自带的按钮风格/108.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemBookmarks<br><img src="/2017/06/20/系统自带的按钮风格/109.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemSearch<br><img src="/2017/06/20/系统自带的按钮风格/110.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemRefresh<br><img src="/2017/06/20/系统自带的按钮风格/111.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemStop<br><img src="/2017/06/20/系统自带的按钮风格/112.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemCamera<br><img src="/2017/06/20/系统自带的按钮风格/113.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemTrash<br><img src="/2017/06/20/系统自带的按钮风格/114.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemPlay<br><img src="/2017/06/20/系统自带的按钮风格/115.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemPause<br><img src="/2017/06/20/系统自带的按钮风格/116.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemRewind<br><img src="/2017/06/20/系统自带的按钮风格/117.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemFastForward<br><img src="/2017/06/20/系统自带的按钮风格/118.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemUndo<br><img src="/2017/06/20/系统自带的按钮风格/119.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemRedo<br><img src="/2017/06/20/系统自带的按钮风格/120.jpg" alt=""></li>
+</ul>
+<ul>
+<li>UIBarButtonSystemItemPageCurl<br><img src="/2017/06/20/系统自带的按钮风格/121.jpg" alt=""></li>
+</ul>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/20/大括号{}和小括号()的作用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/20/大括号{}和小括号()的作用/" itemprop="url">
+                  大括号{}和小括号()的作用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:50:43+08:00">
+                2017-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/others/" itemprop="url" rel="index">
+                    <span itemprop="name">others</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">UILabel *l = (&#123;</div><div class="line"></div><div class="line">        UILabel *label  = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 25)];</div><div class="line"> </div><div class="line">        label.text = @&quot;Hello world&quot;;</div><div class="line"></div><div class="line">        [self.view addSubview: label];</div><div class="line">   </div><div class="line">        label;</div><div class="line">   </div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
+<p>执行代码都放在大括号和小括号的中间的。而且运行我们会发现最后l也是被赋值成功的。</p>
+<ul>
+<li><p>总结<br> 这样可以深思一下{}和()各有什么作用</p>
+<ol>
+<li><p><em>{}包装代码</em></p>
+<p> 大家在写程序的时候不难发现，在OC函数方法都用它来包括在里面，包括block也是被大括号包在里面的。所以，它的主要作用就是用来包装代码块。</p>
+</li>
+<li><p><em>()执行代码</em></p>
+<p>在执行代码后，你会发现大括号中的代码都执行了，这就是因为小括号的原因。小括号的作用跟js，swift，以及java中其实感觉都是一样的，代码执行某个函数，只不过这里传入的不像参数，其他也可以把代码块当作参数。</p>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>示例</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">UITableView *tableView = (&#123;</div><div class="line">        </div><div class="line">       UITableView *tabV = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 300, 200)];</div><div class="line">        </div><div class="line">      //最末尾的tabV会给tableView 赋值</div><div class="line">        tabV;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/20/查看代码行数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/20/查看代码行数/" itemprop="url">
+                  查看代码行数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:20:27+08:00">
+                2017-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/others/" itemprop="url" rel="index">
+                    <span itemprop="name">others</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>查看代码的行数 </p>
+<ul>
+<li><p><em>终端进入项目</em></p>
+<p>打开终端,在终端 </p>
+<p>$ cd + 项目文件</p>
+</li>
+<li><p><em>输入命令</em></p>
+</li>
+</ul>
+<p> $ find . -name “*.swift” | xargs wc -l</p>
+<p> 其中 “*.swift” 检查以.swift的文件，这样会显示出swift的文件的代码行数</p>
+<p> 同理在OC中可以 “*.h”或者”.m”文件</p>
+<ul>
+<li><p>OC中可以一次性检查  多种文件如下抒写</p>
+<p>$ find . “(“ -name “<em>.m” -or -name “</em>.mm” -or -name “<em>.cpp” -or -name “</em>.h” -or -name “*.rss” “)” -print | xargs wc -l</p>
+</li>
+</ul>
+<ul>
+<li><p>代码行数就会显示在终端</p>
+<p><img src="/2017/06/20/查看代码行数/100.png" alt=""></p>
+<hr>
+<p><img src="/2017/06/20/查看代码行数/200.png" alt=""></p>
+<hr>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/16/如何生成SSH密钥/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1149,7 +1884,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 </code></pre><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>用三个*或者\—号，可以作一条分割线</p>
 <hr>
 <hr>
-<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#58;&#49;&#53;&#50;&#48;&#x38;&#49;&#48;&#53;&#x34;&#x34;&#x30;&#x40;&#49;&#54;&#x33;&#46;&#x63;&#x6f;&#109;">&#49;&#53;&#50;&#48;&#x38;&#49;&#48;&#53;&#x34;&#x34;&#x30;&#x40;&#49;&#54;&#x33;&#46;&#x63;&#x6f;&#109;</a></p>
+<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#x31;&#x35;&#50;&#48;&#56;&#49;&#48;&#53;&#x34;&#x34;&#x30;&#x40;&#49;&#x36;&#51;&#x2e;&#99;&#111;&#109;">&#x31;&#x35;&#50;&#48;&#56;&#49;&#48;&#53;&#x34;&#x34;&#x30;&#x40;&#49;&#x36;&#51;&#x2e;&#99;&#111;&#109;</a></p>
 <h4 id="网址连接"><a href="#网址连接" class="headerlink" title="网址连接"></a>网址连接</h4><p>用<code>&lt;网址&gt;</code>有效连接: <a href="https://maojianxiang.github.io">https://maojianxiang.github.io</a></p>
 <hr>
 <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><h4 id="图片跟网址连接相似，多了一个"><a href="#图片跟网址连接相似，多了一个" class="headerlink" title="图片跟网址连接相似，多了一个!"></a>图片跟网址连接相似，多了一个!</h4><p><code>!+[]+(图片的地址,相对路径也行)</code></p>
@@ -1401,668 +2136,13 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/09/数值的一些常用处理方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/09/数值的一些常用处理方式/" itemprop="url">
-                  数值的一些常用处理方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T08:10:26+08:00">
-                2017-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index">
-                    <span itemprop="name">Math</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="小数的绝对值"><a href="#小数的绝对值" class="headerlink" title="小数的绝对值"></a>小数的绝对值</h3><h4 id="处理int类型的取绝对值"><a href="#处理int类型的取绝对值" class="headerlink" title="处理int类型的取绝对值"></a>处理int类型的取绝对值</h4><pre><code>int abs(int i);  
-</code></pre><h4 id="处理double类型-或者float-的取绝对值"><a href="#处理double类型-或者float-的取绝对值" class="headerlink" title="处理double类型(或者float)的取绝对值"></a>处理double类型(或者float)的取绝对值</h4><pre><code>double fabs(double i);
-</code></pre><hr>
-<h3 id="小数的四舍五入"><a href="#小数的四舍五入" class="headerlink" title="小数的四舍五入"></a>小数的四舍五入</h3><h4 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h4><pre><code>round：参数是小数，则求本身的四舍五入。
-ceil：参数是小数，则求最小的整数但不小于本身.
-floor：如果参数是小数，则求最大的整数但不大于本身. 
-</code></pre><h4 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h4><p>如果值是 10.4的话，则结果</p>
-<pre><code>-- round  --&gt; 10
--- ceil   --&gt; 11
--- floor  --&gt; 10
-</code></pre><p>如果值是 10.5的话，则结果</p>
-<pre><code>-- round  --&gt; 11
--- ceil   --&gt; 11
--- floor  --&gt; 10
-</code></pre><hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/01/如何优雅地解决UIScrollView使用中的bug/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/01/如何优雅地解决UIScrollView使用中的bug/" itemprop="url">
-                  如何优雅地解决UIScrollView使用中的bug
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T13:55:55+08:00">
-                2017-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Debug/" itemprop="url" rel="index">
-                    <span itemprop="name">Debug</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="ScrollView的位置或者其子控件位置不正确"><a href="#ScrollView的位置或者其子控件位置不正确" class="headerlink" title="ScrollView的位置或者其子控件位置不正确"></a>ScrollView的位置或者其子控件位置不正确</h3><h4 id="没有注意视图控制器的透视效果"><a href="#没有注意视图控制器的透视效果" class="headerlink" title="没有注意视图控制器的透视效果"></a>没有注意视图控制器的透视效果</h4><pre><code>特别是子控制器的位置不对，自己都会怀疑子控件是否加到ScrollView上面去了。
-
-1. 一般情况下都会先打断点、NSLog输出看frame是否正确,不正确会调整它。如果发现frame完全正确，才会联想到视图控制器问题的显示自动调整,这样就离成功近了一步。
-2. 如果你有成功的Demo，然后一一对应,才发现视图控制器还有个透视效果属性:automaticallyAdjustsScrollViewInsets，关闭之后一切就正常了。
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><pre><code>UIScrollView的位置或者子控件的位置不正确,首先要确定其父控制器的透视效果属性:automaticallyAdjustsScrollViewInsets。其次再去检查一下frame,这个问题就OK了。
-
-如果在某中情况下automaticallyAdjustsScrollViewInsets属性没有设置反而显示正确，那它也会造成下面的第二个问题。
-</code></pre><h3 id="ScorllView左右上下都可以随便拖拽"><a href="#ScorllView左右上下都可以随便拖拽" class="headerlink" title="ScorllView左右上下都可以随便拖拽"></a>ScorllView左右上下都可以随便拖拽</h3><pre><code>1.一般会想到是否是UIScorllView的contensize的大小设置跟frame不匹配造成的。
- 然后打断点，NSLog输出，看看frame和contentsize,发现没什么问题。这里你会想会不会是视图控制器自动调整了某些属性
-
-2.想得深一点会想到UIScorllView的两个方向的bounce属性:alwaysBounceVertical，alwaysBounceHorizontal,但是我们仔细一看UIScorllView.h文件，明确提示默认就是关闭的。
-
-3.除了第1点和第2点，还有遗漏的了种情况，也是控制器的透视效果automaticallyAdjustsScrollViewInsets造成的。
-</code></pre><h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>  在使用UIScorllView控件时</p>
-<pre><code>1.首先确定父控制器的透视效果automaticallyAdjustsScrollViewInsets已关闭。但是这个问题也会造成这种情况。
-
-2.然后再UIScorllView的contensize和frame是否配置正确。
-
-3.特别需要时配置一下属性bounces,alwaysBounceVertical,alwaysBounceHorizontal。
-
-  就可以很好的控制UIScrollView的拖拽滚动问题了。
-</code></pre><h3 id="ScrollViewDelegate中的滑动事件重复处理"><a href="#ScrollViewDelegate中的滑动事件重复处理" class="headerlink" title="ScrollViewDelegate中的滑动事件重复处理"></a>ScrollViewDelegate中的滑动事件重复处理</h3><h4 id="UIScrollViewDelegate的代理实现"><a href="#UIScrollViewDelegate的代理实现" class="headerlink" title="UIScrollViewDelegate的代理实现"></a>UIScrollViewDelegate的代理实现</h4><p>  1.Method1:offset变动的时间回调</p>
-<pre><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
-</code></pre><p>  2.Method2:UIScrollView拖动嘎然而止时回调。</p>
-<pre><code>- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
-</code></pre><h4 id="设置UIScrollView的offset-Meth3"><a href="#设置UIScrollView的offset-Meth3" class="headerlink" title="设置UIScrollView的offset(Meth3)"></a>设置UIScrollView的offset(Meth3)</h4><pre><code>- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
-</code></pre><p>  注意:Method2是拖动停止的时候回调,而且不是时时监听，而Method1是只要offset变动时就会时时回调。而只要使用Method3就会运行Method1;这样就会容易造成一种BUG:</p>
-<p>  1.当UIScrollVie拖动后对外控件A时时造成影响，会在Method1中实现影响A的代码,同时结束后会运行Method2。</p>
-<p>  2.那如果A点击后影响UIScrollView的offset,我们会在A点击的事件中使用Method3，而Method3的运行又会造成Method1方法的运行,而这种情况却不会运行Method2。</p>
-<p>  Bug出现: A点击的时候,会使用Method3,间接运行Method1,而Method1中又会运行影响A的代码。（A只是点击却最后还会影响A）。</p>
-<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>   是在Method1中判断是否是外部事件来决定是否运行影响A的代码。那这个判断怎么处理了，这个问题在我搭建滑动切换视图控制器的框架时遇到了。费了好些时间，最后我发现UIScrollView.isDragging属性直接判断是否是拖动的回调，UIScrollView自动在设置offset的时候和拖动的时候自动更改isDragging，还是最基础的方法最靠谱。</p>
-<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p> 1.UIScrollView使用时特别要注意要关闭父视图控制器的透视效果属性automaticallyAdjustsScrollViewInsets。否则会造成UIScrollView本身可以任意拖拽和本身及其子控件的位置问题。</p>
-<p> 2.UIScrollView拖动时时影响外部控件的时候，在 - (void)scrollViewDidScroll:(UIScrollView *)scrollView的方法中最好使用属性isDragging判断是拖动才去实现影响外部控件的代码。避免外部控件反过来作用scrollView的offset的情况。</p>
-<p> 最后推广一下让我写这篇博客的Demo:<a href="https://github.com/MaoJianxiang/SlideSwitchController" target="_blank" rel="external">https://github.com/MaoJianxiang/SlideSwitchController</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/" itemprop="url">
-                  Xcode 错误- Could not launch app 解决办法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00+08:00">
-                2017-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Debug/" itemprop="url" rel="index">
-                    <span itemprop="name">Debug</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Xcode 错误- Could not launch app - No such file or directory Error.</p>
-<p>蛋疼的一个XCode bug，基本上应该不是工程本身问题。</p>
-<p>解决方法：</p>
-<p>1、拔掉设备，删除之前Build的内容</p>
-<p>2、退出Xcode，不是关闭窗口</p>
-<p>3、删除那个/Users/XXX/Library/Developer/Xcode/DerivedData/XXX-grgrmtzqajhyqgghabyjttajwbsm文件夹</p>
-<p>4、启动XCode连接设备，现在应该OK了</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/03/17/在Category中可以添加属性吗/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/17/在Category中可以添加属性吗/" itemprop="url">
-                  在Category中可以添加属性吗？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00+08:00">
-                2017-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Category直接添加属性使用会报错"><a href="#Category直接添加属性使用会报错" class="headerlink" title="Category直接添加属性使用会报错"></a>Category直接添加属性使用会报错</h3><h4 id="类目和属性（Category-and-Property）"><a href="#类目和属性（Category-and-Property）" class="headerlink" title="类目和属性（Category and Property）"></a>类目和属性（Category and Property）</h4><p>关于property，有两个关键字@synthesize和@dynamic:</p>
-<p> @synthesize: 实现property所声明的方法的定义。</p>
-<p> property 声明方法 -&gt;头文件中申明getter和setter方法 synthesize定义方法 -&gt; m文件中实现getter和setter方法。  如果我们没有手动的实现property的setter和getter方法，编译器会自动的添加上这两个方法。</p>
-<p>@dynamic:<br>     告诉编译器,属性的setter与getter方法由用户自己实现，不自动生成。</p>
-<p>在平常我们都习惯了不写这两个关键词，这个时候其实默认是 @synthesize var = _var</p>
-<p>我直接在ViewController (extension)中定义一个name属性。不使用它的时候运行完好。一使用它的时运行就会报错：</p>
-<p>  [ViewController setName:]: unrecognized selector sent to instance 0x7f9473705540。<br>   而且编译器直接就提供警告：</p>
-<p>   Property ‘name’ requires method ‘setName:’ to be defined - use @dynamic or provide a method implementation in this category。<br>   意思是在这个类中，属性name的setter的定义方法，用@dynamic 或者提供一个方法来实现。</p>
-<p>然后我们在implementation中添加 @dynamic name;这样警告消失，但是运行依然会报 unrecognized selector sent to instance xxx的错误。</p>
-<p>然后我们在 implementation 中实现它的getter和setter方法,也会直接报错 undeciarediared identifier XX</p>
-<p><img src="/2017/03/17/在Category中可以添加属性吗/1.png" alt="1"></p>
-<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>  1.类目（category）可以添加属性，但不能实现部分的@synthesize。</p>
-<ol>
-<li>类目中可以实现setter和getter方法，但是不存在_name的成员变量。</li>
-</ol>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>这个时候应该怎么办呢？我们知道Obj-c是一门动态语言，强大的运行时(Runtime)机制能够为类关联引用，然后通过这种方法来实现给类别添加属性。其实就是动态绑定。</p>
-<h4 id="属性添加和检索关联"><a href="#属性添加和检索关联" class="headerlink" title="属性添加和检索关联"></a>属性添加和检索关联</h4><p>首先需要导入Runtime相关的头文件<br><code>#import &lt;objc/runtime.h&gt;</code></p>
-<p><code>//这个方法时为对象object添加key指定的地址作为关键字，以value为值关联引用，第四个参数pilicy指的是关联引用的存储策略。
-//通过将value设置为nil 可以删除key的关联
-OBJC_EXPORT void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
-    __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</code></p>
-<p><code>//返回object以key为关键字关联的对象，如果没有，则反火nil
-OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
-    __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</code></p>
-<p>如果我们需要为一个类别的多个属性关联引用，所以我们需要用不同的key值来区别。<br>而且键值必须要使用一个确定且不可变的地址。所以选择定义在实现文件的static静态局部变量的地址。<br>policy策略就跟定义property的时候才用的存储关键字相似了。</p>
-<h4 id="关联的policy策略"><a href="#关联的policy策略" class="headerlink" title="关联的policy策略"></a>关联的policy策略</h4><p>objc_AssociationPolicy policy：enum {</p>
-<p>   //五种类型<br>  OBJC_ASSOCIATION_ASSIGN = 0, //关联对象的属性是弱引用   weak</p>
-<p>  OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, //关联对象的属性是强引用并且关联对象不使用原子性 strong</p>
-<p>  OBJC_ASSOCIATION_COPY_NONATOMIC = 3, //关联对象的属性是copy并且关联对象不使用原子性 copy</p>
-<p>  OBJC_ASSOCIATION_RETAIN = 01401, //关联对象的属性是retain并且关联对象使用原子性  strong copy</p>
-<p>  OBJC_ASSOCIATION_COPY = 01403 //关联对象的属性是copy并且关联对象使用原子性 copy atomic<br>  };</p>
-<h4 id="断开关联"><a href="#断开关联" class="headerlink" title="断开关联"></a>断开关联</h4><p>  runtime 提供了断开关联的函数。但是更喜欢使用传入nil来断开关联，会更佳安全，毕竟，我不敢保证是不是有其他地方会使用到已经关联的对象。而且当category中添加多个属性的时候可以单个断开关联。</p>
-<p><code>OBJC_EXPORT void objc_removeAssociatedObjects(id object)
-       __OSX_AVAILABLE_STARTING(__MAC_10_6, __IPHONE_3_1);</code></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="Category属性检索关联（动态绑定）"><a href="#Category属性检索关联（动态绑定）" class="headerlink" title="Category属性检索关联（动态绑定）"></a>Category属性检索关联（动态绑定）</h4><p>1、  导入头文件</p>
-<p><code>#import &lt;objc/runtime.h&gt;</code></p>
-<p>2、 定义用作键值的静态变量</p>
-<p>//static  char *nameKey = “nameKey”;也行</p>
-<p>static const char *nameKey = “nameKey”;</p>
-<p>3、定义存取方法</p>
-<p>-(NSString *)name{<br>  return  objc_getAssociatedObject(self, nameKey);<br>}</p>
-<p>-(void)setName:(NSString *)name{<br> objc_setAssociatedObject(self, nameKey, name, OBJC_ASSOCIATION_RETAIN_NONATOMIC);<br>}</p>
-<h4 id="使用运行"><a href="#使用运行" class="headerlink" title="使用运行"></a>使用运行</h4><p>   首先在category中定义两个关联属性</p>
-<p>   在vievcontroller中也定义了两个属性作为试验</p>
-<p>   然后用objc_removeAssociatedObjects(self);断开关联</p>
-<p>   然后输出结果,category中关联的属性两个都输出null而本身的属性正常输出。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过简单的验证我的发现<br>1、objc_removeAssociatedObjects(id object)是断开所有关联。<br>2、使用runtime给对象关联的属性跟本身的属性本质是是不一样的，可使用却是完全一样的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
           
           </div>
@@ -2105,7 +2185,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2123,7 +2203,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
