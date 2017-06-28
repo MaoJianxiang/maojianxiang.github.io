@@ -278,6 +278,545 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/28/3D-Touch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/28/3D-Touch/" itemprop="url">
+                  3D Touch
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T15:19:08+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>  3D Touch是一种立体触控技术，被苹果称为新一代多点触控技术，是在Apple Watch上采用的Force Touch，屏幕可感应不同的感压力度触控。3D Touch，苹果iPhone 6s的新功能，系统版本需要iOS 9.0+ ，有Peek Pop 两种新手种势。</p>
+<p>   2015年9月10日，苹果在新品发布会上宣布了3D-Touch功能。 2016年6月13日，苹果开发者大会WWDC在旧金山召开，会议宣布可以在待机画面用3D Touch操作通知。</p>
+<p>现在，许多安卓手机也用上了3D Touch。</p>
+<p>– 摘自<a href="http://baike.baidu.com/link?url=GB-HtIdALMiFhvBNnnlB2XIufZsONBza8ccrAQG7_4HQtWm_C6x9AEK3r1Ek6YJ4suVOsQoDqUb3HXc-ja6FO8ZVsrudKNtpNx6psKj1MtOsg7TOzx4_g0JuprFm82NUh9Az_an8U93KWfGXUNwhYa" target="_blank" rel="external">百度百科</a></p>
+<hr>
+<h3 id="3D-Touch四大功能模块"><a href="#3D-Touch四大功能模块" class="headerlink" title="3D Touch四大功能模块"></a>3D Touch四大功能模块</h3><ul>
+<li><strong>Home Screen Quick Actions</strong> （主屏幕快捷入口）</li>
+<li><strong>peek And pop</strong> （预览和弹出 展示框）</li>
+<li><strong>Force Properties</strong> （按压力度属性）</li>
+<li><strong>Web View peek and pop API</strong> (HTML链接预览功能)</li>
+</ul>
+<hr>
+<h3 id="设备支持判断"><a href="#设备支持判断" class="headerlink" title="设备支持判断"></a>设备支持判断</h3><ol>
+<li><p>所有遵守UITraitEnvironment(特征环境)协议的类，都会有UITraitCollection(特征集合类)的属性，都有forceTouchCapability(力的触觉能力)属性,<br>而UIResponder就遵守了UITraitEnvironment协议，所以所有继承于UIResponder的类都会使用3DTouch.包括UIView也可以使用</p>
+</li>
+<li><p>forceTouchCapability是枚举型</p>
+</li>
+</ol>
+<ol>
+<li><p>代码示例</p>
+<ul>
+<li>OC</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// UIForceTouchCapability：  </div><div class="line">typedef NS_ENUM(NSInteger, UIForceTouchCapability) &#123;</div><div class="line">   UIForceTouchCapabilityUnknown =0,  //3D Touch检测失败</div><div class="line">   UIForceTouchCapabilityUnavailable =1, //3D Touch不可用</div><div class="line">   UIForceTouchCapabilityAvailable =2  //3D Touch可用</div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> // 判断是否支持：</div><div class="line">  if (self.traitCollection.forceTouchCapability !=UIForceTouchCapabilityAvailable) &#123;</div><div class="line">   UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@&quot;提示&quot; message:@&quot;设备不支持3DTouch&quot; delegate:nil cancelButtonTitle:@&quot;确定&quot; otherButtonTitles:nil, nil];</div><div class="line">   [alertView show];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>swift</li>
+</ul>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> // UIForceTouchCapability:</div><div class="line"> public enum UIForceTouchCapability : Int&#123;</div><div class="line">  case unknown  //3D Touch检测失败</div><div class="line">  case unavailable  //3D Touch不可用</div><div class="line">  case available  //3D Touch可用</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 判断是否支持：</div><div class="line"></div><div class="line">if traitCollection.forceTouchCapability != .available&#123;</div><div class="line">      </div><div class="line"> let alert =  UIAlertView(title: &quot;提示&quot;, message: &quot;设备不支持3DTouch&quot;, delegate: nil, cancelButtonTitle: &quot;确定&quot;)</div><div class="line"> alert.show()          </div><div class="line"> return   </div><div class="line">   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="Home-Screen-Quick-Actions开发"><a href="#Home-Screen-Quick-Actions开发" class="headerlink" title="Home Screen Quick Actions开发"></a>Home Screen Quick Actions开发</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p> 通过主屏幕的应用Icon，我们可以用3D Touch呼出一个菜单，进行快速定位应用功能模块相关功能的开发,。如微信、京东的App，本文也将重点介绍这项开发技术。</p>
+<p> 效果如下：</p>
+<p> <img src="/2017/06/28/3D-Touch/120.png" alt=""></p>
+<p>3D Touch快捷入口标签有两种添加方式：</p>
+<ol>
+<li><p>一种是静态添加，在工程中的info.plist文件中添加相关项目。通过这种方式添加的标签，在app第一次运行前，就可以唤出这些标签。</p>
+</li>
+<li><p>另一种是动态添加，通过代码给App添加快速入口。这种方式添加的标签，第一次运行App前是看不到这些标签的，必须先运行一次App,以后就可以唤出这些标签了。</p>
+</li>
+</ol>
+<h4 id="静态添加快捷入口标签"><a href="#静态添加快捷入口标签" class="headerlink" title="静态添加快捷入口标签"></a>静态添加快捷入口标签</h4><ol>
+<li><p>静态添加入口标签不需要写代码，只需要在info.plist文件中添加相关功能设置即可。不过因为没有语句提示，所以我们只能一个字母一个字母的去添加，这一点不是很友好。</p>
+</li>
+<li><p>示例</p>
+<p><img src="/2017/06/28/3D-Touch/100.png" alt=""></p>
+</li>
+<li><p>说明</p>
+<ul>
+<li>首先是UIApplicationShortcutItems，他是一个数组类型，数组中的每一个元素表示一个入口标签。</li>
+<li>每个Item是UIApplicationShortcutItems数组中的一个元素，字典类型。在这个字典中配置各个标签的相关属性。</li>
+<li><p>如图如示</p>
+<p><img src="/2017/06/28/3D-Touch/110.png" alt=""></p>
+</li>
+<li><p>效果如图</p>
+<p><img src="/2017/06/28/3D-Touch/120.png" alt=""></p>
+</li>
+<li><p><em>注：UIApplicationShortcutItemIconFile：当填写上图片图标的我名字就可以显示出图标。</em></p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="动态添加快捷入口标签"><a href="#动态添加快捷入口标签" class="headerlink" title="动态添加快捷入口标签"></a>动态添加快捷入口标签</h4><h5 id="需要用到的类"><a href="#需要用到的类" class="headerlink" title="需要用到的类"></a>需要用到的类</h5><ul>
+<li>如图<br><img src="/2017/06/28/3D-Touch/130.png" alt=""></li>
+</ul>
+<h5 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h5><ul>
+<li><p>OC</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// UIApplicationShortcutIconType是系统的图片类型，29种类型图片</div><div class="line"> </div><div class="line">   UIApplicationShortcutIcon *shareShortcutIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeShare];</div><div class="line"> </div><div class="line">   UIApplicationShortcutItem *shareShortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@&quot;&quot; localizedTitle:@&quot;分享&quot; localizedSubtitle:@&quot;来点我啊&quot; icon:shareShortcutIcon userInfo:nil];</div><div class="line">  </div><div class="line">  //可以用iconWithTemplateImageName:来自定义图片 shortcut_QR:图片名</div><div class="line">   UIApplicationShortcutIcon *payShortcutIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@&quot;shortcut_imageName&quot;];</div><div class="line">      </div><div class="line">   UIApplicationShortcutItem *payShortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@&quot;&quot; localizedTitle:@&quot;消息&quot; localizedSubtitle:@&quot;不怕不怕&quot; icon:payShortcutIcon userInfo:nil];</div><div class="line">    </div><div class="line">   //将实例化的shortcutItem将入到UIApplication的shortcutItems中就完成了。</div><div class="line">  [UIApplication sharedApplication].shortcutItems = @[shareShortcutItem, payShortcutItem];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>Swift</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//分享</div><div class="line">let icon1 = UIApplicationShortcutIcon(type: .share)</div><div class="line">let shareItem = UIApplicationShortcutItem(type: &quot;&quot;, localizedTitle: &quot;分享&quot;, localizedSubtitle: &quot;来点我&quot;, icon: icon1, userInfo: nil)</div><div class="line">         </div><div class="line">//支付 shortcut_imageName:图片名称</div><div class="line">let icon2 = UIApplicationShortcutIcon(templateImageName: &quot;shortcut_imageName&quot;)</div><div class="line">let playItem = UIApplicationShortcutItem(type: &quot;&quot;, localizedTitle: &quot;支付&quot;, localizedSubtitle: &quot;不怕不怕&quot;, icon: icon2, userInfo: nil)</div><div class="line">  </div><div class="line">UIApplication.shared.shortcutItems = [shareItem,playItem]</div></pre></td></tr></table></figure>
+</li>
+<li><p>UIApplicationShortcutIconType补充说明</p>
+<p>系统一共提供了29种类型样式：</p>
+<p>typedef NS_ENUM(NSInteger, UIApplicationShortcutIconType) {<br>  UIApplicationShortcutIconTypeCompose,<br>  UIApplicationShortcutIconTypePlay,<br>  UIApplicationShortcutIconTypePause,<br>  UIApplicationShortcutIconTypeAdd,<br>  UIApplicationShortcutIconTypeLocation,<br>  UIApplicationShortcutIconTypeSearch,<br>  UIApplicationShortcutIconTypeShare,</p>
+<p>  UIApplicationShortcutIconTypeProhibit,   //从这开始，iOS 9.1+才支持<br>  UIApplicationShortcutIconTypeContact,<br>  UIApplicationShortcutIconTypeHome,<br>  UIApplicationShortcutIconTypeMarkLocation,<br>  UIApplicationShortcutIconTypeFavorite,<br>  UIApplicationShortcutIconTypeLove,<br>  UIApplicationShortcutIconTypeCloud,<br>  UIApplicationShortcutIconTypeInvitation,<br>  UIApplicationShortcutIconTypeConfirmation,<br>  UIApplicationShortcutIconTypeMail,<br>  UIApplicationShortcutIconTypeMessage,<br>  UIApplicationShortcutIconTypeDate,<br>  UIApplicationShortcutIconTypeTime,<br>  UIApplicationShortcutIconTypeCapturePhoto,<br>  UIApplicationShortcutIconTypeCaptureVideo,<br>  UIApplicationShortcutIconTypeTask,<br>  UIApplicationShortcutIconTypeTaskCompleted,<br>  UIApplicationShortcutIconTypeAlarm,<br>  UIApplicationShortcutIconTypeBookmark,<br>  UIApplicationShortcutIconTypeShuffle,<br>  UIApplicationShortcutIconTypeAudio,<br>  UIApplicationShortcutIconTypeUpdate<br>}  </p>
+</li>
+</ul>
+<h4 id="快捷启动后的处理-检测App启动方式"><a href="#快捷启动后的处理-检测App启动方式" class="headerlink" title="快捷启动后的处理(检测App启动方式)"></a>快捷启动后的处理(检测App启动方式)</h4><h5 id="代理接受"><a href="#代理接受" class="headerlink" title="代理接受"></a>代理接受</h5><p>  通过快捷入口进入或者启动app,会实现appDelegate的代理方法:</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandle</div></pre></td></tr></table></figure>
+<p>  我们可以判断shortcutItem.localizedTitle属性的值来判断是从哪一个标签进入的App。</p>
+<h5 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h5><ul>
+<li><p>OC</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">   </div><div class="line">   - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler &#123;</div><div class="line">      </div><div class="line">      //如果是从&quot;分享&quot;这个标签进来的，我们把页面背景颜色修改为黄色，如果是从@&quot;消息&quot;这个标签进来的，我们讲页面背景颜色修改为红色。都不是的话，就直接是白色。</div><div class="line">    if  ([shortcutItem.localizedTitle isEqualToString:@&quot;分享&quot;]) &#123;       </div><div class="line">        self.window.rootViewController.view.backgroundColor = [UIColor yellowColor];</div><div class="line">      &#125; else if ([shortcutItem.localizedTitle isEqualToString:@&quot;消息&quot;]) &#123;       </div><div class="line">        self.window.rootViewController.view.backgroundColor = [UIColor redColor];</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>Swift</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -&gt; Void) &#123;</div><div class="line"></div><div class="line">      if shortcutItem.localizedTitle == &quot;来啊&quot;&#123;     </div><div class="line">      window?.rootViewController?.view.backgroundColor= #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)</div><div class="line">      &#125;else if shortcutItem.localizedTitle == &quot;后门&quot; &#123;  </div><div class="line">      window?.rootViewController?.view.backgroundColor= #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)</div><div class="line">      &#125;</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h4><ul>
+<li><p>UIApplicationLaunchOptionsShortcutItemKey</p>
+<p>在- (BOOL)application:(UIApplication <em>)application didFinishLaunchingWithOptions:(nullable NSDictionary </em>)launchOptions的方法中 。launchOptions 中有个值为UIApplicationLaunchOptionsShortcutItemKey，这个也是获取选择的shortcutItem的方法。</p>
+</li>
+<li><p>注意</p>
+<ol>
+<li>快捷入口 无论是启动app,还是将后台运行的app转为前台都会执行代理方法。</li>
+<li><p>反之，如果快捷入口 是将后台运行的app转为前台都会执行代理方法。是不会走didFinishLaunchingWithOptions:的方法。</p>
+</li>
+<li><p>总结:</p>
+<p><strong>我们处理Home Screen Quick Actions功能时最好统一在代理回调的方法里处理。如果在遇到特殊功能，需要判明该功能是启动了整个app时，我们就可以在didFinishLaunchingWithOptions:的时候来判断加以处理！</strong></p>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="peek-And-pop"><a href="#peek-And-pop" class="headerlink" title="peek And pop"></a>peek And pop</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><ul>
+<li><p>效果演示：</p>
+<ol>
+<li><p>进 “邮件” 收件箱列表：</p>
+<p><img src="/2017/06/28/3D-Touch/140.png" alt=""></p>
+</li>
+<li><p>按住环信发过来的邮件，力度慢慢增加，会pop出详情效果框：</p>
+<p> <img src="/2017/06/28/3D-Touch/150.png" alt=""></p>
+</li>
+<li><p>再使劲达到它的力度，就会等同于你选择了该项，进入详情页面了。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="功能的基本思路："><a href="#功能的基本思路：" class="headerlink" title="功能的基本思路："></a>功能的基本思路：</h4><ol>
+<li>控制器注册预览协议(UIViewControllerPreviewingDelegate)</li>
+<li>遵守协议并实现其必须实现的方法</li>
+</ol>
+<h4 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h4><ul>
+<li><p>OC</p>
+<ol>
+<li><p>注册</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> // self：为视图控制器, soureView: 为实现3DTouch的视图，如果是单独的一个view的话，则效果只对该view有作用， 那到时的gesture和location都是相对于这个soureView的。</div><div class="line">[self registerForPreviewingWithDelegate:self sourceView:self.view];</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li><p>遵守代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@interface ViewController ()&lt;UIViewControllerPreviewingDelegate&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>实现方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">   //MARK: — UIViewControllerPreviewingDelegate</div><div class="line">   //MARK: -- 返回要显示的控制器</div><div class="line">   - (nullable UIViewController *)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext viewControllerForLocation:(CGPoint)location &#123;</div><div class="line"></div><div class="line">   //初始化要显示的控制器</div><div class="line">    UIViewController *childVc = [[UIViewController alloc]init];</div><div class="line"></div><div class="line">   //1.获取手势,我在view上加了一个tableView，这里我是想要获取我们重按的点是点在哪个cell上。</div><div class="line">   UIGestureRecognizer *gesture  =  previewingContext.previewingGestureRecognizerForFailureRelationship;</div><div class="line">  //2.获取手势所在的tableView中的点位</div><div class="line">CGPoint point = [gesture locationInView:self.tableView];</div><div class="line">   //3. 根据这个点获取是第几行,    ROWHight是单个cell的高度</div><div class="line">NSInteger index = floor(point.y/ROWHight);</div><div class="line">   //4.得到第行，而且得到cell</div><div class="line">self.indexPath = [NSIndexPath indexPathForRow:index inSection:0];  </div><div class="line">self.cell =[self.tableView cellForRowAtIndexPath:self.indexPath];</div><div class="line">   </div><div class="line"> // 加个白色背景,这个背影是高清显示的。</div><div class="line">UIView *bgView =[[UIView alloc] initWithFrame:CGRectMake(20, 10, kScreenWidth - 40,kScreenHeight - 20 - 64 * 2)];</div><div class="line">    bgView.backgroundColor = [UIColor whiteColor];</div><div class="line">    bgView.layer.cornerRadius = 10;</div><div class="line">    bgView.clipsToBounds = YES;</div><div class="line">    [childVc.view addSubview:bgView];</div><div class="line">   </div><div class="line">  //展示的标题</div><div class="line">UILabel *lable1 = [[UILabel alloc] initWithFrame:CGRectMake(0,bgView.bounds.size.height/2-40 , bgView.bounds.size.width, 40)];</div><div class="line">    lable1.textAlignment = NSTextAlignmentCenter;</div><div class="line">    lable1.textColor=[UIColor redColor];</div><div class="line">    lable1.text = self.cell.textLabel.text;</div><div class="line">    [bgView addSubview:lable1];</div><div class="line">   </div><div class="line">  // 展示的详情</div><div class="line">UILabel *lable2 = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lable1.frame), bgView.bounds.size.width, 40)];</div><div class="line">    lable2.textAlignment = NSTextAlignmentCenter;</div><div class="line">    lable2.textColor = [UIColor lightGrayColor];</div><div class="line">   NSString *text = self.cell.detailTextLabel.text;</div><div class="line">    lable2.text= text;</div><div class="line">    [bgView addSubview:lable2];</div><div class="line">     </div><div class="line"> //提示lable</div><div class="line">UILabel *detail = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lable2.frame), bgView.bounds.size.width, 40)];</div><div class="line">    detail.textAlignment = NSTextAlignmentCenter;</div><div class="line">    detail.textColor=[UIColor yellowColor];</div><div class="line">    detail.text = @&quot;再按重一点就选择该项了&quot;;</div><div class="line">    [bgView addSubview: detail];   </div><div class="line"></div><div class="line">  //最后返回的展示的控制器</div><div class="line">    return  childVc;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> //MARK: -- 再次重按的时候表示进行选择了，然后消失后会下走的方法</div><div class="line"> - (void)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext commitViewController:(UIViewController*)viewControllerToCommit&#123;</div><div class="line">   </div><div class="line"> //让它走选择了某项的代理方法。</div><div class="line">    [self tableView:self.tableView didSelectRowAtIndexPath:self.indexPath];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="补充说明-1"><a href="#补充说明-1" class="headerlink" title="补充说明"></a>补充说明</h4><ul>
+<li>location是相对于注册source来获取的。</li>
+<li><p>UIViewControllerPreviewing 主要可用的属性,是相对于注册source的属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, readonly) UIGestureRecognizer *previewingGestureRecognizerForFailureRelationship //手势</div><div class="line">@property (nonatomic, readonly) UIView *sourceView  //source当初注册传入的视图</div><div class="line">@property (nonatomic) CGRect sourceRect  //source的frame</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>注册的时候直接用SourceView为Cell。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">        //MARK:-- 返回cell</div><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath&#123;</div><div class="line">    </div><div class="line">     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID forIndexPath:indexPath];</div><div class="line">      if(cell) &#123;</div><div class="line">           cell.textLabel.text = self.dataSouce[indexPath.row][@&quot;title&quot;];</div><div class="line">           cell.detailTextLabel.text  = self.dataSouce[indexPath.row][@&quot;detail&quot;];</div><div class="line">           [self registerForPreviewingWithDelegate:self sourceView:cell];</div><div class="line">          &#125;</div><div class="line">       return  cell;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 2.在代理中获取点击cell就简单多了</div><div class="line">- (nullable UIViewController *)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext viewControllerForLocation:(CGPoint)location &#123;  </div><div class="line">  </div><div class="line"> UIViewController *childVc = [[UIViewController alloc]init];   </div><div class="line"></div><div class="line">  // 方法一：  </div><div class="line">self.cell  = (UITableViewCell *) previewingContext.sourceView;//这个可以获取注册的sourceView</div><div class="line">CGRect frame = previewingContext.sourceRect;//这个可以获取注册的sourceView.frame及大小</div><div class="line"></div><div class="line"> //  方法二：</div><div class="line"> //  UIGestureRecognizer *gesture  =  previewingContext.previewingGestureRecognizerForFailureRelationship;//    //2.获取手势</div><div class="line"> //   UIGestureRecognizer *gesture  =  previewingContext.previewingGestureRecognizerForFailureRelationship;//    //2.获取手势所在的tableView中的点位</div><div class="line">//    self.cell   = (UITableViewCell *)gesture.view;//这个可以获取点击所得到的cell;</div><div class="line">  </div><div class="line"> return    childVc;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>Swift </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line">  class NexViewController: UIViewController&#123;</div><div class="line">let CellId = &quot;CellId&quot;</div><div class="line">var currentCell : UITableViewCell?</div><div class="line"></div><div class="line"> @IBOutlet weak var tableView: UITableView!</div><div class="line">   </div><div class="line"> var dataSource : [[String : Any]] = [];</div><div class="line">    </div><div class="line"> override func viewDidLoad() &#123;</div><div class="line">       super.viewDidLoad()</div><div class="line">       getData()</div><div class="line">       &#125;</div><div class="line">&#125;</div><div class="line"> //遵守协议</div><div class="line">extension NexViewController : UITableViewDataSource,UITableViewDelegate,UIViewControllerPreviewingDelegate</div><div class="line">&#123;   </div><div class="line">   //TODO: -- 加载数据</div><div class="line">       func getData() &#123;</div><div class="line">            for i in 0..&lt;20&#123;</div><div class="line">              let dic = [&quot;title&quot; : &quot;测试标题 + \(i+1)&quot;, &quot;detail&quot; : &quot;详情资料是这样的 + \(i+1)&quot;];</div><div class="line">              dataSource.append(dic)</div><div class="line">        &#125;</div><div class="line">       tableView.reloadData()</div><div class="line">    &#125;</div><div class="line">   </div><div class="line"> //MARK: -- UITableViewDataSource</div><div class="line"> //TODO:-- 每个section有多少条</div><div class="line"> public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int</div><div class="line">&#123;</div><div class="line">    return dataSource.count</div><div class="line">  &#125;</div><div class="line">      </div><div class="line"> //TODO:-- 返回Cell   </div><div class="line">public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell</div><div class="line">&#123;</div><div class="line">       let cell = tableView.dequeueReusableCell(withIdentifier: CellId, for: indexPath)</div><div class="line">     cell.textLabel?.text = (dataSource[indexPath.row] as! Dictionary)[&quot;title&quot;]</div><div class="line">     cell.detailTextLabel?.text = (dataSource[indexPath.row] as! Dictionary)[&quot;detail”]</div><div class="line"></div><div class="line"> // 注册3DTouch</div><div class="line">     registerForPreviewing(with: self, sourceView: cell)</div><div class="line">     return  cell    </div><div class="line">   &#125;</div><div class="line">    </div><div class="line">    </div><div class="line"> //TODO: -- UITableViewDelegate     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)&#123;</div><div class="line">      tableView.deselectRow(at: indexPath, animated: true)</div><div class="line">      performSegue(withIdentifier: &quot;detail&quot;, sender: dataSource[indexPath.row])</div><div class="line">     &#125;</div><div class="line">    </div><div class="line"> //重写segue跳转方法</div><div class="line">   override func prepare(for segue: UIStoryboardSegue, sender: Any?) &#123;      </div><div class="line">   if segue.identifier == “detail&quot;&#123;</div><div class="line">           if let viewcontroller = segue.destination as? DetailViewController&#123;</div><div class="line">              viewcontroller.info = sender as! [String : Any]?</div><div class="line">            &#125;    </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line"> //MARK: -- UIViewControllerPreviewingDelegate     </div><div class="line">public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -&gt; UIViewController?&#123;</div><div class="line">    </div><div class="line">   let childVC  = UIViewController()</div><div class="line">   currentCell = previewingContext.sourceView as? UITableViewCell</div><div class="line"></div><div class="line">  //TODO: -- 加白色背景</div><div class="line">        let bgView = UIView(frame: .init(x: 20, y: 10, width: (view.window?.bounds.size.width)!-40 , height: (view.window?.bounds.size.height)! - 20-64*2))</div><div class="line">        bgView.backgroundColor= #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)</div><div class="line">        bgView.layer.cornerRadius = 10.0</div><div class="line">        bgView.clipsToBounds = true</div><div class="line">       childVC.view.addSubview(bgView)</div><div class="line">      </div><div class="line"> // 标题</div><div class="line">    let lable1 = UILabel(frame: .init(x: 0, y: bgView.bounds.size.height/2 - 40, width: bgView.bounds.size.width, height: 40))</div><div class="line">     lable1.textAlignment = .center</div><div class="line">     lable1.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)</div><div class="line">     lable1.text = currentCell?.textLabel?.text</div><div class="line">     bgView.addSubview(lable1)</div><div class="line">        </div><div class="line"> //详情      </div><div class="line">    let lable2 = UILabel(frame: .init(x: 0, y: lable1.frame.maxY, width: bgView.bounds.size.width, height: 40))</div><div class="line">    lable2.textAlignment = .center</div><div class="line">    lable2.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)</div><div class="line">    lable2.text = currentCell?.detailTextLabel?.text</div><div class="line">    bgView.addSubview(lable2)</div><div class="line">       </div><div class="line"> //提示      </div><div class="line">   let detail = UILabel(frame: .init(x: 0, y: lable2.frame.maxY, width: bgView.bounds.size.width, height: 40))</div><div class="line">   detail.textAlignment = .center</div><div class="line">   detail.textColor= #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)</div><div class="line">   detail.text = &quot;再按重一点就选择该项了&quot;</div><div class="line">   bgView.addSubview(detail)</div><div class="line">              </div><div class="line"> return childVC</div><div class="line">&#125;</div><div class="line">    </div><div class="line">   //再按重些会选择该项，消失展示框后需要走的代码</div><div class="line">public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)&#123;</div><div class="line">  </div><div class="line"> let indexPath = tableView.indexPath(for: currentCell!)  </div><div class="line"> if indexPath != nil&#123;</div><div class="line">    tableView(tableView, didSelectRowAt: indexPath!)</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">   </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="Force-Properties-力量属性"><a href="#Force-Properties-力量属性" class="headerlink" title="Force Properties 力量属性"></a>Force Properties 力量属性</h3><h4 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h4><p>iOS9为我们提供了一个新的交互参数:力度。我们可以检测某一交互的力度值，来做相应的交互处理。例如，我们可以通过力度来控制快进的快慢，音量增加的快慢等。</p>
+<p>UITouch新增了两个属性：</p>
+<ul>
+<li>open var force: CGFloat{ get }    //force ： 手指按下的力度</li>
+<li><p>open var maximumPossibleForce: CGFloat { get }  //maximumPossibleForce ： 最大可能的力度</p>
+<p>在touch中就可以获取这两个值。所以我们就可以触摸按压的时候实现用按压力度来实现酷炫的效果</p>
+<h4 id="示例代码-2"><a href="#示例代码-2" class="headerlink" title="示例代码"></a>示例代码</h4></li>
+<li><p>OC </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 根据按压的力度来改变当前视图的颜色</div><div class="line">-  (void)touchesMoved:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent*)event&#123;</div><div class="line"></div><div class="line">    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) &#123;  </div><div class="line">     UITouch *touch = [[touches allObjects] firstObject];</div><div class="line">     NSLog(@&quot;\n force:%f,maximumPossibleForce:%ff&quot;,touch.force,touch.maximumPossibleForce);</div><div class="line">     CGFloat dito = touch.force/touch.maximumPossibleForce;</div><div class="line">     self.view.backgroundColor = [UIColor colorWithRed:dito green:dito blue:1/dito alpha:1];</div><div class="line">  </div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>Swift </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> //TODO:--重写touchesMoved的方法,根据按压的力度来改变当前视图的颜色</div><div class="line">override func touchesMoved(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) &#123;</div><div class="line">        </div><div class="line">     if traitCollection.forceTouchCapability == .available&#123;  </div><div class="line">           let touch = touches.first</div><div class="line">           print(&quot;\n force: \(touch!.force),maximumPossibleForce: \(touch?.maximumPossibleForce)&quot;)</div><div class="line">           let dito = (touch?.force)! / (touch?.maximumPossibleForce)!</div><div class="line">           view.backgroundColor = UIColor(red: 0.3+5*dito, green: 0.3+5*dito, blue: dito, alpha:1)</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="Web-View-peek-and-pop-API-HTML链接预览功能"><a href="#Web-View-peek-and-pop-API-HTML链接预览功能" class="headerlink" title="Web View peek and pop API HTML链接预览功能"></a>Web View peek and pop API HTML链接预览功能</h3><h4 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h4><p> 原生的safari浏览器中的超链接可以支持3D touch，出现超链接的预览，使用方法和前文中提到的方法类似。ios 9 中增加了一个新的浏览器控制器SFSafariViewController。它可以在你的程序中直接嵌入 Safari浏览器，而且支持3DTouch效果。</p>
+<h4 id="示例代码-3"><a href="#示例代码-3" class="headerlink" title="示例代码"></a>示例代码</h4><ul>
+<li><p>OC </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 1.首先导入SafariServices.h</div><div class="line">   #import &lt;SafariServices/SafariServices.h&gt;</div><div class="line"></div><div class="line"> // 2.设置连接：</div><div class="line"> SFSafariViewController *safariView = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@&quot;https://www.baidu.com&quot;]        entersReaderIfAvailable:YES];</div><div class="line"></div><div class="line"> // 3.推出控制器：</div><div class="line">  [self.navigationController pushViewController:safariView animated:YES];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>Swift</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> // 1. 导入框架</div><div class="line">import SafariServices</div><div class="line"></div><div class="line"> // 2. 使用</div><div class="line">let url = URL(string: &quot;https://www.baidu.com&quot;)     </div><div class="line">let safariView =  SFSafariViewController(url: url! , entersReaderIfAvailable: true)</div><div class="line">navigationController?.pushViewController(safariView, animated: true)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>3D Touch确实挺炫酷的，特别是<strong>Home Screen Quick Actions</strong>(主屏幕快捷入口)和<br><strong>peek And pop</strong>(预览和弹出功能),增加了用户体验。</p>
+<p> 这里我只是简单地介绍了它的使用,如有疑问请Q我: <strong>342112780</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/28/iOS手电筒功能开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/28/iOS手电筒功能开发/" itemprop="url">
+                  iOS手电筒功能开发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T14:18:34+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p> AVCaptureDevice(捕捉设备类)可以完成手机手电筒功能的开发，它属于AVFoundation框架。开发也比较简单，我这里简单地介绍一下。</p>
+<hr>
+<h3 id="OC中的代码示例"><a href="#OC中的代码示例" class="headerlink" title="OC中的代码示例"></a>OC中的代码示例</h3><h4 id="导入框架"><a href="#导入框架" class="headerlink" title="导入框架"></a>导入框架</h4><pre><code>#import &lt;AVFoundation/AVFoundation.h&gt;
+</code></pre><h4 id="定义属性"><a href="#定义属性" class="headerlink" title="定义属性"></a>定义属性</h4><pre><code>@property(nonatomic,strong)AVCaptureDevice *device;
+@property(nonatomic,assign)BOOL available;
+</code></pre><h4 id="初始化捕捉设备对象"><a href="#初始化捕捉设备对象" class="headerlink" title="初始化捕捉设备对象"></a>初始化捕捉设备对象</h4><pre><code>//初始化捕捉设备对象
+self.device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+</code></pre><h4 id="手电筒功能是否可用"><a href="#手电筒功能是否可用" class="headerlink" title="手电筒功能是否可用"></a>手电筒功能是否可用</h4><pre><code> //获取是否可用手电筒功能
+ self.available = self.device.hasTorch;
+//提示
+if (!self.available) {
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@&quot;提示&quot; message:@&quot;设备不可用&quot; delegate:nil cancelButtonTitle:@&quot;确定&quot; otherButtonTitles:nil, nil];
+    [alertView show];
+}
+</code></pre><h4 id="打开手电筒"><a href="#打开手电筒" class="headerlink" title="打开手电筒"></a>打开手电筒</h4><pre><code> if (self.available) {
+    [self.device lockForConfiguration:nil];
+    // AVCaptureTorchModeOn:开 AVCaptureTorchModeOff:关 AVCaptureTorchModeAuto:自动
+    self.device.torchMode = AVCaptureTorchModeOn;
+    [self.device unlockForConfiguration];
+}
+</code></pre><h4 id="关闭手电筒"><a href="#关闭手电筒" class="headerlink" title="关闭手电筒"></a>关闭手电筒</h4><pre><code> if (self.available) {
+    [self.device lockForConfiguration:nil];
+    // AVCaptureTorchModeOn:开 AVCaptureTorchModeOff:关 AVCaptureTorchModeAuto:自动
+    self.device.torchMode = AVCaptureTorchModeOff;
+    [self.device unlockForConfiguration];
+}
+</code></pre><hr>
+<h3 id="Switf中的代码示例-跟OC同理"><a href="#Switf中的代码示例-跟OC同理" class="headerlink" title="Switf中的代码示例(跟OC同理)"></a>Switf中的代码示例(跟OC同理)</h3><h4 id="导入框架-1"><a href="#导入框架-1" class="headerlink" title="导入框架"></a>导入框架</h4><pre><code>import AVFoundation
+</code></pre><h4 id="定议成属性并懒加载捕捉设备对象"><a href="#定议成属性并懒加载捕捉设备对象" class="headerlink" title="定议成属性并懒加载捕捉设备对象"></a>定议成属性并懒加载捕捉设备对象</h4><pre><code>var isflashlight = false
+lazy var device:AVCaptureDevice? = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+</code></pre><h4 id="手电筒功能是否可用-1"><a href="#手电筒功能是否可用-1" class="headerlink" title="手电筒功能是否可用"></a>手电筒功能是否可用</h4><pre><code> //MARK: -- 是否支持手电筒功能
+func supportFlashlight(){
+    isflashlight = device?.hasTorch ?? false
+    if !isflashlight {
+    let alert =  UIAlertView(title: &quot;提示&quot;, message: &quot;设备不支持&quot;, delegate: nil, cancelButtonTitle: &quot;确定&quot;)
+    alert.show()
+    }  
+}
+</code></pre><h4 id="打开或者关闭手电筒"><a href="#打开或者关闭手电筒" class="headerlink" title="打开或者关闭手电筒"></a>打开或者关闭手电筒</h4><pre><code>//MARK: -- true:为打开，false:为关闭
+
+func flashlight(_ sure : Bool ) {
+    if sure {
+        //打开
+        do {
+            try device!.lockForConfiguration()
+            device!.torchMode = AVCaptureTorchMode.on
+            device!.unlockForConfiguration()
+         } catch  {
+
+          }
+
+    }else{
+        //关闭
+         do {
+            try device!.lockForConfiguration()
+            device!.torchMode = AVCaptureTorchMode.off
+            device!.unlockForConfiguration()
+         } catch  {
+
+          }
+
+     }
+}
+</code></pre><hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p> 是不是特别简单啊？如果有什么疑问可以Q我:<strong>342112780</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/20/遇到的问题-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1110,7 +1649,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
       
         
           
-            <p>在<a href="https://github.com" target="_blank" rel="external">github</a>和<a href="https://git.oschina.net" target="_blank" rel="external">码云</a>上需要做得方便一些，一般都会配置SSH。而且这个SSH都是能用的。</p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在<a href="https://github.com" target="_blank" rel="external">github</a>和<a href="https://git.oschina.net" target="_blank" rel="external">码云</a>上需要做得方便一些，一般都会配置SSH。而且这个SSH都是能用的。</p>
 <hr>
 <h3 id="检查是否存在SSH-key"><a href="#检查是否存在SSH-key" class="headerlink" title="检查是否存在SSH key"></a>检查是否存在SSH key</h3><p>如果有的话，可以直接走第3步，直接拷贝SSH key到需要的地方去，也可以再次走第2步，覆盖重新生成SSH key.</p>
 <ul>
@@ -1316,8 +1855,8 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
       
         
           
-            <p>Auto sizing cell -estimatedRowHeight属性</p>
-<hr>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><hr>
+<p>Auto sizing cell -estimatedRowHeight属性</p>
 <p>iOS8之后，UITableView新增加了estimatedRowHeight属性，这样，我们可以用它来实现UITableViewCell的自动布局。就不用去计算每个cell上Label的高度再去约定cell的高度，甚至可以不用去实现heightForRowAtIndexPath的代理方法。</p>
 <hr>
 <h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="先新建UITableViewCell"><a href="#先新建UITableViewCell" class="headerlink" title="先新建UITableViewCell"></a>先新建UITableViewCell</h4><p>然后我们先添加上约束。这里我直接在storyboard上拉的，并关联Cell以便以自定的属性赋值。</p>
@@ -1480,7 +2019,7 @@ return 60;//相对的计算一下高度。
       
         
           
-            <p>记得以前刚开始用Xcode进行iOS开发的时候,一看到Toolbar不显示，就立马有点呆了，特别是显示不全的话。这里我做一个简单的总结: 1.Xcode本身就可以控制Toolbar是否显示的。2.可能就出现Toolbar显示不全，就是没有显示工程以及选择运行设备(选择模拟器)的选项。</p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>记得以前刚开始用Xcode进行iOS开发的时候,一看到Toolbar不显示，就立马有点呆了，特别是显示不全的话。这里我做一个简单的总结: 1.Xcode本身就可以控制Toolbar是否显示的。2.可能就出现Toolbar显示不全，就是没有显示工程以及选择运行设备(选择模拟器)的选项。</p>
 <hr>
 <h3 id="Toolrbar的显示和隐藏"><a href="#Toolrbar的显示和隐藏" class="headerlink" title="Toolrbar的显示和隐藏"></a>Toolrbar的显示和隐藏</h3><p>在<strong>菜单栏</strong>中 点击”<strong>View</strong>“ 出现下拉菜单 ，可以选择 “<strong>Hide Toolbar</strong>“和”<strong>Show Toolbar</strong>“两种状态,对Toolbar进行控制。</p>
 <p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb1.png" alt="Toolbar的控制"></p>
@@ -1668,7 +2207,7 @@ return 60;//相对的计算一下高度。
       
         
           
-            <h3 id="NSOperationQueue要实现很简单"><a href="#NSOperationQueue要实现很简单" class="headerlink" title="NSOperationQueue要实现很简单"></a>NSOperationQueue要实现很简单</h3><p>大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。</p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。</p>
 <pre><code> //创建一个队列(非主队列)
 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
@@ -1707,401 +2246,6 @@ dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAU
 dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 </code></pre><hr>
 <p> 关于信号量的一些深刻的理解，可以察看 <a href="http://blog.csdn.net/fhbystudy/article/details/25918451" target="_blank" rel="external">fhbystudy的分享</a>，也谢谢他的分享！</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/10/Markdown语法的简单说明/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/10/Markdown语法的简单说明/" itemprop="url">
-                  Markdown语法的简单说明
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T10:42:22+08:00">
-                2017-04-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/others/" itemprop="url" rel="index">
-                    <span itemprop="name">others</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>总共可以有六级标题，标题用#后面需要加一个空格,抒写如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 标题一</div><div class="line">## 标题二</div><div class="line">### 标题三</div><div class="line">#### 标题四</div><div class="line">##### 标题五</div><div class="line">###### 标题六</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><h4 id="内容-可也部分包装成块-看看内容就知道了"><a href="#内容-可也部分包装成块-看看内容就知道了" class="headerlink" title="`内容` 可也部分包装成块: 看看内容就知道了"></a>`内容` 可也部分包装成块: 看看<code>内容</code>就知道了</h4><p><code>这是部分块</code></p>
-<h4 id="用-内容-包裹的内容会被灰色框包裹成块。"><a href="#用-内容-包裹的内容会被灰色框包裹成块。" class="headerlink" title="用 ``` 内容 ```包裹的内容会被灰色框包裹成块。"></a>用 ``` 内容 ```包裹的内容会被灰色框包裹成块。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">用三个点顿号</div></pre></td></tr></table></figure>
-<h4 id="用-内容-也一样可以"><a href="#用-内容-也一样可以" class="headerlink" title="用~~~内容~~~ 也一样可以"></a>用~~~内容~~~ 也一样可以</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">也可以用三个~线</div></pre></td></tr></table></figure>
-<h4 id="前边四个空格"><a href="#前边四个空格" class="headerlink" title="前边四个空格"></a>前边四个空格</h4><pre><code>在前边空四格
-</code></pre><hr>
-<h3 id="有序列表和无序列表"><a href="#有序列表和无序列表" class="headerlink" title="有序列表和无序列表"></a>有序列表和无序列表</h3><h4 id="用-，-还是需要一个空格，就可以显示无序列表"><a href="#用-，-还是需要一个空格，就可以显示无序列表" class="headerlink" title="用*，- + 还是需要一个空格，就可以显示无序列表"></a>用*，- + 还是需要一个空格，就可以显示无序列表</h4><ul>
-<li>你好1</li>
-<li>你好2</li>
-</ul>
-<ul>
-<li>你好3</li>
-</ul>
-<ul>
-<li>你好4</li>
-</ul>
-<h4 id="用1-2-3-后接空格，可以显示有序列列表"><a href="#用1-2-3-后接空格，可以显示有序列列表" class="headerlink" title="用1.  2.  3.  后接空格，可以显示有序列列表"></a>用1.  2.  3.  后接空格，可以显示有序列列表</h4><p><em>注意它不会因为前面数据的不对而不从1开始排序</em></p>
-<ol>
-<li>这是1</li>
-<li>这是2</li>
-<li>这是3</li>
-<li>这是4</li>
-</ol>
-<hr>
-<h3 id="文本的处理"><a href="#文本的处理" class="headerlink" title="文本的处理"></a>文本的处理</h3><h4 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h4><p>  用**内容**  内容将以粗体显示: <strong>粗体</strong></p>
-<pre><code>**这是粗体字**
-</code></pre><h4 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h4><p>  用*内容*  内容会以斜体体字显示: <em>斜体</em></p>
-<pre><code>*这是斜体*
-</code></pre><h4 id="文字删除线"><a href="#文字删除线" class="headerlink" title="文字删除线"></a>文字删除线</h4><p>   这个在markdown上我还没有看出效果，不是知道是不是版本更新的原因。<br>   用~~内容~~ 在内容文字上会有删除线: <del>文字删除线</del></p>
-<pre><code>~~这是文字删除线~~
-</code></pre><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>用三个*或者\—号，可以作一条分割线</p>
-<hr>
-<hr>
-<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x31;&#53;&#50;&#48;&#x38;&#x31;&#x30;&#53;&#x34;&#52;&#48;&#64;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;">&#x31;&#53;&#50;&#48;&#x38;&#x31;&#x30;&#53;&#x34;&#52;&#48;&#64;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;</a></p>
-<h4 id="网址连接"><a href="#网址连接" class="headerlink" title="网址连接"></a>网址连接</h4><p>用<code>&lt;网址&gt;</code>有效连接: <a href="https://maojianxiang.github.io">https://maojianxiang.github.io</a></p>
-<hr>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><h4 id="图片跟网址连接相似，多了一个"><a href="#图片跟网址连接相似，多了一个" class="headerlink" title="图片跟网址连接相似，多了一个!"></a>图片跟网址连接相似，多了一个!</h4><p><code>!+[]+(图片的地址,相对路径也行)</code></p>
-<p><img src="http://on55qmgxp.bkt.clouddn.com/avatar.png" alt=""></p>
-<hr>
-<h4 id="网址连接-带别名"><a href="#网址连接-带别名" class="headerlink" title="网址连接(带别名)"></a>网址连接(带别名)</h4><p>用 [别名](网址）显示别点，点击跳转到网址</p>
-<p><code>头像 [我的头像](http://on55qmgxp.bkt.clouddn.com/avatar.png)</code> 得到的效果如下</p>
-<p>头像 <a href="http://on55qmgxp.bkt.clouddn.com/avatar.png" target="_blank" rel="external">我的头像</a></p>
-<p>博客 <a href="https://maojianxiang.github.io">我的博客</a></p>
-<hr>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><code>可以是多级引用，只需要多加&gt;即可</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; 引用 </div><div class="line">&gt; &gt;再次引用</div><div class="line">&gt; &gt; &gt; 三次引用</div><div class="line">&gt; &gt; &gt; &gt; 四次引用 </div><div class="line">&gt; &gt; &gt; &gt; &gt; ok 完了</div><div class="line"></div><div class="line">效果如下所示：</div></pre></td></tr></table></figure>
-<blockquote>
-<p>引用 </p>
-<blockquote>
-<p>再次引用</p>
-<blockquote>
-<p>三次引用</p>
-<blockquote>
-<p>四次引用 </p>
-<blockquote>
-<p>ok 完了</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<hr>
-<h3 id="表格Table"><a href="#表格Table" class="headerlink" title="表格Table"></a>表格Table</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">姓名 | 年龄 | 地点</div><div class="line">----|---- | ----</div><div class="line">李明 | 15 |  place1</div><div class="line">王强 | 52 |  place2</div><div class="line">天明 | 30 |  place3</div><div class="line"></div><div class="line">效果如下所示:</div></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>姓名</th>
-<th>年龄</th>
-<th>地点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>李明</td>
-<td>15</td>
-<td>place1</td>
-</tr>
-<tr>
-<td>王强</td>
-<td>52</td>
-<td>place2</td>
-</tr>
-<tr>
-<td>天明</td>
-<td>30</td>
-<td>place3</td>
-</tr>
-</tbody>
-</table>
-<h3 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h3><p>  最后再介绍一个数学公司,我也不常用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;math display=&quot;block&quot;&gt;</div><div class="line">    &lt;msubsup&gt;&lt;mi&gt;A&lt;/mi&gt; &lt;mi&gt;S&lt;/mi&gt; &lt;mi&gt;T&lt;/mi&gt;&lt;/msubsup&gt;</div><div class="line">    &lt;mo&gt;=&lt;/mo&gt;</div><div class="line">    &lt;mi&gt;B&lt;/mi&gt;</div><div class="line">&lt;/math&gt;</div><div class="line"></div><div class="line">效果如下所示:</div></pre></td></tr></table></figure>
-<math display="block"><br>    <msubsup><mi>A</mi> <mi>S</mi> <mi>T</mi></msubsup><br>    <mo>=</mo><br>    <mi>B</mi><br></math>
-
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/09/OC代码转化成C++代码/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/09/OC代码转化成C++代码/" itemprop="url">
-                  OC代码转化成C++代码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T08:59:04+08:00">
-                2017-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/others/" itemprop="url" rel="index">
-                    <span itemprop="name">others</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>其实平时写的OC代码最后都是通过runtime转化成了C++代码，对于OC的文件，我们也可以转化成C语言的代码文件，这对于我们 研究低层，理解运行方式和实现原理 是一种不错的办法，不过这样就要求你要看得懂C语言的代码。</p>
-<hr>
-<ul>
-<li><p>打开终端，进入OC代码文件所在的目录 </p>
-<pre><code>cd + 文件所在的文件夹，这里我是以main.m为例。
-</code></pre></li>
-<li><p>用clang命令转化OC代码文件  </p>
-<pre><code>clang -rewrite-objc main.m
-</code></pre></li>
-<li><p>现在在当前文件就生成了同名字，后辍为.cpp的C代码文件、可以直接用终端找开</p>
-<pre><code>open main.cpp 
-</code></pre></li>
-<li><p>这是我成功将main.m 转化出的结果.</p>
-</li>
-</ul>
-<p><img src="/2017/04/09/OC代码转化成C++代码/show1.png" alt=""></p>
-<ul>
-<li>你可仔细地进行对比研究了。</li>
-</ul>
 <hr>
 
           
@@ -2183,7 +2327,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2201,7 +2345,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

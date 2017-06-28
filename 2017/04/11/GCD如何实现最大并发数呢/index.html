@@ -105,28 +105,31 @@
 
 
 
-<meta name="description" content="NSOperationQueue要实现很简单大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。
+<meta name="description" content="前言大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。
  //创建一个队列(非主队列)
 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
-//设置最大并发量(最多同">
+//设置最大并发量(最多同时执行10个任务)
+queue.maxC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GCD如何实现最大并发数呢?">
 <meta property="og:url" content="https://maojianxiang.github.io/2017/04/11/GCD如何实现最大并发数呢/index.html">
 <meta property="og:site_name" content="小毛的博客">
-<meta property="og:description" content="NSOperationQueue要实现很简单大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。
+<meta property="og:description" content="前言大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。
  //创建一个队列(非主队列)
 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
-//设置最大并发量(最多同">
-<meta property="og:updated_time" content="2017-04-11T16:15:28.000Z">
+//设置最大并发量(最多同时执行10个任务)
+queue.maxC">
+<meta property="og:updated_time" content="2017-06-28T07:04:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GCD如何实现最大并发数呢?">
-<meta name="twitter:description" content="NSOperationQueue要实现很简单大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。
+<meta name="twitter:description" content="前言大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。
  //创建一个队列(非主队列)
 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
-//设置最大并发量(最多同">
+//设置最大并发量(最多同时执行10个任务)
+queue.maxC">
 
 
 
@@ -388,7 +391,7 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
       
 
       
-        <h3 id="NSOperationQueue要实现很简单"><a href="#NSOperationQueue要实现很简单" class="headerlink" title="NSOperationQueue要实现很简单"></a>NSOperationQueue要实现很简单</h3><p>大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。</p>
 <pre><code> //创建一个队列(非主队列)
 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
@@ -548,7 +551,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -566,7 +569,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -630,7 +633,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSOperationQueue要实现很简单"><span class="nav-number">1.</span> <span class="nav-text">NSOperationQueue要实现很简单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对GCD而，只有靠自己想方法处理"><span class="nav-number">2.</span> <span class="nav-text">对GCD而，只有靠自己想方法处理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对GCD而，只有靠自己想方法处理"><span class="nav-number">2.</span> <span class="nav-text">对GCD而，只有靠自己想方法处理</span></a></li></ol></div>
             
 
           </div>
