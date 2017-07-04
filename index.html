@@ -278,6 +278,263 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/07/04/Swift中的高阶函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/07/04/Swift中的高阶函数/" itemprop="url">
+                  Swift中的高阶函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-04T17:10:46-07:00">
+                2017-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>   Swift的标准数组支持三个高阶函数：map，filter和reduce,以及map的扩展flatMap。Objective-C的NSArray没有实现这些方法，但是开源社区弥补了这个不足。</p>
+<p>极大地体现了Swift的高大功能和优点。</p>
+<hr>
+<h3 id="了解闭包"><a href="#了解闭包" class="headerlink" title="了解闭包"></a>了解闭包</h3><p>   Swift一大特性便是使用简洁的头等函数（闭包）语法代替了复杂的blocks语法。头等函数-即可将函数当作参数传递给其他的函数，或从其他的函数里返回出值，并且可以将他们设定为变量，或者将他们存储在数据结构中。</p>
+<p> 闭包的形式： （(参数) -&gt; 返回值)</p>
+<ol>
+<li><p>我们先写一个求立方的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> //MARK: -- 立方</div><div class="line">func cube(_ a: Float) -&gt; Float&#123;</div><div class="line">    return a*a*a</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>求两数进行f函数运算后的平均值的函数 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func averageOfFunction(_ a: Float ,_ b: Float ,_ f: ((Float) -&gt; Float)) -&gt; Float&#123;   </div><div class="line">  return (f(a) + f(b))/2</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>进行调用，简化闭包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//直接传参数和函数名</div><div class="line">let sum1 =   averageOfFunction(2, 3, cube)</div><div class="line"></div><div class="line">//直接把闭包做为它的函数方法参数</div><div class="line">let sum2 =   averageOfFunction(2, 3, &#123;(x : Float) -&gt;  Float in x*x*x &#125;)</div><div class="line"></div><div class="line">//隐式推断输入值为一个Float</div><div class="line">let sum3 =   averageOfFunction(2, 3, &#123;x -&gt; Float in x*x*x &#125;)</div><div class="line"></div><div class="line">//把retuen一起忽略</div><div class="line">let sum4 =   averageOfFunction(2, 3, &#123;x in x*x*x &#125;)</div><div class="line"></div><div class="line">//使用默认参数名，最简化地写法</div><div class="line">let sum5 =   averageOfFunction(2, 3, &#123; $0*$0*$0 &#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>默认参数名补充</p>
+<p>我们还可以忽略指定参数名，使用默认参数名$0（如果函数接收多个参数，使用$K作为第K-1个参数，如$0，$1，$2……）</p>
+<p>在高阶函数中也会根据闭包的的简化来进行简化代码。</p>
+</li>
+</ol>
+<hr>
+<h3 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h3><ol>
+<li><p>map需求</p>
+<p>map用于将每个数组元素通过某个方法进行转换。<br>我们用一个Int类型数组，想把每个数后面添加一个字符“元”，把数组转成字符串数组 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let moneyArray = [12,34,8,17,91,2,82]</div><div class="line">var stringArray : [String] = []//结果数组</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>一般的思维</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for money in moneyArray &#123;</div><div class="line">   stringArray.append(&quot;\(money)元&quot;)</div><div class="line">    &#125;    </div><div class="line">print(stringArray)</div></pre></td></tr></table></figure>
+</li>
+<li><p>map的函数介绍</p>
+<p>public func map<t>(_ transform: (Element) throws -&gt; T) rethrows -&gt; [T]</t></p>
+<p>以一个命名函数transform作为参数，transform负责把元素Element转成类型T并返回一个类型T的数组。</p>
+<p>在我们的事例中，T为Int，T为String，作为转换函数传给map的是一个把Int转成String</p>
+</li>
+<li><p>map的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">stringArray = moneyArray.map(&#123; (a: Int) -&gt; String in</div><div class="line">  return &quot;\(a)元&quot;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//MARK: -- 可以直接把代码换成一个简化的简约闭包</div><div class="line"> stringArray = moneyArray.map(&#123;money in &quot;\(money)元&quot;&#125;)</div><div class="line"> print(stringArray)</div><div class="line"></div><div class="line">//MARK: -- 最简约的写法，采用默认参数</div><div class="line">stringArray = moneyArray.map(&#123;&quot;\($0)元&quot;&#125;)</div><div class="line">print(stringArray)</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><ol>
+<li><p>filter需求</p>
+<p>filter用于选择数组元素中满足某种条件的元素。使用上面的例子，筛选出大于20的元素，结果应该是[34,91,82]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var  filterArray : [Int] =[]//结果数组</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>一般的思维</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> for money in moneyArray &#123;</div><div class="line">       if money &gt; 20&#123;</div><div class="line">            filterArray.append(money)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">   </div><div class="line">print(filterArray)</div></pre></td></tr></table></figure>
+</li>
+<li><p>filter的函数介绍</p>
+<p>public func filter(_ isIncluded: (Element) throws -&gt; Bool) rethrows -&gt; [Element]</p>
+<p>以一个命名函数isIncluded作为参数,isIncluded返回true或者false,对原数组元素Element调用isIncluded时，只有返回true的元素会通过筛选，从而放入返回数组 [Element]中</p>
+</li>
+<li><p>filter的方法</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> filterArray = moneyArray.filter(&#123; (a: Int) -&gt; Bool in</div><div class="line">   return a &gt; 20</div><div class="line">&#125;)       </div><div class="line"> print(filterArray)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> //MARK: — 一个简化的简约闭包</div><div class="line">filterArray = moneyArray.filter(&#123;money in money &gt; 30&#125;)       </div><div class="line">print(filterArray)</div><div class="line"></div><div class="line"> //MARK: -- 最简约的写法，采用默认参数</div><div class="line">filterArray = moneyArray.filter(&#123;$0 &gt; 30&#125;)       </div><div class="line">print(filterArray)</div></pre></td></tr></table></figure>
+</code></pre><hr>
+<h3 id="Reduce"><a href="#Reduce" class="headerlink" title="Reduce"></a>Reduce</h3><ol>
+<li><p>reduce需求</p>
+<p>reduce方法把数组元素组合计算为一个值。我们使用上面例子计算数组元素的和，结果应该为246(12+34+8+17+91+2+82) 以及: 828102912(12 X 34 X 8 X 17 X 91 X 2 X 82)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var  filterArray : [Int] =[]//结果数组</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>一般的思维</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//MARK: — 求和</div><div class="line">var sum = 0</div><div class="line">for money in moneyArray &#123;</div><div class="line">        sum += money</div><div class="line">    &#125;</div><div class="line">print(sum)</div><div class="line"></div><div class="line">//MARK: — 求乘积</div><div class="line">  var product = 1  </div><div class="line">  for money in moneyArray &#123;</div><div class="line">        product = product * money</div><div class="line">    &#125;  </div><div class="line"> print(product)</div></pre></td></tr></table></figure>
+</li>
+<li><p>Reduce的函数介绍</p>
+<p>Reduce便可用于快速完成这类操作，通过指定一个初始值和一个组合元素的方法.</p>
+<p>public func reduce<result>(<em> initialResult: Result, </em> nextPartialResult: (Result, Element) throws -&gt; Result) rethrows -&gt; Result</result></p>
+<p>接收两个参数，一个为initialResult的命名参数，类型跟Result一样的的初始值参数，另一个是命名函数nextPartialResult，把Result类型和数组元素Element进行运算，得到一个Result，逐个运行算成后得到最终的Result，将其返回。</p>
+</li>
+<li><p>Reduce的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//MARK: --一个简化的简约闭包 </div><div class="line">let sum = moneyArray.reduce(0) &#123; (a : Int, b : Int) -&gt; Int in      </div><div class="line">      return  a + b</div><div class="line">  &#125;</div><div class="line">let product = moneyArray.reduce(1) &#123; (a : Int, b: Int) -&gt; Int in</div><div class="line">  return  a * b</div><div class="line">  &#125;</div><div class="line">   print(&quot;数组总和==\(result),数组乘积==\(product)”)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//MARK: -- 最简约的写法，采用默认参数</div><div class="line">let sum = moneyArray.reduce(0) &#123; $0 + $1&#125;     </div><div class="line">let product = moneyArray.reduce(1) &#123; $0 * $1&#125;</div><div class="line">print(&quot;数组总和==\(result),数组乘积==\(product)”)</div></pre></td></tr></table></figure>
+<ol>
+<li><p>特殊情况下可再简化 </p>
+<p>上面的都不是最简化的，其实最简化地写法是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//MARK:— Swift中操作符可用着函数，可简化成：</div><div class="line">let  sum = moneyArray.reduce(0, +)        </div><div class="line">let  product = moneyArray.reduce(1, *)</div><div class="line">print(&quot;数组总和==\(sum),数组乘积==\(product)&quot;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>  Reduce可能是三个高阶函数中最难理解的一个。 需要注意的是nextPartialResult函数的两参数类型不同，Result为计算结果类型，Element为数组元素类型。</p>
+<hr>
+<h3 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h3><ol>
+<li><p>flatMap介绍</p>
+<p>比map更深一样，在自定义函数时，可能把元素生成更多的元素，然后会把这些元素都加到新的元素数组中去。</p>
+</li>
+<li><p>代码示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  let oldArray = [20,10,30]</div><div class="line"></div><div class="line">  let newArray = oldArray.flatMap &#123; (a : Int) -&gt; [String] in         </div><div class="line">  return [&quot;\(a)元&quot;,&quot;\(a)分&quot;]</div><div class="line">     &#125;   </div><div class="line">print(newArray)</div><div class="line">//  结果: [&quot;20元&quot;, &quot;20分&quot;, &quot;10元ƒ&quot;, &quot;10分&quot;, &quot;30元&quot;, &quot;30分”]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> //MARK: -- 简约写法</div><div class="line">let newArray = oldArray.flatMap(&#123;[&quot;\($0)元&quot;,&quot;\($0)分&quot;]&#125;)</div><div class="line">print(newArray)       </div><div class="line">//  结果: [&quot;20元&quot;, &quot;20分&quot;, &quot;10元&quot;, &quot;10分&quot;, &quot;30元&quot;, &quot;30分”]</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>对比map</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   let newArr = oldArray.map(&#123;[&quot;\($0)元&quot;,&quot;\($0)分&quot;]&#125;)     </div><div class="line">print (newArr)     </div><div class="line">//   结果: [[&quot;20元&quot;, &quot;20分&quot;], [&quot;10元&quot;, &quot;10分&quot;], [&quot;30元&quot;, &quot;30分&quot;]]</div></pre></td></tr></table></figure>
+<p>对比一下结果就看出运算的不同之处了。map是由一个元素生成object，返回后替代原来的元素，数组的这个元素就成了是object，数组的这个元素就是object。而flatMap可以由一个元素生成一个数组newArr，结果数组在这个元素的位置插入newArr.count个数的newArr，结果数组的个数就增加了newArr.count元素了。</p>
+<p>所以flatmap是map的扩展功能，因为它生成的不是单个元素，而可以是数组。</p>
+</li>
+</ol>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li><p>数据比较大的时候，高阶函数会比传统实现更快，因为它可以并行执行（如运行在多核上），除非真的需要更高定制版本的map，reduce和filter，否则可以一直使用它们以获得更快的执行速度。</p>
+</li>
+<li><p>当使用map，filter，reduce的代码质量会更好。</p>
+</li>
+</ol>
+<p><a href="https://maojianxiang.github.io">小毛的博客</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/28/3D-Touch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -317,7 +574,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T15:19:08+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T15:19:08-07:00">
                 2017-06-28
               </time>
             
@@ -652,7 +909,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T14:18:34+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T14:18:34-07:00">
                 2017-06-28
               </time>
             
@@ -856,7 +1113,7 @@ func flashlight(_ sure : Bool ) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T17:11:26+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T17:11:26-07:00">
                 2017-06-20
               </time>
             
@@ -1044,7 +1301,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T16:27:34+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T16:27:34-07:00">
                 2017-06-20
               </time>
             
@@ -1265,7 +1522,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:50:43+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:50:43-07:00">
                 2017-06-20
               </time>
             
@@ -1425,7 +1682,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:20:27+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:20:27-07:00">
                 2017-06-20
               </time>
             
@@ -1589,7 +1846,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T16:50:47+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T16:50:47-07:00">
                 2017-06-16
               </time>
             
@@ -1795,7 +2052,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T16:24:39+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T16:24:39-07:00">
                 2017-04-25
               </time>
             
@@ -1959,7 +2216,7 @@ return 60;//相对的计算一下高度。
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T09:34:33+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T09:34:33-07:00">
                 2017-04-11
               </time>
             
@@ -2099,185 +2356,6 @@ return 60;//相对的计算一下高度。
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/11/GCD如何实现最大并发数呢/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/11/GCD如何实现最大并发数呢/" itemprop="url">
-                  GCD如何实现最大并发数呢?
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T08:12:23+08:00">
-                2017-04-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。</p>
-<pre><code> //创建一个队列(非主队列)
-NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-
-//设置最大并发量(最多同时执行10个任务)
-queue.maxConcurrentOperationCount = 10;
-</code></pre><hr>
-<h3 id="对GCD而，只有靠自己想方法处理"><a href="#对GCD而，只有靠自己想方法处理" class="headerlink" title="对GCD而，只有靠自己想方法处理"></a>对GCD而，只有靠自己想方法处理</h3><p>  GCD可以用信号量semaphore来实现，费话不多说，直接上代码</p>
-<pre><code>//建立任务组
-dispatch_group_t group = dispatch_group_create();
-
-//设置信号量大小
-dispatch_semaphore_t semaphore = dispatch_semaphore_create(10);
-
-//创建全局队列
-dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-
-//添加实现任务
- for (int i = 0; i &lt; 100; i++) {
-
-      //semphore值为0时会一直等待执行。当&gt;=1时执行下面的代码。可通过一次，会将semphore的值减1.
-      dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
-      //监视queue队列
-      dispatch_group_async(group, queue, ^{
-
-            NSLog(@&quot;这里在执行耗时操作----%i&quot;,i);
-            sleep(2);
-
-            //当前线程执行完成后，使semaphore的值加1，这样，如果semphore的值就加1，会触发dispatch_semaphore_wait执行一条代码
-            dispatch_semaphore_signal(semaphore);    
-     });
- }
-
-
-//永远地监听Group中的任务是否执行完成。
-dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-</code></pre><hr>
-<p> 关于信号量的一些深刻的理解，可以察看 <a href="http://blog.csdn.net/fhbystudy/article/details/25918451" target="_blank" rel="external">fhbystudy的分享</a>，也谢谢他的分享！</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2327,7 +2405,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2336,7 +2414,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2345,7 +2423,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -278,6 +278,185 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/11/GCD如何实现最大并发数呢/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/11/GCD如何实现最大并发数呢/" itemprop="url">
+                  GCD如何实现最大并发数呢?
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T08:12:23-07:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。</p>
+<pre><code> //创建一个队列(非主队列)
+NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+
+//设置最大并发量(最多同时执行10个任务)
+queue.maxConcurrentOperationCount = 10;
+</code></pre><hr>
+<h3 id="对GCD而，只有靠自己想方法处理"><a href="#对GCD而，只有靠自己想方法处理" class="headerlink" title="对GCD而，只有靠自己想方法处理"></a>对GCD而，只有靠自己想方法处理</h3><p>  GCD可以用信号量semaphore来实现，费话不多说，直接上代码</p>
+<pre><code>//建立任务组
+dispatch_group_t group = dispatch_group_create();
+
+//设置信号量大小
+dispatch_semaphore_t semaphore = dispatch_semaphore_create(10);
+
+//创建全局队列
+dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+//添加实现任务
+ for (int i = 0; i &lt; 100; i++) {
+
+      //semphore值为0时会一直等待执行。当&gt;=1时执行下面的代码。可通过一次，会将semphore的值减1.
+      dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+      //监视queue队列
+      dispatch_group_async(group, queue, ^{
+
+            NSLog(@&quot;这里在执行耗时操作----%i&quot;,i);
+            sleep(2);
+
+            //当前线程执行完成后，使semaphore的值加1，这样，如果semphore的值就加1，会触发dispatch_semaphore_wait执行一条代码
+            dispatch_semaphore_signal(semaphore);    
+     });
+ }
+
+
+//永远地监听Group中的任务是否执行完成。
+dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+</code></pre><hr>
+<p> 关于信号量的一些深刻的理解，可以察看 <a href="http://blog.csdn.net/fhbystudy/article/details/25918451" target="_blank" rel="external">fhbystudy的分享</a>，也谢谢他的分享！</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/10/Markdown语法的简单说明/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -317,7 +496,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T10:42:22+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T10:42:22-07:00">
                 2017-04-10
               </time>
             
@@ -412,7 +591,7 @@
 </code></pre><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>用三个*或者\—号，可以作一条分割线</p>
 <hr>
 <hr>
-<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#49;&#53;&#x32;&#x30;&#x38;&#49;&#x30;&#53;&#x34;&#52;&#x30;&#x40;&#49;&#54;&#x33;&#x2e;&#99;&#111;&#109;">&#49;&#53;&#x32;&#x30;&#x38;&#49;&#x30;&#53;&#x34;&#52;&#x30;&#x40;&#49;&#54;&#x33;&#x2e;&#99;&#111;&#109;</a></p>
+<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#49;&#53;&#x32;&#48;&#56;&#x31;&#x30;&#x35;&#x34;&#x34;&#x30;&#x40;&#49;&#54;&#51;&#46;&#99;&#x6f;&#109;">&#49;&#53;&#x32;&#48;&#56;&#x31;&#x30;&#x35;&#x34;&#x34;&#x30;&#x40;&#49;&#54;&#51;&#46;&#99;&#x6f;&#109;</a></p>
 <h4 id="网址连接"><a href="#网址连接" class="headerlink" title="网址连接"></a>网址连接</h4><p>用<code>&lt;网址&gt;</code>有效连接: <a href="https://maojianxiang.github.io">https://maojianxiang.github.io</a></p>
 <hr>
 <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><h4 id="图片跟网址连接相似，多了一个"><a href="#图片跟网址连接相似，多了一个" class="headerlink" title="图片跟网址连接相似，多了一个!"></a>图片跟网址连接相似，多了一个!</h4><p><code>!+[]+(图片的地址,相对路径也行)</code></p>
@@ -552,7 +731,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T08:59:04+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T08:59:04-07:00">
                 2017-04-09
               </time>
             
@@ -712,7 +891,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T08:10:26+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T08:10:26-07:00">
                 2017-04-09
               </time>
             
@@ -866,7 +1045,7 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T13:55:55+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T13:55:55-07:00">
                 2017-04-01
               </time>
             
@@ -1000,152 +1179,6 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/" itemprop="url">
-                  Xcode 错误- Could not launch app 解决办法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00+08:00">
-                2017-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Debug/" itemprop="url" rel="index">
-                    <span itemprop="name">Debug</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Xcode 错误- Could not launch app - No such file or directory Error.</p>
-<p>蛋疼的一个XCode bug，基本上应该不是工程本身问题。</p>
-<p>解决方法：</p>
-<p>1、拔掉设备，删除之前Build的内容</p>
-<p>2、退出Xcode，不是关闭窗口</p>
-<p>3、删除那个/Users/XXX/Library/Developer/Xcode/DerivedData/XXX-grgrmtzqajhyqgghabyjttajwbsm文件夹</p>
-<p>4、启动XCode连接设备，现在应该OK了</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/03/17/在Category中可以添加属性吗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1185,7 +1218,7 @@ floor：如果参数是小数，则求最大的整数但不大于本身.
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00-07:00">
                 2017-03-17
               </time>
             
@@ -1323,6 +1356,152 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/17/Xcode-错误-Could-not-launch-app-解决办法/" itemprop="url">
+                  Xcode 错误- Could not launch app 解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T00:00:00-07:00">
+                2017-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Debug/" itemprop="url" rel="index">
+                    <span itemprop="name">Debug</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Xcode 错误- Could not launch app - No such file or directory Error.</p>
+<p>蛋疼的一个XCode bug，基本上应该不是工程本身问题。</p>
+<p>解决方法：</p>
+<p>1、拔掉设备，删除之前Build的内容</p>
+<p>2、退出Xcode，不是关闭窗口</p>
+<p>3、删除那个/Users/XXX/Library/Developer/Xcode/DerivedData/XXX-grgrmtzqajhyqgghabyjttajwbsm文件夹</p>
+<p>4、启动XCode连接设备，现在应该OK了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1372,7 +1551,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1381,7 +1560,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1390,7 +1569,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
