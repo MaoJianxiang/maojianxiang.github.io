@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Debug," />
+  <meta name="keywords" content="算数技巧," />
 
 
 
@@ -105,18 +105,25 @@
 
 
 
-<meta name="description" content="ScrollView的位置或者其子控件位置不正确没有注意视图控制器的透视效果特别是子控制器的位置不对，自己都会怀疑子控件是否加到ScrollView上面去了。  1. 一般情况下都会先打断点、NSLog输出看frame是否正确,不正确会调整它。如果发现frame完全正确，才会联想到视图控制器问题的显示自动调整,这样就离成功近了一步。 2. 如果你有成功的Demo，然后一一对应,才发现视图控制器还有">
-<meta name="keywords" content="Debug">
+<meta name="description" content="前言昨天看到抖音上有人关于头相尾的快捷计算方法，觉得确实有趣。不过，我从高中时也是无意间从一本书上看到的简便计算方法，从那时开始我就一直在用，到现我都不知道这种计算有没有名字。确实要比按照常规计算要容易一些，而且会快一些。 但总的来说，万变不离其宗，不管是怎么样的计算方法，它都是遵从计算的基本原理，然后从中找出的规律来总结出来的。  通用的两位数计算法如图如示  计算过程  (数a x 数b)1.">
+<meta name="keywords" content="算数技巧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何优雅地解决UIScrollView使用中的bug">
-<meta property="og:url" content="https://maojianxiang.github.io/2017/04/01/如何优雅地解决UIScrollView使用中的bug/index.html">
+<meta property="og:title" content="两位数的乘法快捷算法">
+<meta property="og:url" content="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/index.html">
 <meta property="og:site_name" content="小毛的博客">
-<meta property="og:description" content="ScrollView的位置或者其子控件位置不正确没有注意视图控制器的透视效果特别是子控制器的位置不对，自己都会怀疑子控件是否加到ScrollView上面去了。  1. 一般情况下都会先打断点、NSLog输出看frame是否正确,不正确会调整它。如果发现frame完全正确，才会联想到视图控制器问题的显示自动调整,这样就离成功近了一步。 2. 如果你有成功的Demo，然后一一对应,才发现视图控制器还有">
+<meta property="og:description" content="前言昨天看到抖音上有人关于头相尾的快捷计算方法，觉得确实有趣。不过，我从高中时也是无意间从一本书上看到的简便计算方法，从那时开始我就一直在用，到现我都不知道这种计算有没有名字。确实要比按照常规计算要容易一些，而且会快一些。 但总的来说，万变不离其宗，不管是怎么样的计算方法，它都是遵从计算的基本原理，然后从中找出的规律来总结出来的。  通用的两位数计算法如图如示  计算过程  (数a x 数b)1.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-04-01T21:41:16.000Z">
+<meta property="og:image" content="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/100.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/200.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/300.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/400.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/500.png">
+<meta property="og:image" content="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/600.png">
+<meta property="og:updated_time" content="2018-05-22T09:26:24.939Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何优雅地解决UIScrollView使用中的bug">
-<meta name="twitter:description" content="ScrollView的位置或者其子控件位置不正确没有注意视图控制器的透视效果特别是子控制器的位置不对，自己都会怀疑子控件是否加到ScrollView上面去了。  1. 一般情况下都会先打断点、NSLog输出看frame是否正确,不正确会调整它。如果发现frame完全正确，才会联想到视图控制器问题的显示自动调整,这样就离成功近了一步。 2. 如果你有成功的Demo，然后一一对应,才发现视图控制器还有">
+<meta name="twitter:title" content="两位数的乘法快捷算法">
+<meta name="twitter:description" content="前言昨天看到抖音上有人关于头相尾的快捷计算方法，觉得确实有趣。不过，我从高中时也是无意间从一本书上看到的简便计算方法，从那时开始我就一直在用，到现我都不知道这种计算有没有名字。确实要比按照常规计算要容易一些，而且会快一些。 但总的来说，万变不离其宗，不管是怎么样的计算方法，它都是遵从计算的基本原理，然后从中找出的规律来总结出来的。  通用的两位数计算法如图如示  计算过程  (数a x 数b)1.">
+<meta name="twitter:image" content="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/100.png">
 
 
 
@@ -144,13 +151,13 @@
 
 
 
-  <link rel="canonical" href="https://maojianxiang.github.io/2017/04/01/如何优雅地解决UIScrollView使用中的bug/"/>
+  <link rel="canonical" href="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/"/>
 
 
 
 
 
-  <title> 如何优雅地解决UIScrollView使用中的bug | 小毛的博客 </title>
+  <title> 两位数的乘法快捷算法 | 小毛的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/01/如何优雅地解决UIScrollView使用中的bug/">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="小毛,纯一狼">
@@ -300,7 +307,7 @@
             
             
               
-                如何优雅地解决UIScrollView使用中的bug
+                两位数的乘法快捷算法
               
             
           </h1>
@@ -315,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T13:55:55+08:00">
-                2017-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-22T10:41:52+08:00">
+                2018-05-22
               </time>
             
 
@@ -338,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Debug/" itemprop="url" rel="index">
-                    <span itemprop="name">Debug</span>
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
                   </a>
                 </span>
 
@@ -378,40 +385,47 @@
       
 
       
-        <h3 id="ScrollView的位置或者其子控件位置不正确"><a href="#ScrollView的位置或者其子控件位置不正确" class="headerlink" title="ScrollView的位置或者其子控件位置不正确"></a>ScrollView的位置或者其子控件位置不正确</h3><h4 id="没有注意视图控制器的透视效果"><a href="#没有注意视图控制器的透视效果" class="headerlink" title="没有注意视图控制器的透视效果"></a>没有注意视图控制器的透视效果</h4><pre><code>特别是子控制器的位置不对，自己都会怀疑子控件是否加到ScrollView上面去了。
-
-1. 一般情况下都会先打断点、NSLog输出看frame是否正确,不正确会调整它。如果发现frame完全正确，才会联想到视图控制器问题的显示自动调整,这样就离成功近了一步。
-2. 如果你有成功的Demo，然后一一对应,才发现视图控制器还有个透视效果属性:automaticallyAdjustsScrollViewInsets，关闭之后一切就正常了。
-</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><pre><code>UIScrollView的位置或者子控件的位置不正确,首先要确定其父控制器的透视效果属性:automaticallyAdjustsScrollViewInsets。其次再去检查一下frame,这个问题就OK了。
-
-如果在某中情况下automaticallyAdjustsScrollViewInsets属性没有设置反而显示正确，那它也会造成下面的第二个问题。
-</code></pre><h3 id="ScorllView左右上下都可以随便拖拽"><a href="#ScorllView左右上下都可以随便拖拽" class="headerlink" title="ScorllView左右上下都可以随便拖拽"></a>ScorllView左右上下都可以随便拖拽</h3><pre><code>1.一般会想到是否是UIScorllView的contensize的大小设置跟frame不匹配造成的。
- 然后打断点，NSLog输出，看看frame和contentsize,发现没什么问题。这里你会想会不会是视图控制器自动调整了某些属性
-
-2.想得深一点会想到UIScorllView的两个方向的bounce属性:alwaysBounceVertical，alwaysBounceHorizontal,但是我们仔细一看UIScorllView.h文件，明确提示默认就是关闭的。
-
-3.除了第1点和第2点，还有遗漏的了种情况，也是控制器的透视效果automaticallyAdjustsScrollViewInsets造成的。
-</code></pre><h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>  在使用UIScorllView控件时</p>
-<pre><code>1.首先确定父控制器的透视效果automaticallyAdjustsScrollViewInsets已关闭。但是这个问题也会造成这种情况。
-
-2.然后再UIScorllView的contensize和frame是否配置正确。
-
-3.特别需要时配置一下属性bounces,alwaysBounceVertical,alwaysBounceHorizontal。
-
-  就可以很好的控制UIScrollView的拖拽滚动问题了。
-</code></pre><h3 id="ScrollViewDelegate中的滑动事件重复处理"><a href="#ScrollViewDelegate中的滑动事件重复处理" class="headerlink" title="ScrollViewDelegate中的滑动事件重复处理"></a>ScrollViewDelegate中的滑动事件重复处理</h3><h4 id="UIScrollViewDelegate的代理实现"><a href="#UIScrollViewDelegate的代理实现" class="headerlink" title="UIScrollViewDelegate的代理实现"></a>UIScrollViewDelegate的代理实现</h4><p>  1.Method1:offset变动的时间回调</p>
-<pre><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
-</code></pre><p>  2.Method2:UIScrollView拖动嘎然而止时回调。</p>
-<pre><code>- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
-</code></pre><h4 id="设置UIScrollView的offset-Meth3"><a href="#设置UIScrollView的offset-Meth3" class="headerlink" title="设置UIScrollView的offset(Meth3)"></a>设置UIScrollView的offset(Meth3)</h4><pre><code>- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
-</code></pre><p>  注意:Method2是拖动停止的时候回调,而且不是时时监听，而Method1是只要offset变动时就会时时回调。而只要使用Method3就会运行Method1;这样就会容易造成一种BUG:</p>
-<p>  1.当UIScrollVie拖动后对外控件A时时造成影响，会在Method1中实现影响A的代码,同时结束后会运行Method2。</p>
-<p>  2.那如果A点击后影响UIScrollView的offset,我们会在A点击的事件中使用Method3，而Method3的运行又会造成Method1方法的运行,而这种情况却不会运行Method2。</p>
-<p>  Bug出现: A点击的时候,会使用Method3,间接运行Method1,而Method1中又会运行影响A的代码。（A只是点击却最后还会影响A）。</p>
-<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>   是在Method1中判断是否是外部事件来决定是否运行影响A的代码。那这个判断怎么处理了，这个问题在我搭建滑动切换视图控制器的框架时遇到了。费了好些时间，最后我发现UIScrollView.isDragging属性直接判断是否是拖动的回调，UIScrollView自动在设置offset的时候和拖动的时候自动更改isDragging，还是最基础的方法最靠谱。</p>
-<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p> 1.UIScrollView使用时特别要注意要关闭父视图控制器的透视效果属性automaticallyAdjustsScrollViewInsets。否则会造成UIScrollView本身可以任意拖拽和本身及其子控件的位置问题。</p>
-<p> 2.UIScrollView拖动时时影响外部控件的时候，在 - (void)scrollViewDidScroll:(UIScrollView *)scrollView的方法中最好使用属性isDragging判断是拖动才去实现影响外部控件的代码。避免外部控件反过来作用scrollView的offset的情况。</p>
-<p> 最后推广一下让我写这篇博客的Demo:<a href="https://github.com/MaoJianxiang/SlideSwitchController" target="_blank" rel="noopener">https://github.com/MaoJianxiang/SlideSwitchController</a></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>昨天看到抖音上有人关于头相尾的快捷计算方法，觉得确实有趣。不过，我从高中时也是无意间从一本书上看到的简便计算方法，从那时开始我就一直在用，到现我都不知道这种计算有没有名字。确实要比按照常规计算要容易一些，而且会快一些。 <br>但总的来说，万变不离其宗，不管是怎么样的计算方法，它都是遵从计算的基本原理，然后从中找出的规律来总结出来的。</p>
+<hr>
+<h3 id="通用的两位数计算法"><a href="#通用的两位数计算法" class="headerlink" title="通用的两位数计算法"></a>通用的两位数计算法</h3><h4 id="如图如示"><a href="#如图如示" class="headerlink" title="如图如示"></a>如图如示</h4><p> <img src="/2018/05/22/两位数的乘法快捷算法/100.png" alt="1"></p>
+<h4 id="计算过程-数a-x-数b"><a href="#计算过程-数a-x-数b" class="headerlink" title="计算过程  (数a x 数b)"></a>计算过程  (数a x 数b)</h4><pre><code>1. 个位相乘： a个位数 x b个位数 = 结果1，结果1以个位为基数
+2. 十位相乘： a十位数 x b十位数 = 结果2，结果2以百位为基数
+3. 交叉相乘： a十位数 x b个位数 + b十位数 X a个位数 = 结果3，结果3以十位为基数
+4. 总和结果： 结果1 + 结果2 + 结果3 = 总结果
+</code></pre><h4 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h4><pre><code>* 其实只要细细一想，它跟基本的计算方法是一脉相承的
+* 可以减少进位数在常规计算中造成的错误
+* 降低了一些常规计算中的思维处理细节,仅仅只有第3步会在数大的时候
+* 通用于2位数的相乘计算
+</code></pre><p> 总之，它确实从一定的方面简化了计算难度，减少了常规计算中容易造成的错误。</p>
+<h3 id="头同尾补"><a href="#头同尾补" class="headerlink" title="头同尾补"></a>头同尾补</h3><p>  头同就是十位数都一样的，尾补就是个位两数之和刚好是10.所以了，这种计算就是要先判断条件是否满足。<br>   <img src="/2018/05/22/两位数的乘法快捷算法/200.png" alt="2"></p>
+<ul>
+<li>(相同的十位数 + 1）x 相同的十位数 = 结果1，结果1以百位为基数</li>
+<li>两尾数相乘  =  结果2，结果2以个位为基数</li>
+<li>总和结果  =  结果1 + 结果2 </li>
+</ul>
+<h3 id="a乘数互补，b乘数数字相同"><a href="#a乘数互补，b乘数数字相同" class="headerlink" title="a乘数互补，b乘数数字相同"></a>a乘数互补，b乘数数字相同</h3><p>   即一个乘数的十位数和个位数互补，另一个乘数的十位数跟个位数相同。<br>   <img src="/2018/05/22/两位数的乘法快捷算法/300.png" alt="3"></p>
+<ul>
+<li>(a的十位数 + 1）x b的十位数 = 结果1，结果1以百位为基数</li>
+<li>a的个位数 x b的个位数 = 结果2，结果2以个位为基数</li>
+<li>总和结果  =  结果1 + 结果2</li>
+</ul>
+<h3 id="其他几种"><a href="#其他几种" class="headerlink" title="其他几种"></a>其他几种</h3><h4 id="十几乘十几"><a href="#十几乘十几" class="headerlink" title="十几乘十几"></a>十几乘十几</h4><p>   <img src="/2018/05/22/两位数的乘法快捷算法/400.png" alt="4"></p>
+<ul>
+<li>两数十位数相乘 = 结果1，结果1以百位为基数</li>
+<li>两数个位数相加 = 结果2，结果2以十位为基数</li>
+<li>两数个位数相乘 = 结果3，结果3以个位为基数</li>
+<li>总和结果  =  结果1 + 结果2 + 结果3</li>
+</ul>
+<h4 id="几十一乘几十一"><a href="#几十一乘几十一" class="headerlink" title="几十一乘几十一"></a>几十一乘几十一</h4><p>  <img src="/2018/05/22/两位数的乘法快捷算法/500.png" alt="5"></p>
+<ul>
+<li>两数十位数相乘 = 结果1，结果1以百位为基数</li>
+<li>两数十位数相加 = 结果2，结果2以十位为基数</li>
+<li>两数个位数相乘 = 结果3，结果3以个位为基数</li>
+<li>总和结果  =  结果1 + 结果2 + 结果3</li>
+</ul>
+<h4 id="任意数-x-11"><a href="#任意数-x-11" class="headerlink" title="任意数 x 11"></a>任意数 x 11</h4><p>  <img src="/2018/05/22/两位数的乘法快捷算法/600.png" alt="6"><br>  任意数逻位相加 </p>
+<p>  可扩展到 乘数为11 ，111，1111……，其中只是逻的数的个数不同。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>  总之，除此之外还有一些方法，但是相乘的实质都是一样的，这些方法只是在特殊情况下可以运用这些简便地运算而已。一般情况下能运用前两种方法就已经够用了。</p>
 
       
     </div>
@@ -435,7 +449,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Debug/" rel="tag"># Debug</a>
+            <a href="/tags/算数技巧/" rel="tag"># 算数技巧</a>
           
         </div>
       
@@ -448,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/17/在Category中可以添加属性吗/" rel="next" title="在Category中可以添加属性吗？">
-                <i class="fa fa-chevron-left"></i> 在Category中可以添加属性吗？
+              <a href="/2017/07/04/Swift中的高阶函数/" rel="next" title="Swift中的高阶函数">
+                <i class="fa fa-chevron-left"></i> Swift中的高阶函数
               </a>
             
           </div>
@@ -457,10 +471,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/09/数值的一些常用处理方式/" rel="prev" title="数值的一些常用处理方式">
-                数值的一些常用处理方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ScrollView的位置或者其子控件位置不正确"><span class="nav-number">1.</span> <span class="nav-text">ScrollView的位置或者其子控件位置不正确</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#没有注意视图控制器的透视效果"><span class="nav-number">1.1.</span> <span class="nav-text">没有注意视图控制器的透视效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ScorllView左右上下都可以随便拖拽"><span class="nav-number">2.</span> <span class="nav-text">ScorllView左右上下都可以随便拖拽</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结-1"><span class="nav-number">2.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ScrollViewDelegate中的滑动事件重复处理"><span class="nav-number">3.</span> <span class="nav-text">ScrollViewDelegate中的滑动事件重复处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UIScrollViewDelegate的代理实现"><span class="nav-number">3.1.</span> <span class="nav-text">UIScrollViewDelegate的代理实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置UIScrollView的offset-Meth3"><span class="nav-number">3.2.</span> <span class="nav-text">设置UIScrollView的offset(Meth3)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法"><span class="nav-number">3.3.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-2"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用的两位数计算法"><span class="nav-number">2.</span> <span class="nav-text">通用的两位数计算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如图如示"><span class="nav-number">2.1.</span> <span class="nav-text">如图如示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算过程-数a-x-数b"><span class="nav-number">2.2.</span> <span class="nav-text">计算过程  (数a x 数b)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#综述"><span class="nav-number">2.3.</span> <span class="nav-text">综述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#头同尾补"><span class="nav-number">3.</span> <span class="nav-text">头同尾补</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a乘数互补，b乘数数字相同"><span class="nav-number">4.</span> <span class="nav-text">a乘数互补，b乘数数字相同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他几种"><span class="nav-number">5.</span> <span class="nav-text">其他几种</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#十几乘十几"><span class="nav-number">5.1.</span> <span class="nav-text">十几乘十几</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#几十一乘几十一"><span class="nav-number">5.2.</span> <span class="nav-text">几十一乘几十一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任意数-x-11"><span class="nav-number">5.3.</span> <span class="nav-text">任意数 x 11</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

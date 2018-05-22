@@ -111,6 +111,7 @@
 <meta property="og:url" content="https://maojianxiang.github.io/index.html">
 <meta property="og:site_name" content="小毛的博客">
 <meta property="og:description" content="致力于苹果移动应用的开发">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小毛的博客">
 <meta name="twitter:description" content="致力于苹果移动应用的开发">
@@ -278,6 +279,186 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2018/05/22/两位数的乘法快捷算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/22/两位数的乘法快捷算法/" itemprop="url">
+                  两位数的乘法快捷算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-22T10:41:52+08:00">
+                2018-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>昨天看到抖音上有人关于头相尾的快捷计算方法，觉得确实有趣。不过，我从高中时也是无意间从一本书上看到的简便计算方法，从那时开始我就一直在用，到现我都不知道这种计算有没有名字。确实要比按照常规计算要容易一些，而且会快一些。 <br>但总的来说，万变不离其宗，不管是怎么样的计算方法，它都是遵从计算的基本原理，然后从中找出的规律来总结出来的。</p>
+<hr>
+<h3 id="通用的两位数计算法"><a href="#通用的两位数计算法" class="headerlink" title="通用的两位数计算法"></a>通用的两位数计算法</h3><h4 id="如图如示"><a href="#如图如示" class="headerlink" title="如图如示"></a>如图如示</h4><p> <img src="/2018/05/22/两位数的乘法快捷算法/100.png" alt="1"></p>
+<h4 id="计算过程-数a-x-数b"><a href="#计算过程-数a-x-数b" class="headerlink" title="计算过程  (数a x 数b)"></a>计算过程  (数a x 数b)</h4><pre><code>1. 个位相乘： a个位数 x b个位数 = 结果1，结果1以个位为基数
+2. 十位相乘： a十位数 x b十位数 = 结果2，结果2以百位为基数
+3. 交叉相乘： a十位数 x b个位数 + b十位数 X a个位数 = 结果3，结果3以十位为基数
+4. 总和结果： 结果1 + 结果2 + 结果3 = 总结果
+</code></pre><h4 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h4><pre><code>* 其实只要细细一想，它跟基本的计算方法是一脉相承的
+* 可以减少进位数在常规计算中造成的错误
+* 降低了一些常规计算中的思维处理细节,仅仅只有第3步会在数大的时候
+* 通用于2位数的相乘计算
+</code></pre><p> 总之，它确实从一定的方面简化了计算难度，减少了常规计算中容易造成的错误。</p>
+<h3 id="头同尾补"><a href="#头同尾补" class="headerlink" title="头同尾补"></a>头同尾补</h3><p>  头同就是十位数都一样的，尾补就是个位两数之和刚好是10.所以了，这种计算就是要先判断条件是否满足。<br>   <img src="/2018/05/22/两位数的乘法快捷算法/200.png" alt="2"></p>
+<ul>
+<li>(相同的十位数 + 1）x 相同的十位数 = 结果1，结果1以百位为基数</li>
+<li>两尾数相乘  =  结果2，结果2以个位为基数</li>
+<li>总和结果  =  结果1 + 结果2 </li>
+</ul>
+<h3 id="a乘数互补，b乘数数字相同"><a href="#a乘数互补，b乘数数字相同" class="headerlink" title="a乘数互补，b乘数数字相同"></a>a乘数互补，b乘数数字相同</h3><p>   即一个乘数的十位数和个位数互补，另一个乘数的十位数跟个位数相同。<br>   <img src="/2018/05/22/两位数的乘法快捷算法/300.png" alt="3"></p>
+<ul>
+<li>(a的十位数 + 1）x b的十位数 = 结果1，结果1以百位为基数</li>
+<li>a的个位数 x b的个位数 = 结果2，结果2以个位为基数</li>
+<li>总和结果  =  结果1 + 结果2</li>
+</ul>
+<h3 id="其他几种"><a href="#其他几种" class="headerlink" title="其他几种"></a>其他几种</h3><h4 id="十几乘十几"><a href="#十几乘十几" class="headerlink" title="十几乘十几"></a>十几乘十几</h4><p>   <img src="/2018/05/22/两位数的乘法快捷算法/400.png" alt="4"></p>
+<ul>
+<li>两数十位数相乘 = 结果1，结果1以百位为基数</li>
+<li>两数个位数相加 = 结果2，结果2以十位为基数</li>
+<li>两数个位数相乘 = 结果3，结果3以个位为基数</li>
+<li>总和结果  =  结果1 + 结果2 + 结果3</li>
+</ul>
+<h4 id="几十一乘几十一"><a href="#几十一乘几十一" class="headerlink" title="几十一乘几十一"></a>几十一乘几十一</h4><p>  <img src="/2018/05/22/两位数的乘法快捷算法/500.png" alt="5"></p>
+<ul>
+<li>两数十位数相乘 = 结果1，结果1以百位为基数</li>
+<li>两数十位数相加 = 结果2，结果2以十位为基数</li>
+<li>两数个位数相乘 = 结果3，结果3以个位为基数</li>
+<li>总和结果  =  结果1 + 结果2 + 结果3</li>
+</ul>
+<h4 id="任意数-x-11"><a href="#任意数-x-11" class="headerlink" title="任意数 x 11"></a>任意数 x 11</h4><p>  <img src="/2018/05/22/两位数的乘法快捷算法/600.png" alt="6"><br>  任意数逻位相加 </p>
+<p>  可扩展到 乘数为11 ，111，1111……，其中只是逻的数的个数不同。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>  总之，除此之外还有一些方法，但是相乘的实质都是一样的，这些方法只是在特殊情况下可以运用这些简便地运算而已。一般情况下能运用前两种方法就已经够用了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/07/04/Swift中的高阶函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -317,7 +498,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-04T17:10:46-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-04T17:10:46+08:00">
                 2017-07-04
               </time>
             
@@ -386,15 +567,15 @@
 <p>闭包的形式： （(参数) -&gt; 返回值)</p>
 </li>
 <li><p>我们先写一个求立方的函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> //MARK: -- 立方</div><div class="line">func cube(_ a: Float) -&gt; Float&#123;</div><div class="line">    return a*a*a</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> //MARK: -- 立方</span><br><span class="line">func cube(_ a: Float) -&gt; Float&#123;</span><br><span class="line">    return a*a*a</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>求两数进行f函数运算后的平均值的函数 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">func averageOfFunction(_ a: Float ,_ b: Float ,_ f: ((Float) -&gt; Float)) -&gt; Float&#123;   </div><div class="line">  return (f(a) + f(b))/2</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func averageOfFunction(_ a: Float ,_ b: Float ,_ f: ((Float) -&gt; Float)) -&gt; Float&#123;   </span><br><span class="line">  return (f(a) + f(b))/2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>进行调用，简化闭包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//直接传参数和函数名</div><div class="line">let sum1 =   averageOfFunction(2, 3, cube)</div><div class="line"></div><div class="line">//直接把闭包做为它的函数方法参数</div><div class="line">let sum2 =   averageOfFunction(2, 3, &#123;(x : Float) -&gt;  Float in x*x*x &#125;)</div><div class="line"></div><div class="line">//隐式推断输入值为一个Float</div><div class="line">let sum3 =   averageOfFunction(2, 3, &#123;x -&gt; Float in x*x*x &#125;)</div><div class="line"></div><div class="line">//把retuen一起忽略</div><div class="line">let sum4 =   averageOfFunction(2, 3, &#123;x in x*x*x &#125;)</div><div class="line"></div><div class="line">//使用默认参数名，最简化地写法</div><div class="line">let sum5 =   averageOfFunction(2, 3, &#123; $0*$0*$0 &#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//直接传参数和函数名</span><br><span class="line">let sum1 =   averageOfFunction(2, 3, cube)</span><br><span class="line"></span><br><span class="line">//直接把闭包做为它的函数方法参数</span><br><span class="line">let sum2 =   averageOfFunction(2, 3, &#123;(x : Float) -&gt;  Float in x*x*x &#125;)</span><br><span class="line"></span><br><span class="line">//隐式推断输入值为一个Float</span><br><span class="line">let sum3 =   averageOfFunction(2, 3, &#123;x -&gt; Float in x*x*x &#125;)</span><br><span class="line"></span><br><span class="line">//把retuen一起忽略</span><br><span class="line">let sum4 =   averageOfFunction(2, 3, &#123;x in x*x*x &#125;)</span><br><span class="line"></span><br><span class="line">//使用默认参数名，最简化地写法</span><br><span class="line">let sum5 =   averageOfFunction(2, 3, &#123; $0*$0*$0 &#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
@@ -407,12 +588,12 @@
 <h3 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h3><ul>
 <li><p>map需求</p>
 <p>map用于将每个数组元素通过某个方法进行转换。<br>我们用一个Int类型数组，想把每个数后面添加一个字符“元”，把数组转成字符串数组 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let moneyArray = [12,34,8,17,91,2,82]</div><div class="line">var stringArray : [String] = []//结果数组</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let moneyArray = [12,34,8,17,91,2,82]</span><br><span class="line">var stringArray : [String] = []//结果数组</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>一般的思维</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for money in moneyArray &#123;</div><div class="line">   stringArray.append(&quot;\(money)元&quot;)</div><div class="line">    &#125;    </div><div class="line">print(stringArray)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for money in moneyArray &#123;</span><br><span class="line">   stringArray.append(&quot;\(money)元&quot;)</span><br><span class="line">    &#125;    </span><br><span class="line">print(stringArray)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>map的函数介绍</p>
 <p>public func map<t>(_ transform: (Element) throws -&gt; T) rethrows -&gt; [T]</t></p>
@@ -420,38 +601,38 @@
 <p>在我们的事例中，T为Int，T为String，作为转换函数传给map的是一个把Int转成String</p>
 </li>
 <li><p>map的方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">stringArray = moneyArray.map(&#123; (a: Int) -&gt; String in</div><div class="line">  return &quot;\(a)元&quot;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stringArray = moneyArray.map(&#123; (a: Int) -&gt; String in</span><br><span class="line">  return &quot;\(a)元&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//MARK: -- 可以直接把代码换成一个简化的简约闭包</div><div class="line"> stringArray = moneyArray.map(&#123;money in &quot;\(money)元&quot;&#125;)</div><div class="line"> print(stringArray)</div><div class="line"></div><div class="line">//MARK: -- 最简约的写法，采用默认参数</div><div class="line">stringArray = moneyArray.map(&#123;&quot;\($0)元&quot;&#125;)</div><div class="line">print(stringArray)</div></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//MARK: -- 可以直接把代码换成一个简化的简约闭包</span><br><span class="line"> stringArray = moneyArray.map(&#123;money in &quot;\(money)元&quot;&#125;)</span><br><span class="line"> print(stringArray)</span><br><span class="line"></span><br><span class="line">//MARK: -- 最简约的写法，采用默认参数</span><br><span class="line">stringArray = moneyArray.map(&#123;&quot;\($0)元&quot;&#125;)</span><br><span class="line">print(stringArray)</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><ul>
 <li><p>filter需求</p>
 <p>filter用于选择数组元素中满足某种条件的元素。使用上面的例子，筛选出大于20的元素，结果应该是[34,91,82]</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var  filterArray : [Int] =[]//结果数组</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var  filterArray : [Int] =[]//结果数组</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>一般的思维</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> for money in moneyArray &#123;</div><div class="line">       if money &gt; 20&#123;</div><div class="line">            filterArray.append(money)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">   </div><div class="line">print(filterArray)</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> for money in moneyArray &#123;</span><br><span class="line">       if money &gt; 20&#123;</span><br><span class="line">            filterArray.append(money)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">print(filterArray)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>filter的函数介绍</p>
 <p> public func filter(_ isIncluded: (Element) throws -&gt; Bool) rethrows -&gt; [Element]</p>
 <p> 以一个命名函数isIncluded作为参数,isIncluded返回true或者false,对原数组元素Element调用isIncluded时，只有返回true的元素会通过筛选，从而放入返回数组 [Element]中</p>
 </li>
 <li><p>filter的方法</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> filterArray = moneyArray.filter(&#123; (a: Int) -&gt; Bool in</div><div class="line">   return a &gt; 20</div><div class="line">&#125;)       </div><div class="line"> print(filterArray)</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> filterArray = moneyArray.filter(&#123; (a: Int) -&gt; Bool in</span><br><span class="line">   return a &gt; 20</span><br><span class="line">&#125;)       </span><br><span class="line"> print(filterArray)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> //MARK: — 一个简化的简约闭包</div><div class="line">filterArray = moneyArray.filter(&#123;money in money &gt; 30&#125;)       </div><div class="line">print(filterArray)</div><div class="line"></div><div class="line"> //MARK: -- 最简约的写法，采用默认参数</div><div class="line">filterArray = moneyArray.filter(&#123;$0 &gt; 30&#125;)       </div><div class="line">print(filterArray)</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> //MARK: — 一个简化的简约闭包</span><br><span class="line">filterArray = moneyArray.filter(&#123;money in money &gt; 30&#125;)       </span><br><span class="line">print(filterArray)</span><br><span class="line"></span><br><span class="line"> //MARK: -- 最简约的写法，采用默认参数</span><br><span class="line">filterArray = moneyArray.filter(&#123;$0 &gt; 30&#125;)       </span><br><span class="line">print(filterArray)</span><br></pre></td></tr></table></figure>
 </code></pre><hr>
 <h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><ul>
 <li><p>reduce需求</p>
 <p> reduce方法把数组元素组合计算为一个值。我们使用上面例子计算数组元素的和，结果应该为246(12+34+8+17+91+2+82) 以及: 828102912(12 X 34 X 8 X 17 X 91 X 2 X 82)</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var  filterArray : [Int] =[]//结果数组</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var  filterArray : [Int] =[]//结果数组</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>一般的思维</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//MARK: — 求和</div><div class="line">var sum = 0</div><div class="line">for money in moneyArray &#123;</div><div class="line">        sum += money</div><div class="line">    &#125;</div><div class="line">print(sum)</div><div class="line"></div><div class="line">//MARK: — 求乘积</div><div class="line">  var product = 1  </div><div class="line">  for money in moneyArray &#123;</div><div class="line">        product = product * money</div><div class="line">    &#125;  </div><div class="line"> print(product)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//MARK: — 求和</span><br><span class="line">var sum = 0</span><br><span class="line">for money in moneyArray &#123;</span><br><span class="line">        sum += money</span><br><span class="line">    &#125;</span><br><span class="line">print(sum)</span><br><span class="line"></span><br><span class="line">//MARK: — 求乘积</span><br><span class="line">  var product = 1  </span><br><span class="line">  for money in moneyArray &#123;</span><br><span class="line">        product = product * money</span><br><span class="line">    &#125;  </span><br><span class="line"> print(product)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>reduce的函数介绍</p>
 <p>Reduce便可用于快速完成这类操作，通过指定一个初始值和一个组合元素的方法.</p>
@@ -459,14 +640,14 @@
 <p>接收两个参数，一个为initialResult的命名参数，类型跟Result一样的的初始值参数，另一个是命名函数nextPartialResult，把Result类型和数组元素Element进行运算，得到一个Result，逐个运行算成后得到最终的Result，将其返回。</p>
 </li>
 <li><p>reduce的方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//MARK: --一个简化的简约闭包 </div><div class="line">let sum = moneyArray.reduce(0) &#123; (a : Int, b : Int) -&gt; Int in      </div><div class="line">      return  a + b</div><div class="line">  &#125;</div><div class="line">let product = moneyArray.reduce(1) &#123; (a : Int, b: Int) -&gt; Int in</div><div class="line">  return  a * b</div><div class="line">  &#125;</div><div class="line">   print(&quot;数组总和==\(result),数组乘积==\(product)”)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//MARK: --一个简化的简约闭包 </span><br><span class="line">let sum = moneyArray.reduce(0) &#123; (a : Int, b : Int) -&gt; Int in      </span><br><span class="line">      return  a + b</span><br><span class="line">  &#125;</span><br><span class="line">let product = moneyArray.reduce(1) &#123; (a : Int, b: Int) -&gt; Int in</span><br><span class="line">  return  a * b</span><br><span class="line">  &#125;</span><br><span class="line">   print(&quot;数组总和==\(result),数组乘积==\(product)”)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//MARK: -- 最简约的写法，采用默认参数</div><div class="line">let sum = moneyArray.reduce(0) &#123; $0 + $1&#125;     </div><div class="line">let product = moneyArray.reduce(1) &#123; $0 * $1&#125;</div><div class="line">print(&quot;数组总和==\(result),数组乘积==\(product)”)</div></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//MARK: -- 最简约的写法，采用默认参数</span><br><span class="line">let sum = moneyArray.reduce(0) &#123; $0 + $1&#125;     </span><br><span class="line">let product = moneyArray.reduce(1) &#123; $0 * $1&#125;</span><br><span class="line">print(&quot;数组总和==\(result),数组乘积==\(product)”)</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>特殊情况下可再简化 </p>
 <p>上面的都不是最简化的，其实最简化地写法是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//MARK:— Swift中操作符可用着函数，可简化成：</div><div class="line">let  sum = moneyArray.reduce(0, +)        </div><div class="line">let  product = moneyArray.reduce(1, *)</div><div class="line">print(&quot;数组总和==\(sum),数组乘积==\(product)&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//MARK:— Swift中操作符可用着函数，可简化成：</span><br><span class="line">let  sum = moneyArray.reduce(0, +)        </span><br><span class="line">let  product = moneyArray.reduce(1, *)</span><br><span class="line">print(&quot;数组总和==\(sum),数组乘积==\(product)&quot;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>  reduce可能是三个高阶函数中最难理解的一个。 需要注意的是nextPartialResult函数的两参数类型不同，Result为计算结果类型，Element为数组元素类型。</p>
@@ -476,13 +657,13 @@
 <p> 比map更深一样，在自定义函数时，可能把元素生成更多的元素，然后会把这些元素都加到新的元素数组中去。</p>
 </li>
 <li><p>代码示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  let oldArray = [20,10,30]</div><div class="line"></div><div class="line">  let newArray = oldArray.flatMap &#123; (a : Int) -&gt; [String] in         </div><div class="line">  return [&quot;\(a)元&quot;,&quot;\(a)分&quot;]</div><div class="line">     &#125;   </div><div class="line">print(newArray)</div><div class="line">//  结果: [&quot;20元&quot;, &quot;20分&quot;, &quot;10元ƒ&quot;, &quot;10分&quot;, &quot;30元&quot;, &quot;30分”]</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> //MARK: -- 简约写法</div><div class="line">let newArray = oldArray.flatMap(&#123;[&quot;\($0)元&quot;,&quot;\($0)分&quot;]&#125;)</div><div class="line">print(newArray)       </div><div class="line">//  结果: [&quot;20元&quot;, &quot;20分&quot;, &quot;10元&quot;, &quot;10分&quot;, &quot;30元&quot;, &quot;30分”]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  let oldArray = [20,10,30]</span><br><span class="line"></span><br><span class="line">  let newArray = oldArray.flatMap &#123; (a : Int) -&gt; [String] in         </span><br><span class="line">  return [&quot;\(a)元&quot;,&quot;\(a)分&quot;]</span><br><span class="line">     &#125;   </span><br><span class="line">print(newArray)</span><br><span class="line">//  结果: [&quot;20元&quot;, &quot;20分&quot;, &quot;10元ƒ&quot;, &quot;10分&quot;, &quot;30元&quot;, &quot;30分”]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> //MARK: -- 简约写法</span><br><span class="line">let newArray = oldArray.flatMap(&#123;[&quot;\($0)元&quot;,&quot;\($0)分&quot;]&#125;)</span><br><span class="line">print(newArray)       </span><br><span class="line">//  结果: [&quot;20元&quot;, &quot;20分&quot;, &quot;10元&quot;, &quot;10分&quot;, &quot;30元&quot;, &quot;30分”]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>对比map</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   let newArr = oldArray.map(&#123;[&quot;\($0)元&quot;,&quot;\($0)分&quot;]&#125;)     </div><div class="line">print (newArr)     </div><div class="line">//   结果: [[&quot;20元&quot;, &quot;20分&quot;], [&quot;10元&quot;, &quot;10分&quot;], [&quot;30元&quot;, &quot;30分&quot;]]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   let newArr = oldArray.map(&#123;[&quot;\($0)元&quot;,&quot;\($0)分&quot;]&#125;)     </span><br><span class="line">print (newArr)     </span><br><span class="line">//   结果: [[&quot;20元&quot;, &quot;20分&quot;], [&quot;10元&quot;, &quot;10分&quot;], [&quot;30元&quot;, &quot;30分&quot;]]</span><br></pre></td></tr></table></figure>
 <p>对比一下结果就看出运算的不同之处了。map是由一个元素生成object，返回后替代原来的元素，数组的这个元素就成了是object，数组的这个元素就是object。而flatMap可以由一个元素生成一个数组newArr，结果数组在这个元素的位置插入newArr.count个数的newArr，结果数组的个数就增加了newArr.count元素了。</p>
 <p>所以flatmap是map的扩展功能，因为它生成的不是单个元素，而可以是数组。</p>
 </li>
@@ -574,7 +755,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T15:19:08-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T15:19:08+08:00">
                 2017-06-28
               </time>
             
@@ -637,7 +818,7 @@
             <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>  3D Touch是一种立体触控技术，被苹果称为新一代多点触控技术，是在Apple Watch上采用的Force Touch，屏幕可感应不同的感压力度触控。3D Touch，苹果iPhone 6s的新功能，系统版本需要iOS 9.0+ ，有Peek Pop 两种新手种势。</p>
 <p>   2015年9月10日，苹果在新品发布会上宣布了3D-Touch功能。 2016年6月13日，苹果开发者大会WWDC在旧金山召开，会议宣布可以在待机画面用3D Touch操作通知。</p>
 <p>现在，许多安卓手机也用上了3D Touch。</p>
-<p>– 摘自<a href="http://baike.baidu.com/link?url=GB-HtIdALMiFhvBNnnlB2XIufZsONBza8ccrAQG7_4HQtWm_C6x9AEK3r1Ek6YJ4suVOsQoDqUb3HXc-ja6FO8ZVsrudKNtpNx6psKj1MtOsg7TOzx4_g0JuprFm82NUh9Az_an8U93KWfGXUNwhYa" target="_blank" rel="external">百度百科</a></p>
+<p>– 摘自<a href="http://baike.baidu.com/link?url=GB-HtIdALMiFhvBNnnlB2XIufZsONBza8ccrAQG7_4HQtWm_C6x9AEK3r1Ek6YJ4suVOsQoDqUb3HXc-ja6FO8ZVsrudKNtpNx6psKj1MtOsg7TOzx4_g0JuprFm82NUh9Az_an8U93KWfGXUNwhYa" target="_blank" rel="noopener">百度百科</a></p>
 <hr>
 <h3 id="3D-Touch四大功能模块"><a href="#3D-Touch四大功能模块" class="headerlink" title="3D Touch四大功能模块"></a>3D Touch四大功能模块</h3><ul>
 <li><strong>Home Screen Quick Actions</strong> （主屏幕快捷入口）</li>
@@ -655,15 +836,15 @@
 <ul>
 <li><p>代码示例</p>
 <p>示例代码* OC</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// UIForceTouchCapability：  </div><div class="line">typedef NS_ENUM(NSInteger, UIForceTouchCapability) &#123;</div><div class="line">   UIForceTouchCapabilityUnknown =0,  //3D Touch检测失败</div><div class="line">   UIForceTouchCapabilityUnavailable =1, //3D Touch不可用</div><div class="line">   UIForceTouchCapabilityAvailable =2  //3D Touch可用</div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// UIForceTouchCapability：  </span><br><span class="line">typedef NS_ENUM(NSInteger, UIForceTouchCapability) &#123;</span><br><span class="line">   UIForceTouchCapabilityUnknown =0,  //3D Touch检测失败</span><br><span class="line">   UIForceTouchCapabilityUnavailable =1, //3D Touch不可用</span><br><span class="line">   UIForceTouchCapabilityAvailable =2  //3D Touch可用</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> // 判断是否支持：</div><div class="line">  if (self.traitCollection.forceTouchCapability !=UIForceTouchCapabilityAvailable) &#123;</div><div class="line">   UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@&quot;提示&quot; message:@&quot;设备不支持3DTouch&quot; delegate:nil cancelButtonTitle:@&quot;确定&quot; otherButtonTitles:nil, nil];</div><div class="line">   [alertView show];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> // 判断是否支持：</span><br><span class="line">  if (self.traitCollection.forceTouchCapability !=UIForceTouchCapabilityAvailable) &#123;</span><br><span class="line">   UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@&quot;提示&quot; message:@&quot;设备不支持3DTouch&quot; delegate:nil cancelButtonTitle:@&quot;确定&quot; otherButtonTitles:nil, nil];</span><br><span class="line">   [alertView show];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>swift</li>
 </ul>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> // UIForceTouchCapability:</div><div class="line"> public enum UIForceTouchCapability : Int&#123;</div><div class="line">  case unknown  //3D Touch检测失败</div><div class="line">  case unavailable  //3D Touch不可用</div><div class="line">  case available  //3D Touch可用</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 判断是否支持：</div><div class="line"></div><div class="line">if traitCollection.forceTouchCapability != .available&#123;</div><div class="line">      </div><div class="line"> let alert =  UIAlertView(title: &quot;提示&quot;, message: &quot;设备不支持3DTouch&quot;, delegate: nil, cancelButtonTitle: &quot;确定&quot;)</div><div class="line"> alert.show()          </div><div class="line"> return   </div><div class="line">   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> // UIForceTouchCapability:</span><br><span class="line"> public enum UIForceTouchCapability : Int&#123;</span><br><span class="line">  case unknown  //3D Touch检测失败</span><br><span class="line">  case unavailable  //3D Touch不可用</span><br><span class="line">  case available  //3D Touch可用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 判断是否支持：</span><br><span class="line"></span><br><span class="line">if traitCollection.forceTouchCapability != .available&#123;</span><br><span class="line">      </span><br><span class="line"> let alert =  UIAlertView(title: &quot;提示&quot;, message: &quot;设备不支持3DTouch&quot;, delegate: nil, cancelButtonTitle: &quot;确定&quot;)</span><br><span class="line"> alert.show()          </span><br><span class="line"> return   </span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="Home-Screen-Quick-Actions开发"><a href="#Home-Screen-Quick-Actions开发" class="headerlink" title="Home Screen Quick Actions开发"></a>Home Screen Quick Actions开发</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p> 通过主屏幕的应用Icon，我们可以用3D Touch呼出一个菜单，进行快速定位应用功能模块相关功能的开发,。如微信、京东的App，本文也将重点介绍这项开发技术。</p>
 <p> 效果如下：</p>
@@ -701,12 +882,12 @@
 </ul>
 <h5 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h5><ul>
 <li><p>OC</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">// UIApplicationShortcutIconType是系统的图片类型，29种类型图片</div><div class="line"> </div><div class="line">   UIApplicationShortcutIcon *shareShortcutIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeShare];</div><div class="line"> </div><div class="line">   UIApplicationShortcutItem *shareShortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@&quot;&quot; localizedTitle:@&quot;分享&quot; localizedSubtitle:@&quot;来点我啊&quot; icon:shareShortcutIcon userInfo:nil];</div><div class="line">  </div><div class="line">  //可以用iconWithTemplateImageName:来自定义图片 shortcut_QR:图片名</div><div class="line">   UIApplicationShortcutIcon *payShortcutIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@&quot;shortcut_imageName&quot;];</div><div class="line">      </div><div class="line">   UIApplicationShortcutItem *payShortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@&quot;&quot; localizedTitle:@&quot;消息&quot; localizedSubtitle:@&quot;不怕不怕&quot; icon:payShortcutIcon userInfo:nil];</div><div class="line">    </div><div class="line">   //将实例化的shortcutItem将入到UIApplication的shortcutItems中就完成了。</div><div class="line">  [UIApplication sharedApplication].shortcutItems = @[shareShortcutItem, payShortcutItem];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// UIApplicationShortcutIconType是系统的图片类型，29种类型图片</span><br><span class="line"> </span><br><span class="line">   UIApplicationShortcutIcon *shareShortcutIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeShare];</span><br><span class="line"> </span><br><span class="line">   UIApplicationShortcutItem *shareShortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@&quot;&quot; localizedTitle:@&quot;分享&quot; localizedSubtitle:@&quot;来点我啊&quot; icon:shareShortcutIcon userInfo:nil];</span><br><span class="line">  </span><br><span class="line">  //可以用iconWithTemplateImageName:来自定义图片 shortcut_QR:图片名</span><br><span class="line">   UIApplicationShortcutIcon *payShortcutIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@&quot;shortcut_imageName&quot;];</span><br><span class="line">      </span><br><span class="line">   UIApplicationShortcutItem *payShortcutItem = [[UIApplicationShortcutItem alloc] initWithType:@&quot;&quot; localizedTitle:@&quot;消息&quot; localizedSubtitle:@&quot;不怕不怕&quot; icon:payShortcutIcon userInfo:nil];</span><br><span class="line">    </span><br><span class="line">   //将实例化的shortcutItem将入到UIApplication的shortcutItems中就完成了。</span><br><span class="line">  [UIApplication sharedApplication].shortcutItems = @[shareShortcutItem, payShortcutItem];</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>Swift</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//分享</div><div class="line">let icon1 = UIApplicationShortcutIcon(type: .share)</div><div class="line">let shareItem = UIApplicationShortcutItem(type: &quot;&quot;, localizedTitle: &quot;分享&quot;, localizedSubtitle: &quot;来点我&quot;, icon: icon1, userInfo: nil)</div><div class="line">         </div><div class="line">//支付 shortcut_imageName:图片名称</div><div class="line">let icon2 = UIApplicationShortcutIcon(templateImageName: &quot;shortcut_imageName&quot;)</div><div class="line">let playItem = UIApplicationShortcutItem(type: &quot;&quot;, localizedTitle: &quot;支付&quot;, localizedSubtitle: &quot;不怕不怕&quot;, icon: icon2, userInfo: nil)</div><div class="line">  </div><div class="line">UIApplication.shared.shortcutItems = [shareItem,playItem]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//分享</span><br><span class="line">let icon1 = UIApplicationShortcutIcon(type: .share)</span><br><span class="line">let shareItem = UIApplicationShortcutItem(type: &quot;&quot;, localizedTitle: &quot;分享&quot;, localizedSubtitle: &quot;来点我&quot;, icon: icon1, userInfo: nil)</span><br><span class="line">         </span><br><span class="line">//支付 shortcut_imageName:图片名称</span><br><span class="line">let icon2 = UIApplicationShortcutIcon(templateImageName: &quot;shortcut_imageName&quot;)</span><br><span class="line">let playItem = UIApplicationShortcutItem(type: &quot;&quot;, localizedTitle: &quot;支付&quot;, localizedSubtitle: &quot;不怕不怕&quot;, icon: icon2, userInfo: nil)</span><br><span class="line">  </span><br><span class="line">UIApplication.shared.shortcutItems = [shareItem,playItem]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>UIApplicationShortcutIconType补充说明</p>
 <p>系统一共提供了29种类型样式：</p>
@@ -715,16 +896,16 @@
 </li>
 </ul>
 <h4 id="快捷启动后的处理-检测App启动方式"><a href="#快捷启动后的处理-检测App启动方式" class="headerlink" title="快捷启动后的处理(检测App启动方式)"></a>快捷启动后的处理(检测App启动方式)</h4><h5 id="代理接受"><a href="#代理接受" class="headerlink" title="代理接受"></a>代理接受</h5><p>  通过快捷入口进入或者启动app,会实现appDelegate的代理方法:</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandle</div></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandle</span><br></pre></td></tr></table></figure>
 <p>  我们可以判断shortcutItem.localizedTitle属性的值来判断是从哪一个标签进入的App。</p>
 <h5 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h5><ul>
 <li><p>OC</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">   </div><div class="line">   - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler &#123;</div><div class="line">      </div><div class="line">      //如果是从&quot;分享&quot;这个标签进来的，我们把页面背景颜色修改为黄色，如果是从@&quot;消息&quot;这个标签进来的，我们讲页面背景颜色修改为红色。都不是的话，就直接是白色。</div><div class="line">    if  ([shortcutItem.localizedTitle isEqualToString:@&quot;分享&quot;]) &#123;       </div><div class="line">        self.window.rootViewController.view.backgroundColor = [UIColor yellowColor];</div><div class="line">      &#125; else if ([shortcutItem.localizedTitle isEqualToString:@&quot;消息&quot;]) &#123;       </div><div class="line">        self.window.rootViewController.view.backgroundColor = [UIColor redColor];</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">   - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler &#123;</span><br><span class="line">      </span><br><span class="line">      //如果是从&quot;分享&quot;这个标签进来的，我们把页面背景颜色修改为黄色，如果是从@&quot;消息&quot;这个标签进来的，我们讲页面背景颜色修改为红色。都不是的话，就直接是白色。</span><br><span class="line">    if  ([shortcutItem.localizedTitle isEqualToString:@&quot;分享&quot;]) &#123;       </span><br><span class="line">        self.window.rootViewController.view.backgroundColor = [UIColor yellowColor];</span><br><span class="line">      &#125; else if ([shortcutItem.localizedTitle isEqualToString:@&quot;消息&quot;]) &#123;       </span><br><span class="line">        self.window.rootViewController.view.backgroundColor = [UIColor redColor];</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>Swift</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -&gt; Void) &#123;</div><div class="line"></div><div class="line">      if shortcutItem.localizedTitle == &quot;来啊&quot;&#123;     </div><div class="line">      window?.rootViewController?.view.backgroundColor= #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)</div><div class="line">      &#125;else if shortcutItem.localizedTitle == &quot;后门&quot; &#123;  </div><div class="line">      window?.rootViewController?.view.backgroundColor= #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)</div><div class="line">      &#125;</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -&gt; Void) &#123;</span><br><span class="line"></span><br><span class="line">      if shortcutItem.localizedTitle == &quot;来啊&quot;&#123;     </span><br><span class="line">      window?.rootViewController?.view.backgroundColor= #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)</span><br><span class="line">      &#125;else if shortcutItem.localizedTitle == &quot;后门&quot; &#123;  </span><br><span class="line">      window?.rootViewController?.view.backgroundColor= #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h4><ul>
@@ -765,33 +946,33 @@
 <li><p>OC</p>
 <ol>
 <li><p>注册</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> // self：为视图控制器, soureView: 为实现3DTouch的视图，如果是单独的一个view的话，则效果只对该view有作用， 那到时的gesture和location都是相对于这个soureView的。</div><div class="line">[self registerForPreviewingWithDelegate:self sourceView:self.view];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> // self：为视图控制器, soureView: 为实现3DTouch的视图，如果是单独的一个view的话，则效果只对该view有作用， 那到时的gesture和location都是相对于这个soureView的。</span><br><span class="line">[self registerForPreviewingWithDelegate:self sourceView:self.view];</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
 </ul>
 <pre><code>2. 遵守代理
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@interface ViewController ()&lt;UIViewControllerPreviewingDelegate&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@interface ViewController ()&lt;UIViewControllerPreviewingDelegate&gt;</span><br></pre></td></tr></table></figure>
 </code></pre><ol>
 <li><p>实现方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">   //MARK: — UIViewControllerPreviewingDelegate</div><div class="line">   //MARK: -- 返回要显示的控制器</div><div class="line">   - (nullable UIViewController *)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext viewControllerForLocation:(CGPoint)location &#123;</div><div class="line"></div><div class="line">   //初始化要显示的控制器</div><div class="line">    UIViewController *childVc = [[UIViewController alloc]init];</div><div class="line"></div><div class="line">   //1.获取手势,我在view上加了一个tableView，这里我是想要获取我们重按的点是点在哪个cell上。</div><div class="line">   UIGestureRecognizer *gesture  =  previewingContext.previewingGestureRecognizerForFailureRelationship;</div><div class="line">  //2.获取手势所在的tableView中的点位</div><div class="line">CGPoint point = [gesture locationInView:self.tableView];</div><div class="line">   //3. 根据这个点获取是第几行,    ROWHight是单个cell的高度</div><div class="line">NSInteger index = floor(point.y/ROWHight);</div><div class="line">   //4.得到第行，而且得到cell</div><div class="line">self.indexPath = [NSIndexPath indexPathForRow:index inSection:0];  </div><div class="line">self.cell =[self.tableView cellForRowAtIndexPath:self.indexPath];</div><div class="line">   </div><div class="line"> // 加个白色背景,这个背影是高清显示的。</div><div class="line">UIView *bgView =[[UIView alloc] initWithFrame:CGRectMake(20, 10, kScreenWidth - 40,kScreenHeight - 20 - 64 * 2)];</div><div class="line">    bgView.backgroundColor = [UIColor whiteColor];</div><div class="line">    bgView.layer.cornerRadius = 10;</div><div class="line">    bgView.clipsToBounds = YES;</div><div class="line">    [childVc.view addSubview:bgView];</div><div class="line">   </div><div class="line">  //展示的标题</div><div class="line">UILabel *lable1 = [[UILabel alloc] initWithFrame:CGRectMake(0,bgView.bounds.size.height/2-40 , bgView.bounds.size.width, 40)];</div><div class="line">    lable1.textAlignment = NSTextAlignmentCenter;</div><div class="line">    lable1.textColor=[UIColor redColor];</div><div class="line">    lable1.text = self.cell.textLabel.text;</div><div class="line">    [bgView addSubview:lable1];</div><div class="line">   </div><div class="line">  // 展示的详情</div><div class="line">UILabel *lable2 = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lable1.frame), bgView.bounds.size.width, 40)];</div><div class="line">    lable2.textAlignment = NSTextAlignmentCenter;</div><div class="line">    lable2.textColor = [UIColor lightGrayColor];</div><div class="line">   NSString *text = self.cell.detailTextLabel.text;</div><div class="line">    lable2.text= text;</div><div class="line">    [bgView addSubview:lable2];</div><div class="line">     </div><div class="line"> //提示lable</div><div class="line">UILabel *detail = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lable2.frame), bgView.bounds.size.width, 40)];</div><div class="line">    detail.textAlignment = NSTextAlignmentCenter;</div><div class="line">    detail.textColor=[UIColor yellowColor];</div><div class="line">    detail.text = @&quot;再按重一点就选择该项了&quot;;</div><div class="line">    [bgView addSubview: detail];   </div><div class="line"></div><div class="line">  //最后返回的展示的控制器</div><div class="line">    return  childVc;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">  //MARK: -- 再次重按的时候表示进行选择了，然后消失后会下走的方法</div><div class="line">  - (void)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext commitViewController:(UIViewController*)viewControllerToCommit&#123;</div><div class="line">   </div><div class="line">  //让它走选择了某项的代理方法。</div><div class="line">    [self tableView:self.tableView didSelectRowAtIndexPath:self.indexPath];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">   //MARK: — UIViewControllerPreviewingDelegate</span><br><span class="line">   //MARK: -- 返回要显示的控制器</span><br><span class="line">   - (nullable UIViewController *)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext viewControllerForLocation:(CGPoint)location &#123;</span><br><span class="line"></span><br><span class="line">   //初始化要显示的控制器</span><br><span class="line">    UIViewController *childVc = [[UIViewController alloc]init];</span><br><span class="line"></span><br><span class="line">   //1.获取手势,我在view上加了一个tableView，这里我是想要获取我们重按的点是点在哪个cell上。</span><br><span class="line">   UIGestureRecognizer *gesture  =  previewingContext.previewingGestureRecognizerForFailureRelationship;</span><br><span class="line">  //2.获取手势所在的tableView中的点位</span><br><span class="line">CGPoint point = [gesture locationInView:self.tableView];</span><br><span class="line">   //3. 根据这个点获取是第几行,    ROWHight是单个cell的高度</span><br><span class="line">NSInteger index = floor(point.y/ROWHight);</span><br><span class="line">   //4.得到第行，而且得到cell</span><br><span class="line">self.indexPath = [NSIndexPath indexPathForRow:index inSection:0];  </span><br><span class="line">self.cell =[self.tableView cellForRowAtIndexPath:self.indexPath];</span><br><span class="line">   </span><br><span class="line"> // 加个白色背景,这个背影是高清显示的。</span><br><span class="line">UIView *bgView =[[UIView alloc] initWithFrame:CGRectMake(20, 10, kScreenWidth - 40,kScreenHeight - 20 - 64 * 2)];</span><br><span class="line">    bgView.backgroundColor = [UIColor whiteColor];</span><br><span class="line">    bgView.layer.cornerRadius = 10;</span><br><span class="line">    bgView.clipsToBounds = YES;</span><br><span class="line">    [childVc.view addSubview:bgView];</span><br><span class="line">   </span><br><span class="line">  //展示的标题</span><br><span class="line">UILabel *lable1 = [[UILabel alloc] initWithFrame:CGRectMake(0,bgView.bounds.size.height/2-40 , bgView.bounds.size.width, 40)];</span><br><span class="line">    lable1.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">    lable1.textColor=[UIColor redColor];</span><br><span class="line">    lable1.text = self.cell.textLabel.text;</span><br><span class="line">    [bgView addSubview:lable1];</span><br><span class="line">   </span><br><span class="line">  // 展示的详情</span><br><span class="line">UILabel *lable2 = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lable1.frame), bgView.bounds.size.width, 40)];</span><br><span class="line">    lable2.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">    lable2.textColor = [UIColor lightGrayColor];</span><br><span class="line">   NSString *text = self.cell.detailTextLabel.text;</span><br><span class="line">    lable2.text= text;</span><br><span class="line">    [bgView addSubview:lable2];</span><br><span class="line">     </span><br><span class="line"> //提示lable</span><br><span class="line">UILabel *detail = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(lable2.frame), bgView.bounds.size.width, 40)];</span><br><span class="line">    detail.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">    detail.textColor=[UIColor yellowColor];</span><br><span class="line">    detail.text = @&quot;再按重一点就选择该项了&quot;;</span><br><span class="line">    [bgView addSubview: detail];   </span><br><span class="line"></span><br><span class="line">  //最后返回的展示的控制器</span><br><span class="line">    return  childVc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  //MARK: -- 再次重按的时候表示进行选择了，然后消失后会下走的方法</span><br><span class="line">  - (void)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext commitViewController:(UIViewController*)viewControllerToCommit&#123;</span><br><span class="line">   </span><br><span class="line">  //让它走选择了某项的代理方法。</span><br><span class="line">    [self tableView:self.tableView didSelectRowAtIndexPath:self.indexPath];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="补充说明-1"><a href="#补充说明-1" class="headerlink" title="补充说明"></a>补充说明</h4><ul>
 <li>location是相对于注册source来获取的。</li>
 <li><p>UIViewControllerPreviewing 主要可用的属性,是相对于注册source的属性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, readonly) UIGestureRecognizer *previewingGestureRecognizerForFailureRelationship //手势</div><div class="line">@property (nonatomic, readonly) UIView *sourceView  //source当初注册传入的视图</div><div class="line">@property (nonatomic) CGRect sourceRect  //source的frame</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, readonly) UIGestureRecognizer *previewingGestureRecognizerForFailureRelationship //手势</span><br><span class="line">@property (nonatomic, readonly) UIView *sourceView  //source当初注册传入的视图</span><br><span class="line">@property (nonatomic) CGRect sourceRect  //source的frame</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>注册的时候直接用SourceView为Cell。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">        //MARK:-- 返回cell</div><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath&#123;</div><div class="line">    </div><div class="line">     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID forIndexPath:indexPath];</div><div class="line">      if(cell) &#123;</div><div class="line">           cell.textLabel.text = self.dataSouce[indexPath.row][@&quot;title&quot;];</div><div class="line">           cell.detailTextLabel.text  = self.dataSouce[indexPath.row][@&quot;detail&quot;];</div><div class="line">           [self registerForPreviewingWithDelegate:self sourceView:cell];</div><div class="line">          &#125;</div><div class="line">       return  cell;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  // 2.在代理中获取点击cell就简单多了</div><div class="line">- (nullable UIViewController *)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext viewControllerForLocation:(CGPoint)location &#123;  </div><div class="line">  </div><div class="line"> UIViewController *childVc = [[UIViewController alloc]init];   </div><div class="line"></div><div class="line">  // 方法一：  </div><div class="line">self.cell  = (UITableViewCell *) previewingContext.sourceView;//这个可以获取注册的sourceView</div><div class="line">CGRect frame = previewingContext.sourceRect;//这个可以获取注册的sourceView.frame及大小</div><div class="line"></div><div class="line"> //  方法二：</div><div class="line"> //  UIGestureRecognizer *gesture  =  previewingContext.previewingGestureRecognizerForFailureRelationship;//    //2.获取手势</div><div class="line"> //   UIGestureRecognizer *gesture  =  previewingContext.previewingGestureRecognizerForFailureRelationship;//    //2.获取手势所在的tableView中的点位</div><div class="line">//    self.cell   = (UITableViewCell *)gesture.view;//这个可以获取点击所得到的cell;</div><div class="line">  </div><div class="line"> return    childVc;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">        //MARK:-- 返回cell</span><br><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath&#123;</span><br><span class="line">    </span><br><span class="line">     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID forIndexPath:indexPath];</span><br><span class="line">      if(cell) &#123;</span><br><span class="line">           cell.textLabel.text = self.dataSouce[indexPath.row][@&quot;title&quot;];</span><br><span class="line">           cell.detailTextLabel.text  = self.dataSouce[indexPath.row][@&quot;detail&quot;];</span><br><span class="line">           [self registerForPreviewingWithDelegate:self sourceView:cell];</span><br><span class="line">          &#125;</span><br><span class="line">       return  cell;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 2.在代理中获取点击cell就简单多了</span><br><span class="line">- (nullable UIViewController *)previewingContext:(id &lt;UIViewControllerPreviewing&gt;)previewingContext viewControllerForLocation:(CGPoint)location &#123;  </span><br><span class="line">  </span><br><span class="line"> UIViewController *childVc = [[UIViewController alloc]init];   </span><br><span class="line"></span><br><span class="line">  // 方法一：  </span><br><span class="line">self.cell  = (UITableViewCell *) previewingContext.sourceView;//这个可以获取注册的sourceView</span><br><span class="line">CGRect frame = previewingContext.sourceRect;//这个可以获取注册的sourceView.frame及大小</span><br><span class="line"></span><br><span class="line"> //  方法二：</span><br><span class="line"> //  UIGestureRecognizer *gesture  =  previewingContext.previewingGestureRecognizerForFailureRelationship;//    //2.获取手势</span><br><span class="line"> //   UIGestureRecognizer *gesture  =  previewingContext.previewingGestureRecognizerForFailureRelationship;//    //2.获取手势所在的tableView中的点位</span><br><span class="line">//    self.cell   = (UITableViewCell *)gesture.view;//这个可以获取点击所得到的cell;</span><br><span class="line">  </span><br><span class="line"> return    childVc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>Swift </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div></pre></td><td class="code"><pre><div class="line">  class NexViewController: UIViewController&#123;</div><div class="line">let CellId = &quot;CellId&quot;</div><div class="line">var currentCell : UITableViewCell?</div><div class="line"></div><div class="line"> @IBOutlet weak var tableView: UITableView!</div><div class="line">   </div><div class="line"> var dataSource : [[String : Any]] = [];</div><div class="line">    </div><div class="line"> override func viewDidLoad() &#123;</div><div class="line">       super.viewDidLoad()</div><div class="line">       getData()</div><div class="line">       &#125;</div><div class="line">&#125;</div><div class="line"> //遵守协议</div><div class="line">extension NexViewController : UITableViewDataSource,UITableViewDelegate,UIViewControllerPreviewingDelegate</div><div class="line">&#123;   </div><div class="line">   //TODO: -- 加载数据</div><div class="line">       func getData() &#123;</div><div class="line">            for i in 0..&lt;20&#123;</div><div class="line">              let dic = [&quot;title&quot; : &quot;测试标题 + \(i+1)&quot;, &quot;detail&quot; : &quot;详情资料是这样的 + \(i+1)&quot;];</div><div class="line">              dataSource.append(dic)</div><div class="line">        &#125;</div><div class="line">       tableView.reloadData()</div><div class="line">    &#125;</div><div class="line">   </div><div class="line"> //MARK: -- UITableViewDataSource</div><div class="line"> //TODO:-- 每个section有多少条</div><div class="line"> public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int</div><div class="line">&#123;</div><div class="line">    return dataSource.count</div><div class="line">  &#125;</div><div class="line">      </div><div class="line"> //TODO:-- 返回Cell   </div><div class="line">public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell</div><div class="line">&#123;</div><div class="line">       let cell = tableView.dequeueReusableCell(withIdentifier: CellId, for: indexPath)</div><div class="line">     cell.textLabel?.text = (dataSource[indexPath.row] as! Dictionary)[&quot;title&quot;]</div><div class="line">     cell.detailTextLabel?.text = (dataSource[indexPath.row] as! Dictionary)[&quot;detail”]</div><div class="line"></div><div class="line"> // 注册3DTouch</div><div class="line">     registerForPreviewing(with: self, sourceView: cell)</div><div class="line">     return  cell    </div><div class="line">   &#125;</div><div class="line">    </div><div class="line">    </div><div class="line"> //TODO: -- UITableViewDelegate     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)&#123;</div><div class="line">      tableView.deselectRow(at: indexPath, animated: true)</div><div class="line">      performSegue(withIdentifier: &quot;detail&quot;, sender: dataSource[indexPath.row])</div><div class="line">     &#125;</div><div class="line">    </div><div class="line"> //重写segue跳转方法</div><div class="line">   override func prepare(for segue: UIStoryboardSegue, sender: Any?) &#123;      </div><div class="line">   if segue.identifier == “detail&quot;&#123;</div><div class="line">           if let viewcontroller = segue.destination as? DetailViewController&#123;</div><div class="line">              viewcontroller.info = sender as! [String : Any]?</div><div class="line">            &#125;    </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line"> //MARK: -- UIViewControllerPreviewingDelegate     </div><div class="line">public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -&gt; UIViewController?&#123;</div><div class="line">    </div><div class="line">   let childVC  = UIViewController()</div><div class="line">   currentCell = previewingContext.sourceView as? UITableViewCell</div><div class="line"></div><div class="line">  //TODO: -- 加白色背景</div><div class="line">        let bgView = UIView(frame: .init(x: 20, y: 10, width: (view.window?.bounds.size.width)!-40 , height: (view.window?.bounds.size.height)! - 20-64*2))</div><div class="line">        bgView.backgroundColor= #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)</div><div class="line">        bgView.layer.cornerRadius = 10.0</div><div class="line">        bgView.clipsToBounds = true</div><div class="line">       childVC.view.addSubview(bgView)</div><div class="line">      </div><div class="line"> // 标题</div><div class="line">    let lable1 = UILabel(frame: .init(x: 0, y: bgView.bounds.size.height/2 - 40, width: bgView.bounds.size.width, height: 40))</div><div class="line">     lable1.textAlignment = .center</div><div class="line">     lable1.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)</div><div class="line">     lable1.text = currentCell?.textLabel?.text</div><div class="line">     bgView.addSubview(lable1)</div><div class="line">        </div><div class="line"> //详情      </div><div class="line">    let lable2 = UILabel(frame: .init(x: 0, y: lable1.frame.maxY, width: bgView.bounds.size.width, height: 40))</div><div class="line">    lable2.textAlignment = .center</div><div class="line">    lable2.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)</div><div class="line">    lable2.text = currentCell?.detailTextLabel?.text</div><div class="line">    bgView.addSubview(lable2)</div><div class="line">       </div><div class="line"> //提示      </div><div class="line">   let detail = UILabel(frame: .init(x: 0, y: lable2.frame.maxY, width: bgView.bounds.size.width, height: 40))</div><div class="line">   detail.textAlignment = .center</div><div class="line">   detail.textColor= #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)</div><div class="line">   detail.text = &quot;再按重一点就选择该项了&quot;</div><div class="line">   bgView.addSubview(detail)</div><div class="line">              </div><div class="line"> return childVC</div><div class="line">&#125;</div><div class="line">    </div><div class="line">   //再按重些会选择该项，消失展示框后需要走的代码</div><div class="line">public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)&#123;</div><div class="line">  </div><div class="line"> let indexPath = tableView.indexPath(for: currentCell!)  </div><div class="line"> if indexPath != nil&#123;</div><div class="line">    tableView(tableView, didSelectRowAt: indexPath!)</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">   </div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">  class NexViewController: UIViewController&#123;</span><br><span class="line">let CellId = &quot;CellId&quot;</span><br><span class="line">var currentCell : UITableViewCell?</span><br><span class="line"></span><br><span class="line"> @IBOutlet weak var tableView: UITableView!</span><br><span class="line">   </span><br><span class="line"> var dataSource : [[String : Any]] = [];</span><br><span class="line">    </span><br><span class="line"> override func viewDidLoad() &#123;</span><br><span class="line">       super.viewDidLoad()</span><br><span class="line">       getData()</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br><span class="line"> //遵守协议</span><br><span class="line">extension NexViewController : UITableViewDataSource,UITableViewDelegate,UIViewControllerPreviewingDelegate</span><br><span class="line">&#123;   </span><br><span class="line">   //TODO: -- 加载数据</span><br><span class="line">       func getData() &#123;</span><br><span class="line">            for i in 0..&lt;20&#123;</span><br><span class="line">              let dic = [&quot;title&quot; : &quot;测试标题 + \(i+1)&quot;, &quot;detail&quot; : &quot;详情资料是这样的 + \(i+1)&quot;];</span><br><span class="line">              dataSource.append(dic)</span><br><span class="line">        &#125;</span><br><span class="line">       tableView.reloadData()</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line"> //MARK: -- UITableViewDataSource</span><br><span class="line"> //TODO:-- 每个section有多少条</span><br><span class="line"> public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int</span><br><span class="line">&#123;</span><br><span class="line">    return dataSource.count</span><br><span class="line">  &#125;</span><br><span class="line">      </span><br><span class="line"> //TODO:-- 返回Cell   </span><br><span class="line">public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell</span><br><span class="line">&#123;</span><br><span class="line">       let cell = tableView.dequeueReusableCell(withIdentifier: CellId, for: indexPath)</span><br><span class="line">     cell.textLabel?.text = (dataSource[indexPath.row] as! Dictionary)[&quot;title&quot;]</span><br><span class="line">     cell.detailTextLabel?.text = (dataSource[indexPath.row] as! Dictionary)[&quot;detail”]</span><br><span class="line"></span><br><span class="line"> // 注册3DTouch</span><br><span class="line">     registerForPreviewing(with: self, sourceView: cell)</span><br><span class="line">     return  cell    </span><br><span class="line">   &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"> //TODO: -- UITableViewDelegate     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)&#123;</span><br><span class="line">      tableView.deselectRow(at: indexPath, animated: true)</span><br><span class="line">      performSegue(withIdentifier: &quot;detail&quot;, sender: dataSource[indexPath.row])</span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line"> //重写segue跳转方法</span><br><span class="line">   override func prepare(for segue: UIStoryboardSegue, sender: Any?) &#123;      </span><br><span class="line">   if segue.identifier == “detail&quot;&#123;</span><br><span class="line">           if let viewcontroller = segue.destination as? DetailViewController&#123;</span><br><span class="line">              viewcontroller.info = sender as! [String : Any]?</span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"> //MARK: -- UIViewControllerPreviewingDelegate     </span><br><span class="line">public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -&gt; UIViewController?&#123;</span><br><span class="line">    </span><br><span class="line">   let childVC  = UIViewController()</span><br><span class="line">   currentCell = previewingContext.sourceView as? UITableViewCell</span><br><span class="line"></span><br><span class="line">  //TODO: -- 加白色背景</span><br><span class="line">        let bgView = UIView(frame: .init(x: 20, y: 10, width: (view.window?.bounds.size.width)!-40 , height: (view.window?.bounds.size.height)! - 20-64*2))</span><br><span class="line">        bgView.backgroundColor= #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)</span><br><span class="line">        bgView.layer.cornerRadius = 10.0</span><br><span class="line">        bgView.clipsToBounds = true</span><br><span class="line">       childVC.view.addSubview(bgView)</span><br><span class="line">      </span><br><span class="line"> // 标题</span><br><span class="line">    let lable1 = UILabel(frame: .init(x: 0, y: bgView.bounds.size.height/2 - 40, width: bgView.bounds.size.width, height: 40))</span><br><span class="line">     lable1.textAlignment = .center</span><br><span class="line">     lable1.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)</span><br><span class="line">     lable1.text = currentCell?.textLabel?.text</span><br><span class="line">     bgView.addSubview(lable1)</span><br><span class="line">        </span><br><span class="line"> //详情      </span><br><span class="line">    let lable2 = UILabel(frame: .init(x: 0, y: lable1.frame.maxY, width: bgView.bounds.size.width, height: 40))</span><br><span class="line">    lable2.textAlignment = .center</span><br><span class="line">    lable2.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)</span><br><span class="line">    lable2.text = currentCell?.detailTextLabel?.text</span><br><span class="line">    bgView.addSubview(lable2)</span><br><span class="line">       </span><br><span class="line"> //提示      </span><br><span class="line">   let detail = UILabel(frame: .init(x: 0, y: lable2.frame.maxY, width: bgView.bounds.size.width, height: 40))</span><br><span class="line">   detail.textAlignment = .center</span><br><span class="line">   detail.textColor= #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)</span><br><span class="line">   detail.text = &quot;再按重一点就选择该项了&quot;</span><br><span class="line">   bgView.addSubview(detail)</span><br><span class="line">              </span><br><span class="line"> return childVC</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">   //再按重些会选择该项，消失展示框后需要走的代码</span><br><span class="line">public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)&#123;</span><br><span class="line">  </span><br><span class="line"> let indexPath = tableView.indexPath(for: currentCell!)  </span><br><span class="line"> if indexPath != nil&#123;</span><br><span class="line">    tableView(tableView, didSelectRowAt: indexPath!)</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
@@ -803,24 +984,24 @@
 <p>在touch中就可以获取这两个值。所以我们就可以触摸按压的时候实现用按压力度来实现酷炫的效果</p>
 <h4 id="示例代码-2"><a href="#示例代码-2" class="headerlink" title="示例代码"></a>示例代码</h4></li>
 <li><p>OC </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 根据按压的力度来改变当前视图的颜色</div><div class="line">-  (void)touchesMoved:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent*)event&#123;</div><div class="line"></div><div class="line">    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) &#123;  </div><div class="line">     UITouch *touch = [[touches allObjects] firstObject];</div><div class="line">     NSLog(@&quot;\n force:%f,maximumPossibleForce:%ff&quot;,touch.force,touch.maximumPossibleForce);</div><div class="line">     CGFloat dito = touch.force/touch.maximumPossibleForce;</div><div class="line">     self.view.backgroundColor = [UIColor colorWithRed:dito green:dito blue:1/dito alpha:1];</div><div class="line">  </div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 根据按压的力度来改变当前视图的颜色</span><br><span class="line">-  (void)touchesMoved:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent*)event&#123;</span><br><span class="line"></span><br><span class="line">    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) &#123;  </span><br><span class="line">     UITouch *touch = [[touches allObjects] firstObject];</span><br><span class="line">     NSLog(@&quot;\n force:%f,maximumPossibleForce:%ff&quot;,touch.force,touch.maximumPossibleForce);</span><br><span class="line">     CGFloat dito = touch.force/touch.maximumPossibleForce;</span><br><span class="line">     self.view.backgroundColor = [UIColor colorWithRed:dito green:dito blue:1/dito alpha:1];</span><br><span class="line">  </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>Swift </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> //TODO:--重写touchesMoved的方法,根据按压的力度来改变当前视图的颜色</div><div class="line">override func touchesMoved(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) &#123;</div><div class="line">        </div><div class="line">     if traitCollection.forceTouchCapability == .available&#123;  </div><div class="line">           let touch = touches.first</div><div class="line">           print(&quot;\n force: \(touch!.force),maximumPossibleForce: \(touch?.maximumPossibleForce)&quot;)</div><div class="line">           let dito = (touch?.force)! / (touch?.maximumPossibleForce)!</div><div class="line">           view.backgroundColor = UIColor(red: 0.3+5*dito, green: 0.3+5*dito, blue: dito, alpha:1)</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> //TODO:--重写touchesMoved的方法,根据按压的力度来改变当前视图的颜色</span><br><span class="line">override func touchesMoved(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) &#123;</span><br><span class="line">        </span><br><span class="line">     if traitCollection.forceTouchCapability == .available&#123;  </span><br><span class="line">           let touch = touches.first</span><br><span class="line">           print(&quot;\n force: \(touch!.force),maximumPossibleForce: \(touch?.maximumPossibleForce)&quot;)</span><br><span class="line">           let dito = (touch?.force)! / (touch?.maximumPossibleForce)!</span><br><span class="line">           view.backgroundColor = UIColor(red: 0.3+5*dito, green: 0.3+5*dito, blue: dito, alpha:1)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
 <h3 id="Web-View-peek-and-pop-API-HTML链接预览功能"><a href="#Web-View-peek-and-pop-API-HTML链接预览功能" class="headerlink" title="Web View peek and pop API HTML链接预览功能"></a>Web View peek and pop API HTML链接预览功能</h3><h4 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h4><p> 原生的safari浏览器中的超链接可以支持3D touch，出现超链接的预览，使用方法和前文中提到的方法类似。ios 9 中增加了一个新的浏览器控制器SFSafariViewController。它可以在你的程序中直接嵌入 Safari浏览器，而且支持3DTouch效果。</p>
 <h4 id="示例代码-3"><a href="#示例代码-3" class="headerlink" title="示例代码"></a>示例代码</h4><ul>
 <li><p>OC </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 1.首先导入SafariServices.h</div><div class="line">   #import &lt;SafariServices/SafariServices.h&gt;</div><div class="line"></div><div class="line"> // 2.设置连接：</div><div class="line"> SFSafariViewController *safariView = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@&quot;https://www.baidu.com&quot;]        entersReaderIfAvailable:YES];</div><div class="line"></div><div class="line"> // 3.推出控制器：</div><div class="line">  [self.navigationController pushViewController:safariView animated:YES];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 1.首先导入SafariServices.h</span><br><span class="line">   #import &lt;SafariServices/SafariServices.h&gt;</span><br><span class="line"></span><br><span class="line"> // 2.设置连接：</span><br><span class="line"> SFSafariViewController *safariView = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@&quot;https://www.baidu.com&quot;]        entersReaderIfAvailable:YES];</span><br><span class="line"></span><br><span class="line"> // 3.推出控制器：</span><br><span class="line">  [self.navigationController pushViewController:safariView animated:YES];</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>Swift</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> // 1. 导入框架</div><div class="line">import SafariServices</div><div class="line"></div><div class="line"> // 2. 使用</div><div class="line">let url = URL(string: &quot;https://www.baidu.com&quot;)     </div><div class="line">let safariView =  SFSafariViewController(url: url! , entersReaderIfAvailable: true)</div><div class="line">navigationController?.pushViewController(safariView, animated: true)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> // 1. 导入框架</span><br><span class="line">import SafariServices</span><br><span class="line"></span><br><span class="line"> // 2. 使用</span><br><span class="line">let url = URL(string: &quot;https://www.baidu.com&quot;)     </span><br><span class="line">let safariView =  SFSafariViewController(url: url! , entersReaderIfAvailable: true)</span><br><span class="line">navigationController?.pushViewController(safariView, animated: true)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
@@ -905,7 +1086,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T14:18:34-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T14:18:34+08:00">
                 2017-06-28
               </time>
             
@@ -1109,7 +1290,7 @@ func flashlight(_ sure : Bool ) {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T17:11:26-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T17:11:26+08:00">
                 2017-06-20
               </time>
             
@@ -1297,7 +1478,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T16:27:34-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T16:27:34+08:00">
                 2017-06-20
               </time>
             
@@ -1518,7 +1699,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:50:43-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:50:43+08:00">
                 2017-06-20
               </time>
             
@@ -1581,7 +1762,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
             <ul>
 <li>代码</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">UILabel *l = (&#123;</div><div class="line"></div><div class="line">        UILabel *label  = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 25)];</div><div class="line"> </div><div class="line">        label.text = @&quot;Hello world&quot;;</div><div class="line"></div><div class="line">        [self.view addSubview: label];</div><div class="line">   </div><div class="line">        label;</div><div class="line">   </div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">UILabel *l = (&#123;</span><br><span class="line"></span><br><span class="line">        UILabel *label  = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 25)];</span><br><span class="line"> </span><br><span class="line">        label.text = @&quot;Hello world&quot;;</span><br><span class="line"></span><br><span class="line">        [self.view addSubview: label];</span><br><span class="line">   </span><br><span class="line">        label;</span><br><span class="line">   </span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 <p>执行代码都放在大括号和小括号的中间的。而且运行我们会发现最后l也是被赋值成功的。</p>
 <ul>
 <li><p>总结<br> 这样可以深思一下{}和()各有什么作用</p>
@@ -1598,7 +1779,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
 <ul>
 <li>示例</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">UITableView *tableView = (&#123;</div><div class="line">        </div><div class="line">       UITableView *tabV = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 300, 200)];</div><div class="line">        </div><div class="line">      //最末尾的tabV会给tableView 赋值</div><div class="line">        tabV;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UITableView *tableView = (&#123;</span><br><span class="line">        </span><br><span class="line">       UITableView *tabV = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 300, 200)];</span><br><span class="line">        </span><br><span class="line">      //最末尾的tabV会给tableView 赋值</span><br><span class="line">        tabV;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1678,7 +1859,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:20:27-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T15:20:27+08:00">
                 2017-06-20
               </time>
             
@@ -1842,7 +2023,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T16:50:47-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T16:50:47+08:00">
                 2017-06-16
               </time>
             
@@ -1902,7 +2083,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
       
         
           
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在<a href="https://github.com" target="_blank" rel="external">github</a>和<a href="https://git.oschina.net" target="_blank" rel="external">码云</a>上需要做得方便一些，一般都会配置SSH。而且这个SSH都是能用的。</p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在<a href="https://github.com" target="_blank" rel="noopener">github</a>和<a href="https://git.oschina.net" target="_blank" rel="noopener">码云</a>上需要做得方便一些，一般都会配置SSH。而且这个SSH都是能用的。</p>
 <hr>
 <h3 id="检查是否存在SSH-key"><a href="#检查是否存在SSH-key" class="headerlink" title="检查是否存在SSH key"></a>检查是否存在SSH key</h3><p>如果有的话，可以直接走第3步，直接拷贝SSH key到需要的地方去，也可以再次走第2步，覆盖重新生成SSH key.</p>
 <ul>
@@ -2048,7 +2229,7 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T16:24:39-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T16:24:39+08:00">
                 2017-04-25
               </time>
             
@@ -2123,204 +2304,16 @@ App Transport Security has blocked a cleartext HTTP (http://) resource load sinc
 <pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
 </code></pre><p>  return 60;<br> }</p>
 <h4 id="完成后就可以看到效果了。"><a href="#完成后就可以看到效果了。" class="headerlink" title="完成后就可以看到效果了。"></a>完成后就可以看到效果了。</h4><p><img src="/2017/04/25/Cell高度的自适应/203.png" alt=""></p>
-<p><a href="https://pan.baidu.com/s/1qYCZrg4" target="_blank" rel="external">示例代码</a></p>
+<p><a href="https://pan.baidu.com/s/1qYCZrg4" target="_blank" rel="noopener">示例代码</a></p>
 <hr>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><h4 id="estimatedRowHeight是否可以随便设值？"><a href="#estimatedRowHeight是否可以随便设值？" class="headerlink" title="estimatedRowHeight是否可以随便设值？"></a>estimatedRowHeight是否可以随便设值？</h4><p>虽然系统会自动帮我们调整cell的高度，而estimatedRowHeight的初始默认高度似乎没用，其实不然，estimatedRowHeight越接近cell的最终高度越好，因为cell的调整高度重绘cell会浪费程序的运行,就会相应的耗费资源。</p>
 <p>因此可能会产生一些坑，比如设置初始值差距较大时，在调用scrollToRowAtIndexPath:滚动到最底部的方法时。就有可能出现此方法运行完了，cell的高度还没有调整完，导致视图显示不是最底部的小BUG.</p>
-<p><a href="http://blog.csdn.net/zhaochen_009/article/details/53395598" target="_blank" rel="external">参考</a></p>
+<p><a href="http://blog.csdn.net/zhaochen_009/article/details/53395598" target="_blank" rel="noopener">参考</a></p>
 <h4 id="避免的方法"><a href="#避免的方法" class="headerlink" title="避免的方法"></a>避免的方法</h4><p>1.用dispatch_after一个很短的时间再去scrollToRowAtIndexPath。</p>
 <p>2.设定estimatedRowHeight尽量接近最终的高度。<br>可以在</p>
 <pre><code> - (CGFloat)tableView:(UITableView *)tableView   estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
 return 60;//相对的计算一下高度。
 </code></pre><p>  }</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/11/Xcode的Toolbar显示控制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="小毛,纯一狼">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小毛的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/11/Xcode的Toolbar显示控制/" itemprop="url">
-                  Xcode的Toolbar显示控制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T09:34:33-07:00">
-                2017-04-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Debug/" itemprop="url" rel="index">
-                    <span itemprop="name">Debug</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>记得以前刚开始用Xcode进行iOS开发的时候,一看到Toolbar不显示，就立马有点呆了，特别是显示不全的话。这里我做一个简单的总结: 1.Xcode本身就可以控制Toolbar是否显示的。2.可能就出现Toolbar显示不全，就是没有显示工程以及选择运行设备(选择模拟器)的选项。</p>
-<hr>
-<h3 id="Toolrbar的显示和隐藏"><a href="#Toolrbar的显示和隐藏" class="headerlink" title="Toolrbar的显示和隐藏"></a>Toolrbar的显示和隐藏</h3><p>在<strong>菜单栏</strong>中 点击”<strong>View</strong>“ 出现下拉菜单 ，可以选择 “<strong>Hide Toolbar</strong>“和”<strong>Show Toolbar</strong>“两种状态,对Toolbar进行控制。</p>
-<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb1.png" alt="Toolbar的控制"></p>
-<hr>
-<h3 id="Toolbar的显示不全"><a href="#Toolbar的显示不全" class="headerlink" title="Toolbar的显示不全"></a>Toolbar的显示不全</h3><p>就是在Toolbar中没有显示工程，以及选择模拟器的选项。</p>
-<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb2.png" alt="Toolbar的显示不全"></p>
-<p><del>我是这样出现这个问题的。我从SVN下把工程下载下来。工程是用一个workspace管理四个工程，而且就出现了没有选择工程的的那个选择框和后观的选择模拟器的选择框。</del></p>
-<p><del>我试着重新打开Xcode,重新开机，都不行。当我选择其他工程的时候却是一切正常。</del></p>
-<p><del>结论:<strong>这个是工程的问题</strong>。</del></p>
-<h4 id="管理Scheme的方法"><a href="#管理Scheme的方法" class="headerlink" title="管理Scheme的方法"></a>管理Scheme的方法</h4><ol>
-<li>点开No Scheme,会有三个选项，当有工程的时候，第一项我们再熟悉不过了，就是工程打包，制作静态库文件啊等要用的。现在没工程，点击无效果。</li>
-</ol>
-<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb3.png" alt="Toolbar的解决办法一"></p>
-<ol>
-<li>我们点击第二项进来就可以选择工程了。我这里有四个工程，其中BaseLibs是公共基础工程。这五个工程都可以加入。</li>
-</ol>
-<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb4.png" alt="Toolbar的解决办法一"></p>
-<ol>
-<li>选择时，选择带工程文件的图片，其他的库文件啊，三方文件啊，我们没有必要导进来。</li>
-</ol>
-<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb5.png" alt="Toolbar的解决办法一"></p>
-<ol>
-<li><p>加入之后，你就可以选择相应的工程，选择模拟器，进行调试和开发了。</p>
-</li>
-<li><p>如果你把多余的三方的文件导进来，也没关系，不影响你的开发。不过如果你有强迫症，觉得多余的不好，那你就可以进入第三项管理 Manage Schemes…进入</p>
-</li>
-</ol>
-<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb6.png" alt="Toolbar的解决办法一"></p>
-<ol>
-<li>选中多加入的三方文件，点减号就可以删除了。</li>
-</ol>
-<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb7.png" alt="Toolbar的解决办法一"></p>
-<ol>
-<li>在添加工程的时候，我们也可以直接进入Manage Schemes…，再点击添加按钮，跟第New Scheme是一样的用法。</li>
-</ol>
-<p><img src="/2017/04/11/Xcode的Toolbar显示控制/tb8.png" alt="Toolbar的解决办法一"></p>
-<p>只要你对 <strong>New Scheme</strong> 和 <strong>Manage Schemes…</strong> 进行操作一次，你就立马会清楚明白了。</p>
-<hr>
-<h4 id="删除xcuserdata文件的方法"><a href="#删除xcuserdata文件的方法" class="headerlink" title="删除xcuserdata文件的方法"></a>删除xcuserdata文件的方法</h4><p>造成这种情况的原因:用户信息文件引起的Xcode不能默认识别工程。</p>
-<ol>
-<li><p>先关闭Xcode，打开工程目录,在目录下找到<strong><code>*.xcodeproj</code></strong>文件，右键选择 “<strong>显示包内容</strong>“。</p>
-</li>
-<li><p>找到xcuserdata，xcshareddata的文件都删除了。</p>
-</li>
-</ol>
-<p><strong><em>注意:</em></strong>  xcworkspace，和pods里面都有data文件，我试的时候是直接把这里面的都删了。打开工程后，你就发现可以选择Scheme了，不过，这样一来，Scheme里面的选择项就把这个文件中所有的工程和三方，库文件都成列表显示在这里以供选择了。所以了，还是第一种方式最好，而且简单方便，易懂。</p>
-<p><strong><em>情景扩展:</em></strong> 既然是xcuserdata文件的原因，而我又是从SVN上拷贝下，那应该是项目经理以新建工程是，把工程中不需要上传的xcuserdata和xchareddata文件都上传到了SVN服务器上。导致了开发人员下载到本地用Xcode打开时无法默认工程。这也说明此项目经理对iOS苹果开发的不太深入造成的。</p>
-<hr>
 
           
         
@@ -2401,7 +2394,7 @@ return 60;//相对的计算一下高度。
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2419,7 +2412,7 @@ return 60;//相对的计算一下高度。
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2490,7 +2483,7 @@ return 60;//相对的计算一下高度。
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

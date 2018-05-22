@@ -105,31 +105,18 @@
 
 
 
-<meta name="description" content="前言大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。
- //创建一个队列(非主队列)
-NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-
-//设置最大并发量(最多同时执行10个任务)
-queue.maxC">
+<meta name="description" content="前言大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。  //创建一个队列(非主队列) NSOperationQueue *queue = [[NSOperationQueue alloc] init];  //设置最大并发量(最多同时执行10个任务) queue.maxC">
+<meta name="keywords" content="GCD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GCD如何实现最大并发数呢?">
 <meta property="og:url" content="https://maojianxiang.github.io/2017/04/11/GCD如何实现最大并发数呢/index.html">
 <meta property="og:site_name" content="小毛的博客">
-<meta property="og:description" content="前言大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。
- //创建一个队列(非主队列)
-NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-
-//设置最大并发量(最多同时执行10个任务)
-queue.maxC">
+<meta property="og:description" content="前言大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。  //创建一个队列(非主队列) NSOperationQueue *queue = [[NSOperationQueue alloc] init];  //设置最大并发量(最多同时执行10个任务) queue.maxC">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-06-28T22:04:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GCD如何实现最大并发数呢?">
-<meta name="twitter:description" content="前言大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。
- //创建一个队列(非主队列)
-NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-
-//设置最大并发量(最多同时执行10个任务)
-queue.maxC">
+<meta name="twitter:description" content="前言大家都知道对于NSOperationQueue队列来说，要实现最大并发数是比较轻而易举的事，只需要设置它的属性maxConcurrentOperationCount就可以办到。  //创建一个队列(非主队列) NSOperationQueue *queue = [[NSOperationQueue alloc] init];  //设置最大并发量(最多同时执行10个任务) queue.maxC">
 
 
 
@@ -328,7 +315,7 @@ queue.maxC">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T08:12:23-07:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T08:12:23+08:00">
                 2017-04-11
               </time>
             
@@ -429,7 +416,7 @@ dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAU
 //永远地监听Group中的任务是否执行完成。
 dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 </code></pre><hr>
-<p> 关于信号量的一些深刻的理解，可以察看 <a href="http://blog.csdn.net/fhbystudy/article/details/25918451" target="_blank" rel="external">fhbystudy的分享</a>，也谢谢他的分享！</p>
+<p> 关于信号量的一些深刻的理解，可以察看 <a href="http://blog.csdn.net/fhbystudy/article/details/25918451" target="_blank" rel="noopener">fhbystudy的分享</a>，也谢谢他的分享！</p>
 <hr>
 
       
@@ -551,7 +538,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -569,7 +556,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -656,7 +643,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
