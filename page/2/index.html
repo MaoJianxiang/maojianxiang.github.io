@@ -279,6 +279,212 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/06/16/如何生成SSH密钥/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/16/如何生成SSH密钥/" itemprop="url">
+                  如何生成SSH密钥
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T16:50:47+08:00">
+                2017-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/others/" itemprop="url" rel="index">
+                    <span itemprop="name">others</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在<a href="https://github.com" target="_blank" rel="noopener">github</a>和<a href="https://git.oschina.net" target="_blank" rel="noopener">码云</a>上需要做得方便一些，一般都会配置SSH。而且这个SSH都是能用的。</p>
+<hr>
+<h3 id="检查是否存在SSH-key"><a href="#检查是否存在SSH-key" class="headerlink" title="检查是否存在SSH key"></a>检查是否存在SSH key</h3><p>如果有的话，可以直接走第3步，直接拷贝SSH key到需要的地方去，也可以再次走第2步，覆盖重新生成SSH key.</p>
+<ul>
+<li><p>cd ~/.ssh //进入密钥 （或者open ~/.ssh)</p>
+<p>   ~/ 表示用户的信息 。进入用户信息的.ssh文件 。</p>
+<pre><code>可以直接 open ~/.ssh打开密钥文件夹，或者 open ~/ 打开用户信息列表 .有可能提示没有这个文件夹路径，这样就直接生成SSH就可以了。但也有可能，你进这用户信息列表看不到.ssh文件，因为默认情况下，它是隐藏的，包括cocoapods等这些安装包都是隐藏了的。
+
+补充一下：
+显示：defaults write com.apple.finder AppleShowAllFiles Yes &amp;&amp; killall Finder 来显示隐藏的文件夹 （也可以在文件Finder中进行操作，具体可以百度一下就出来）
+</code></pre><p>  隐藏：defaults write com.apple.finder AppleShowAllFiles No &amp;&amp; killall Finder</p>
+</li>
+<li><p>如果存在的话 </p>
+<p>  ls：察看密钥<br>  这两个命令就是检查是否已经存在 id_rsa.pub 或 id_dsa.pub 文件，如果文件已经存在，那么你可以跳过步骤2，直接进入步骤3。<br>如果已级存在了终端会提示：<br>  id_rsaid_rsa.pubknown_hosts</p>
+</li>
+</ul>
+<h3 id="创建一个-SSH-key"><a href="#创建一个-SSH-key" class="headerlink" title="创建一个 SSH key"></a>创建一个 SSH key</h3><ul>
+<li><p>ssh-keygen -t rsa -C “your_email@example.com”</p>
+<p> 代码的一切含义：<br> -t 指定密钥类型，默认是 rsa ，可以省略。<br> -C 设置注释文字，比如邮箱。<br> -f 指定密钥文件存储文件名。</p>
+<p> 以上代码省略了 -f 参数，因此，运行上面那条命令后会让你输入一个文件名，用于保存刚才生成的 SSH key 代码：</p>
+<p> Generating public/private rsa key pair.# Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]</p>
+<p> 当然，一般我们可以不输入文件名，它会使用默认文件名，自动会生成 id_rsa 和 id_rsa.pub 两个秘钥文件。</p>
+</li>
+<li><p>接着又会提示你输入两次密码</p>
+<p>   该密码是你push文件的时候要输入的密码，而不是github管理者的密码）</p>
+<p>   直接回车：<br>   我是没有输入密码的，因为输入了密码后，每次提交都需要你输入密码，很麻烦。直接回车</p>
+<p>   Enter passphrase (empty for no passphrase): # Enter same passphrase again: </p>
+</li>
+<li><p>接着会生成ssh key</p>
+<p>   显示代码：</p>
+<p><img src="/2017/06/16/如何生成SSH密钥/100.png" alt=""></p>
+</li>
+</ul>
+<p>   当你看到上面这段代码的收，那就说明，你的 SSH key 已经创建成功，你只需要添加到github的SSH key上就可以了。</p>
+<h3 id="添加你的-SSH-key-到指定地方"><a href="#添加你的-SSH-key-到指定地方" class="headerlink" title="添加你的 SSH key 到指定地方"></a>添加你的 SSH key 到指定地方</h3><p>   这里我们举例 配置SSH Key 到 github上去</p>
+<ul>
+<li><p>首先你需要拷贝 id_rsa.pub 文件的内容：<br>有三种方法：</p>
+<p>  (1).pbcopy命令的方法<br>   pbcopy &lt; ~/.ssh/id_rsa.pub</p>
+<p>  (2).或者：cat命令的方法<br> cat &lt; ~/.ssh/id_rsa.pub</p>
+<p>  (3).或者clip命令的方法<br>  clip &lt; ~/.ssh/id_rsa.pub</p>
+<p>后者有可能会失败，提示-bash: clip: command not found，说明你的终端无没有clip命令。</p>
+</li>
+<li><p>登录到github.com上面。从右上角的设置（ Account Settings ）点击出现下拉列表，然后点击菜单栏的 SSH and GPG keys 进入页面添加 SSH key。</p>
+</li>
+<li><p>点击 Add SSH key 按钮添加一个 SSH key 。把你复制的 SSH key 代码粘贴到 key 所对应的输入框中，记得 SSH key 代码的前后不要留有空格或者回车。当然，上面的 Title是显示在 github 上的一个别名。默认的会使用你的邮件名称。</p>
+</li>
+<li><p>测试一下该SSH key</p>
+<p>ssh -T git@github.com</p>
+<p>   如果出现</p>
+<pre><code>The authenticity of host &apos;github.com (207.97.227.239)&apos; can&apos;t be established.    # RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.    # Are you sure you want to continue connecting (yes/no)?
+</code></pre><p>   这是正常的，你输入 yes 回车既可。如果你创建 SSH key 的时候设置了密码，接下来就会提示你输入密码：</p>
+<pre><code>Enter passphrase for key &apos;/c/Users/Administrator/.ssh/id_rsa’:
+
+当然如果你密码输错了，会再要求你输入，知道对了为止。
+注意：输入密码时如果输错一个字就会不正确，使用删除键是无法更正的。
+</code></pre><p>如果出现 </p>
+<p>  Hi your_username! You’ve successfully authenticated, but GitHub does not provide shell access.<br>如果用户名是正确的,你已经成功设置SSH密钥。如果你看到 “access denied” ，者表示拒绝访问，那么你就需要使用 https 去访问，而不是 SSH 。</p>
+</li>
+</ul>
+<ul>
+<li><p>如果把SSH部署到git@git.oschina码去上面的话，</p>
+<p>  验证：  ssh -T git@git.oschina.net</p>
+<p>  第一次会提示你输入yes </p>
+<p> sc:~ mao$ ssh -T git@git.oschina.net<br> The authenticity of host ‘git.oschina.net (120.55.226.24)’ can’t be established.<br>ECDSA key fingerprint is SHA256:FQGC9Kn/eye1W8icdBgrQp+KkGYoFgbVr17bmjey0Wc.<br>Are you sure you want to continue connecting (yes/no)? yes</p>
+<p>成功后会提示：<br>sc:~ mao$ ssh -T git@git.oschina.net<br>Welcome to Git@OSC,your username!</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2017/04/25/Cell高度的自适应/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -944,7 +1150,7 @@ dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 </code></pre><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>用三个*或者\—号，可以作一条分割线</p>
 <hr>
 <hr>
-<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#x31;&#x35;&#x32;&#x30;&#56;&#49;&#x30;&#53;&#52;&#52;&#x30;&#x40;&#x31;&#54;&#x33;&#46;&#x63;&#111;&#x6d;">&#x31;&#x35;&#x32;&#x30;&#56;&#49;&#x30;&#53;&#52;&#52;&#x30;&#x40;&#x31;&#54;&#x33;&#46;&#x63;&#111;&#x6d;</a></p>
+<h3 id="邮箱和网址连接"><a href="#邮箱和网址连接" class="headerlink" title="邮箱和网址连接"></a>邮箱和网址连接</h3><h4 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h4><p>用<code>&lt;邮箱&gt;</code>可以高亮显示  <a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#49;&#x35;&#x32;&#48;&#x38;&#x31;&#48;&#53;&#52;&#x34;&#x30;&#x40;&#x31;&#54;&#51;&#46;&#99;&#x6f;&#109;">&#49;&#x35;&#x32;&#48;&#x38;&#x31;&#48;&#53;&#52;&#x34;&#x30;&#x40;&#x31;&#54;&#51;&#46;&#99;&#x6f;&#109;</a></p>
 <h4 id="网址连接"><a href="#网址连接" class="headerlink" title="网址连接"></a>网址连接</h4><p>用<code>&lt;网址&gt;</code>有效连接: <a href="https://maojianxiang.github.io">https://maojianxiang.github.io</a></p>
 <hr>
 <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><h4 id="图片跟网址连接相似，多了一个"><a href="#图片跟网址连接相似，多了一个" class="headerlink" title="图片跟网址连接相似，多了一个!"></a>图片跟网址连接相似，多了一个!</h4><p><code>!+[]+(图片的地址,相对路径也行)</code></p>
@@ -1904,7 +2110,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1913,7 +2119,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1922,7 +2128,7 @@ OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -1,0 +1,893 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="面试," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言很早就想把自己遇到的面试的相关技术问题进行记录和总结一下，但一直因为这一年的时间上班都比较忙，就没有整理。最近为了招人，公司出了套面试题，然后分部也让我出一套，我最后就去网上找了一些，最后结合总部的，弄了一套。感觉也没什么特别的难度，现在正好偶尔有些时间就把它整理一下。 题1. 请说明并比较以下关键词：strong, weak, assign, copy？   （ARC跟MRC，strong代">
+<meta name="keywords" content="面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试总结(一)">
+<meta property="og:url" content="https://maojianxiang.github.io/2018/06/04/面试总结-一/index.html">
+<meta property="og:site_name" content="小毛的博客">
+<meta property="og:description" content="前言很早就想把自己遇到的面试的相关技术问题进行记录和总结一下，但一直因为这一年的时间上班都比较忙，就没有整理。最近为了招人，公司出了套面试题，然后分部也让我出一套，我最后就去网上找了一些，最后结合总部的，弄了一套。感觉也没什么特别的难度，现在正好偶尔有些时间就把它整理一下。 题1. 请说明并比较以下关键词：strong, weak, assign, copy？   （ARC跟MRC，strong代">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-05T01:59:37.813Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试总结(一)">
+<meta name="twitter:description" content="前言很早就想把自己遇到的面试的相关技术问题进行记录和总结一下，但一直因为这一年的时间上班都比较忙，就没有整理。最近为了招人，公司出了套面试题，然后分部也让我出一套，我最后就去网上找了一些，最后结合总部的，弄了一套。感觉也没什么特别的难度，现在正好偶尔有些时间就把它整理一下。 题1. 请说明并比较以下关键词：strong, weak, assign, copy？   （ARC跟MRC，strong代">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://maojianxiang.github.io/2018/06/04/面试总结-一/"/>
+
+
+
+
+
+  <title> 面试总结(一) | 小毛的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小毛的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">追求卓越，精益求精</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://maojianxiang.github.io/2018/06/04/面试总结-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小毛,纯一狼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://on55qmgxp.bkt.clouddn.com/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小毛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面试总结(一)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-04T17:03:15+08:00">
+                2018-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>很早就想把自己遇到的面试的相关技术问题进行记录和总结一下，但一直因为这一年的时间上班都比较忙，就没有整理。最近为了招人，公司出了套面试题，然后分部也让我出一套，我最后就去网上找了一些，最后结合总部的，弄了一套。感觉也没什么特别的难度，现在正好偶尔有些时间就把它整理一下。</p>
+<h3 id="题"><a href="#题" class="headerlink" title="题"></a>题</h3><p><strong>1. 请说明并比较以下关键词：strong, weak, assign, copy？</strong></p>
+<p>  <em>（ARC跟MRC，strong代替retain. weak代替assign)<br>  strong :  强引用, 引用计数会加1,只要某一对象被一个strong指向，该对象就不会被销毁。<br>  weak：  弱引用，当指身的对象被释放后自动置为nil<br>  assign的作用：简单赋值，不改变引用计数，对基础数据类型 （例如NSInteger，CGFloat）和C数据类型（int, float, double, char, 等） 适用简单数据类型。若指身对象，则对象被释放后不能自动为空<br>  copy的作用：建立一个索引计数为1 的新对象，然后释放旧对象。</em></p>
+<p><strong>2. 属性关键字readwrite，readonly，assign，retain，copy，nonatomic 各是什么作用，在那种情况下用?</strong></p>
+<ol>
+<li>readwrite 是可读可写特性;需要生成getter方法和setter方法时; </li>
+<li>readonly 是只读特性 只会生成getter方法 不会生成setter方法 ;不希望属性在类外改变; </li>
+<li>assign 是赋值特性，setter方法将传入参数赋值给实例变量;仅设置变量时; </li>
+<li>retain 表示持有特性，setter方法将传入参数先保留，再赋值，传入参数的retaincount会+1; </li>
+<li>copy 表示赋值特性，setter方法将传入对象复制一份;需要完全一份新的变量时; </li>
+<li><p>nonatomic 非原子操作，决定编译器生成的setter getter是否是原子操作，atomic表示多线程安全，一般使用nonatomic;atomic:设置成员变量的@property属性时，默认为atomic，提供多线程安全。在多线程环境下，原子操作是必要的，否则有可能引起错误的结果。加了atomic，setter函数会变成下面这样:</p>
+<p>   if (property != newValue) { </p>
+<pre><code>[property release]; 
+property = [newValue retain]; 
+} 
+</code></pre><p>nonatomic:禁止多线程，变量保护，提高性能。</p>
+</li>
+</ol>
+<p><strong>3. Object-c的类可以多重继承么?可以实现多个接口么?Category是什么?重写一个类的方式用继承好还是分类好?为什么?与Extension(延展)的主要区别?</strong></p>
+<p> <em>Object-c的类不可以多重继承;可以实现多个接口，通过实现多个接口可以完成C++的多重继承;Category是类别(分类, 类目)，一般情况用分类好，用Category去重写类的方法，仅对本Category有效，不会影响到其他类与原有类的关系。通常情况下Category只可以添加方法, 而Extension可以添加方法和属性(都是私有的);但是Category可以通过runtime.h中objc_getAssociatedObject / objc_setAssociatedObject来访问和生成关联对象。通过这种方法来模拟生成属性。(需要重写属性的set和get方法)</em></p>
+<p><strong>4. 面的代码有什么问题？如果有问题怎样修改？</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong) NSString *target;</span><br><span class="line"></span><br><span class="line">dispatch_queue_t queue = dispatch_queue_create(&quot;parallel&quot;, DISPATCH_QUEUE_CONCURRENT);</span><br><span class="line"></span><br><span class="line">for (int i = 0; i &lt; 10000000000; i++) &#123;</span><br><span class="line"></span><br><span class="line">    dispatch_async(queue, ^&#123;</span><br><span class="line">        self.target = [NSString stringWithFormat:@&quot;ksddkjalkjd%d&quot;,i];</span><br><span class="line">       &#125;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><em>直接运行会崩溃 EXC_BAD_ACCESS(坏内存地址，对象被释放)， 属性target的setter方法有关：</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> -(void)setTarget:(NSString *)target &#123;  </span><br><span class="line"> [target retain];//先保留新值</span><br><span class="line"> [_target release];//再释放旧值</span><br><span class="line"> _target = target;//再进行赋值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>因为self.target 重新赋值是个多线程任务(并行队列+异步),所以存在着当其中一个线释放了同一个对象时，另一个线程就去给訪对象赋值。也就是多个线程操作同一对象造成的内存释放空的崩溃。这属于线程安全问题，可以用原子性atomic属性关键字进行加锁。如果只是解决崩溃问题的话，用atomic和strong加锁，或者用weak和 nonatomic都可以解决这个问题。但是另外还存在3个问题：</em></p>
+<ol>
+<li>你创建这么大的循环数值干嘛，专门消耗运行，阻塞运算卡线程吗</li>
+<li>用weak和atomic你重新赋值代码运算，有大部分运算等同于没有执行，</li>
+<li>这个结果也不可控，结果得到一个随机值</li>
+</ol>
+<p><strong>5. 中有什么bug？如果有请指出怎样修改？</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">  UILabel *alertLabel=[[UILabel alloc] initWithFrame:CGRectMake(100,100,100,100)];</span><br><span class="line">  alertLabel.text = @&quot;Wait 3 seconds...&quot;;</span><br><span class="line">  [self.view addSubview:alertLabel];</span><br><span class="line">  NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];</span><br><span class="line">  [backgroundQueue addOperationWithBlock:^&#123;</span><br><span class="line">    [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:4];</span><br><span class="line">    alertLabel.text = @&quot;begin！&quot;;</span><br><span class="line">  &#125;];</span><br></pre></td></tr></table></figure>
+<p> <em>页面上的label的修改，需要在主线程中实现，现在在子线程中，运行会崩，将二次赋值的代码修改到主线程即可</em></p>
+<p><strong>6. Objective-C如何进行内存管理的,说说你的看法和解决方法?OC有垃圾回收机智吗?iOS有垃圾回收机智吗?</strong></p>
+<p> <em>Objective-C的内存管理主要有三种方式ARC(自动内存计数)、手动内存计数、内存池。</em></p>
+<ol>
+<li><p>(Garbage Collection)(垃圾回收)自动内存计数：这种方式和java类似，在你的程序的执行过程中。始终有一个高人在背后准确地帮你收拾垃圾，你不用考虑它什么时候开始工作，怎样工作。你只需要明白，我申请了一段内存空间，当我不再使用从而这段内存成为垃圾的时候，我就彻底的把它忘记掉，反正那个高人会帮我收拾垃圾。遗憾的是，那个高人需要消耗一定的资源，在携带设备里面，资源是紧俏商品所以iPhone不支持这个功能。</p>
+<p> <em>解决: 通过alloc – initial方式创建的, 创建后引用计数+1, 此后每retain一次引用计数+1, 那么在程序中做相应次数的release就好了.</em></p>
+</li>
+<li><p>(Reference Counted)手动内存计数：就是说，从一段内存被申请之后，就存在一个变量用于保存这段内存被使用的次数，我们暂时把它称为计数器，当计数器变为0的时候，那么就是释放这段内存的时候。比如说，当在程序A里面一段内存被成功申请完成之后，那么这个计数器就从0变成1(我们把这个过程叫做alloc)，然后程序B也需要使用这个内存，那么计数器就从1变成了2(我们把这个过程叫做retain)。紧接着程序A不再需要这段内存了，那么程序A就把这个计数器减1(我们把这个过程叫做release);程序B也不再需要这段内存的时候，那么也把计数器减1(这个过程还是release)。当系统(也就是Foundation)发现这个计数器变成了0，那么就会调用内存回收程序把这段内存回收(我们把这个过程叫做dealloc)。顺便提一句，如果没有Foundation，那么维护计数器，释放内存等等工作需要你手工来完成。*</p>
+<p><em>解决:一般是由类的静态方法创建的, 函数名中不会出现alloc或init字样, 如[NSString string]和[NSArray arrayWithObject:], 创建后引用计数+0, 在函数出栈后释放, 即相当于一个栈上的局部变量. 当然也可以通过retain延长对象的生存期.</em></p>
+</li>
+<li><p>(AutoRealeasePool)内存池：可以通过创建和释放内存池控制内存申请和回收的时机.</p>
+<p><em>解决:是由autorelease加入系统内存池, 内存池是可以嵌套的, 每个内存池都需要有一个创建释放对, 就像main函数中写的一样. 使用也很简单, 比如[[[NSString alloc]initialWithFormat:@”Hey you!”] autorelease], 即将一个NSString对象加入到最内层的系统内存池, 当我们释放这个内存池时, 其中的对象都会被释放.</em></p>
+</li>
+</ol>
+<p><strong>7. 我们说的oc是动态运行时runtime语言是什么意思?</strong></p>
+<p><em>主要是将数据类型的确定由编译时，推迟到了运行时。</em></p>
+<p><em>这个问题其实浅涉及到两个概念，运行时和多态。</em></p>
+<p><em>简单来说，运行时机制使我们直到运行时才去决定一个对象的类别，以及调用该类别对象指定方法。多态：不同对象以自己的方式响应相同的消息的能力叫做多态。意思就是假设生物类(life)都拥有一个相同的方法-eat;那人类属于生物，猪也属于生物，都继承了life后，实现各自的eat，但是调用是我们只需调用各自的eat方法。也就是不同的对象以自己的方式响应了相同的消息(响应了eat这个选择器).因此也可以说，运行时机制是多态的基础.</em></p>
+<p><strong>8. 简述一下block和使用delegate 各有什么区别？</strong><br><em>代理（delegate）需要写协议,代理方法和设置代理对象 block需要定义block, 实现block,调用block</em></p>
+<p><em>delegate:</em></p>
+<ol>
+<li>“一对一”，对同一个协议，一个对象只能设置一个代理delegate，所以单例对象就不能用代理;</li>
+<li>代理更注重过程信息的传输：比如发起一个网络请求，可能想要知道此时请求是否已经开始、是否收到了数据、数据是否已经接受完成、数据接收失败</li>
+</ol>
+<p><em>block：</em></p>
+<ol>
+<li>写法更简练，不需要写protocol、函数等等</li>
+<li>block注重结果的传输：比如对于一个事件，只想知道成功或者失败，并不需要知道进行了多少或者额外的一些信息</li>
+<li>block需要注意防止循环引用：(ARC中，Block中如果引用了__strong修饰符的自动变量，则相当于Block对该变量的引用计数+1, 在ARC下，由于__block抓取的变量一样会被Block retain，所以必须用弱引用才可以解决循环引用问题，iOS 5之后可以直接使用__weak，之前则只能使用__unsafe<em>unretained了，\</em>_unsafe_unretained缺点是指针释放后自己不会置空)*</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// ARC:</span><br><span class="line">__weak typeof(self) weakSelf = self;  </span><br><span class="line">  [yourBlock:^(NSArray *repeatedArray, NSArray *incompleteArray) &#123;</span><br><span class="line">  [weakSelf doSomething];</span><br><span class="line"> &#125;];</span><br><span class="line">  // 非ARC: </span><br><span class="line">__block typeof(self) weakSelf = self;</span><br><span class="line"> [yourBlock:^(NSArray *repeatedArray, NSArray *incompleteArray) &#123;</span><br><span class="line">  [weakSelf doSomething];</span><br><span class="line"> &#125;];</span><br></pre></td></tr></table></figure>
+<p> <strong>9. 简述一下你对进程和线程的认识和了解？</strong></p>
+<p><em>关系：</em></p>
+<ol>
+<li>数量角度：一个线程只能属于一个进程，而一个进程可以包含多个线程，但至少包含一个线程。</li>
+<li>资源角度：资源分配给进程，同一个进程中的线程共享该进程的所有资源。</li>
+<li>线程是进程内的一个可执行单元，也是进程内的可调度实体。</li>
+<li>真正运行在处理机上的是线程.</li>
+<li>线程在执行过程中需要协作同步。不同进行的线程间要利用消息通信的办法实现同步。</li>
+</ol>
+<p><em>区别：</em></p>
+<ol>
+<li>拥有资源：进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问隶属于所在进程的资源。</li>
+<li>调度：线程作为调度和分配的基本单元，进程作为拥有资源的基本单位（系统根据进程分配资源）。</li>
+<li>并发性：不仅进程间可以并发执行，同一个进程中的多个线程之间也可以并发执行。</li>
+<li>系统开销：创建或者销毁进程的开销比较大，因为进程在分配和撤销时需要创建和回收资源。</li>
+<li>健壮性：进程有自己独立的系统空间，线程没有，进程的撤销对其他进程没有影响，而线程的撤销将可能使所在进程死掉。所以，多进程的程序比多线程的程序健壮。但在进程切换时耗费的资源比较大，效率差。</li>
+</ol>
+<p><strong>10. ios 平台怎么做数据的持久化?coredata 和sqlite有无必然联系？coredata是一个关系型数据库吗？</strong></p>
+<p><em>iOS 中可以有四种持久化数据的方式：属性列表(plist)、对象归档、 SQLite3 和 Core Data； core data 可以使你以图形界面的方式快速的定义 app 的数据模型，同时在你的代码中容易获取到它。 coredata 提供了基础结构去处理常用的功能，例如保存，恢复，撤销和重做，允许你在 app 中继续创建新的任务。在使用 core data 的时候，你不用安装额外的数据库系统，因为 core data 使用内置的 sqlite 数据库。 core data 将你 app 的模型层放入到一组定义在内存中的数据对象。 coredata 会追踪这些对象的改变，同时可以根据需要做相反的改变，例如用户执行撤销命令。当 core data 在对你 app 数据的改变进行保存的时候， core data 会把这些数据归档，并永久性保存。 mac os x 中sqlite 库，它是一个轻量级功能强大的关系数据引擎，也很容易嵌入到应用程序。可以在多个平台使用， sqlite 是一个轻量级的嵌入式 sql 数据库编程。与 core data 框架不同的是， sqlite 是使用程序式的， sql 的主要的 API 来直接操作数据表。 Core Data 不是一个关系型数据库，也不是关系型数据库管理系统 (RDBMS) 。虽然 Core Dta 支持SQLite 作为一种存储类型，但它不能使用任意的 SQLite 数据库。 Core Data 在使用的过程种自己创建这个数据库。 Core Data 支持对一、对多的关系。</em></p>
+<p><strong>11. Swift中，类（class）和结构体（struct）有什么区别？</strong></p>
+<p><em>Swift中，类是引用类型，结构体是值类型。值类型在传递和赋值时将进行复制，而引用类型则只会使用引用对象的一个”指向”。所以他们两者之间的区别就是两个类型的区别。</em></p>
+<p><em>class有这几个功能struct没有的：</em></p>
+<ol>
+<li>class可以继承，这样子类可以使用父类的特性和方法</li>
+<li>类型转换可以在runtime的时候检查和解释一个实例的类型</li>
+<li>可以用deinit来释放资源</li>
+<li>一个类可以被多次引用</li>
+</ol>
+<p>struct也有这样几个优势：</p>
+<ol>
+<li>结构较小，适用于复制操作，相比于一个class的实例被多次引用更加安全</li>
+<li>无须担心内存memory leak或者多线程冲突问题</li>
+</ol>
+<p><strong>12. 比较Swift和Objective-C中的初始化方法（init）有什么异同?</strong></p>
+<p> <em>总的来说，Swift中的初始化方法更加严格和准确</em></p>
+<p> <em>Objective-C中，初始化方法无须保证所有成员变量都完成初始化；编译器对属性设置并无警告，但是实际操作中会出现初始化不完全的问题；初始化方法与普通方法并无实际差别，可以多次调用。</em></p>
+<p><em>swift中，初始化方法必须保证所有optional的成员变量都完成初始化。同时新增convenience和required两个修饰初始化方法的关键词。convenience只是提供一种方便的初始化方法，必须通过调用同一个类中designated初始化方法来完成。required是强制子类重写父类中所修饰的初始化方法。</em></p>
+<p><strong>13. 请说明并比较以下关键词：Open, Public, Internal, File-private, Private?</strong></p>
+<p><em>Swift 有五个级别的访问控制权限，从高到底依次为比如 Open, Public, Internal, File-private, Private</em></p>
+<p><em>他们遵循的基本原则是：高级别的变量不允许被定义为低级别变量的成员变量。比如一个 private 的 class 中不能含有 public 的 String。反之，低级别的变量却可以定义在高级别的变量中。比如 public 的 class 中可以含有 private 的 Int。</em></p>
+<ol>
+<li>Open 具备最高的访问权限。其修饰的类和方法可以在任意 Module 中被访问和重写；它是 Swift 3 中新添加的访问权限。</li>
+<li>Public 的权限仅次于 Open。与 Open 唯一的区别在于它修饰的对象可以在任意 Module 中被访问，但不能重写。</li>
+<li>Internal 是默认的权限。它表示只能在当前定义的 Module 中访问和重写，它可以被一个 Module 中的多个文件访问，但不可以被其他的 Module 中被访问。</li>
+<li>File-private 也是 Swift 3 新添加的权限。其被修饰的对象只能在当前文件中被使用。例如它可以被一个文件中的 class，extension，struct 共同使用。</li>
+<li>Private 是最低的访问权限。它的对象只能在定义的作用域内使用。离开了这个作用域，即使是同一个文件中的其他作用域，也无法访问。</li>
+</ol>
+<p><strong>14. Swift 到底是面向对象还是函数式的编程语言？</strong></p>
+<p><em>Swift 既是面向对象的，又是函数式的编程语言。</em> <br><em>说 Swift 是 Object-oriented，是因为 Swift 支持类的封装、继承、和多态，从这点上来看与 Java 这类纯面向对象的语言几乎毫无差别。</em></p>
+<p><em>说 Swift 是函数式编程语言，是因为 Swift 支持 map, reduce, filter, flatmap 这类去除中间状态、数学函数式的方法，更加强调运算结果而不是中间过程。</em></p>
+<p><strong>15. 泛型是什么？用来解决什么问题？</strong></p>
+<p><em>泛型可以使某一个类型的算法能够更安全的工作。在Swift中泛型可以用在函数和数据类型上，如类，结构体和枚举类型。</em></p>
+<p><em>泛型还能解决代码重复的问题。普遍现象是当你已经有一个带参数的方法，但你又不得不再重新写一遍有着类似类型的方法。</em></p>
+<p><strong>16. 在Swift和Objective-C的混编项目中，如何在Swift文件中调用Objective-C文件中已经定义的方法？如何在Objective-C文件中调用Swift文件中定义的方法？反之又如何？</strong></p>
+<p>   Swift调用OC： </p>
+<p>   <em>创建桥接头文件 xxxx Bridging-Header.h,在头文件中导入OC类的头文件.h.在swift中就可以使用了</em></p>
+<p>   OC调用Swift:  </p>
+<ol>
+<li><p>配置命名空间   在TARGETS -&gt; Build Setting中：<br>Asset-&gt;Enable Asset Packs In Product Bundle中设置为NO</p>
+<p>Packaging -&gt;  Defines module 设置为YES</p>
+<p>Packaging -&gt; Product Module Name 设置swift的命名空间名字（namespace）</p>
+<ol>
+<li>在需要使用swift的OC类中导入头文件使用#import “ namespace -Swift.h”,就可以使用swift的类了</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/24/Swift-可选项/" rel="next" title="Swift-可选项">
+                <i class="fa fa-chevron-left"></i> Swift-可选项
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://on55qmgxp.bkt.clouddn.com/avatar.png"
+               alt="小毛,纯一狼" />
+          <p class="site-author-name" itemprop="name">小毛,纯一狼</p>
+           
+              <p class="site-description motion-element" itemprop="description">致力于苹果移动应用的开发</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/MaoJianxiang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/mjx342112780" title="毛建祥" target="_blank">毛建祥</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://cepheussun.com" title="CepheusSun" target="_blank">CepheusSun</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题"><span class="nav-number">2.</span> <span class="nav-text">题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小毛,纯一狼</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
